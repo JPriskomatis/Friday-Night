@@ -1,0 +1,17 @@
+{
+    "name": "ObjectsSpace",
+    "rootNamespace": "",
+    "references": [
+        "GUID:63e4ac5ddd9bb9941a71e29903778d70",
+        "GUID:b0fc98cd37bfe7e4dae7377bbc0dece4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

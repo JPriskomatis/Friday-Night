@@ -17,7 +17,7 @@ namespace EJETAGame
 
         public GameObject detectedObject;
 
-        //Ray r;
+
         private void Update()
         {
             //We send a ray to detect all objects;
@@ -58,6 +58,10 @@ namespace EJETAGame
                     }
 
                 }
+            }
+            else
+            {
+                InteractionText.instance.textAppear.gameObject.SetActive(false);
             }
 
         }

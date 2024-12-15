@@ -705,7 +705,7 @@ GameObject:
   - component: {fileID: 781527317}
   - component: {fileID: 781527322}
   - component: {fileID: 781527323}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,7 +760,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781527316}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -860,7 +860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactorSource: {fileID: 2104822016}
-  interactRange: 15
+  interactRange: 10
   detectedObject: {fileID: 0}
 --- !u!1 &986203092
 GameObject:
@@ -1211,7 +1211,7 @@ GameObject:
   - component: {fileID: 2104822015}
   - component: {fileID: 2104822014}
   - component: {fileID: 2104822017}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1265,7 +1265,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

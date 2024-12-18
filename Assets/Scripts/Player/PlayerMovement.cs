@@ -9,6 +9,7 @@ namespace PlayerSpace
         public float movementSpeed = 5.0f;
         public float gravity = -9.81f;
         public float jumpHeight = 2.0f;
+        private bool canLook;
 
         [Header("Look Settings")]
         public float mouseSensitivity = 2.0f;
@@ -21,6 +22,18 @@ namespace PlayerSpace
         private float verticalRotation = 0.0f;
         private float verticalVelocity = 0.0f;
 
+
+        private void OnEnable()
+        {
+            RedirectDirection.onChangeDirection += DisableMovement;
+            RedirectDirection.onAllowMovement += EnableMovement;
+        }
+
+        private void OnDisable()
+        {
+            RedirectDirection.onChangeDirection -= DisableMovement;
+            RedirectDirection.onAllowMovement -= EnableMovement;
+        }
         void Start()
         {
             controller = GetComponent<CharacterController>();
@@ -33,6 +46,7 @@ namespace PlayerSpace
             {
                 cameraTransform = Camera.main.transform;
             }
+            canLook = true;
         }
 
         void Update()
@@ -41,7 +55,10 @@ namespace PlayerSpace
             MovePlayer();
 
             // Handle player look
-            Look();
+            if (canLook)
+            {
+                Look();
+            }
 
             // Handle jumping
             if (Input.GetButtonDown("Jump") && controller.isGrounded)
@@ -97,6 +114,16 @@ namespace PlayerSpace
             }
 
             moveDirection.y = verticalVelocity;
+        }
+
+
+        private void DisableMovement()
+        {
+            canLook = false;
+        }
+        private void EnableMovement()
+        {
+            canLook = true;
         }
     }
 }

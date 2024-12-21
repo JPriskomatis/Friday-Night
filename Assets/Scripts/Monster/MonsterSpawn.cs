@@ -8,6 +8,8 @@ namespace MonsterSpace
         [SerializeField] private Transform target;
         [SerializeField] private GameObject monsterHead;
 
+
+
         private void Update()
         {
             LookAtPlayer();

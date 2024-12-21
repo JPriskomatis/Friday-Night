@@ -18,6 +18,7 @@ namespace ObjectSpace
             if (Input.GetKeyDown(GlobalConstants.OPEN_DOOR_KEY) && !isOpen)
             {
                 StartCoroutine(OpenDoor());
+                InteractionText.instance.SetText("");
             }
         }
 

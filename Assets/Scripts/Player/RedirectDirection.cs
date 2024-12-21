@@ -29,7 +29,6 @@ namespace PlayerSpace
 
             // Enable the CameraGlitchEffect
             glitchEffectGO.SetActive(true);
-            yield return new WaitForSeconds(1f);
 
             // Rotate the Player horizontally
             Quaternion startPlayerRotation = transform.rotation;

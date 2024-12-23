@@ -45696,6 +45696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1355443211}
   audioSource: {fileID: 1355443212}
+  glassShattered: {fileID: 0}
 --- !u!1001 &1355695082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73566,8 +73567,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.4727173, y: 2.226404, z: 2.6214294}
-  m_Center: {x: -0.03768921, y: 1.113202, z: -0.6666107}
+  m_Size: {x: 0.8276367, y: 2.226404, z: 1.2958425}
+  m_Center: {x: 0.017822266, y: 1.113202, z: -0.61874235}
 --- !u!4 &1128445249306091109
 Transform:
   m_ObjectHideFlags: 0

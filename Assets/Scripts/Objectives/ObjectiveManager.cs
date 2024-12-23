@@ -1,25 +1,16 @@
 using DG.Tweening;
+using GlobalSpace;
 using System.Collections;
-using TestSpace;
 using TMPro;
 using UnityEngine;
 
 namespace ObjectiveSpace
 {
-    public class ObjectiveManager : MonoBehaviour
+    public class ObjectiveManager : Singleton<ObjectiveManager>
     {
         [SerializeField] private TextMeshProUGUI objectiveText;
         [SerializeField] private CanvasGroup objectiveCanvasGroup;
 
-        private void OnEnable()
-        {
-            TESTING_GROUND.OnEnableObjective += ShowObjective;
-        }
-
-        private void OnDisable()
-        {
-            TESTING_GROUND.OnEnableObjective -= ShowObjective;
-        }
         public void ShowObjective(string objective)
         {
             objectiveText.gameObject.SetActive(true);

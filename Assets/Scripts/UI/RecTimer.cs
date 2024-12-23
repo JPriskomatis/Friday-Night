@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -9,7 +10,9 @@ namespace UISpace
         public TextMeshProUGUI timerText;
         private int totalSeconds = 0;  
 
-        private float lastUpdateTime = 0f; 
+        private float lastUpdateTime = 0f;
+
+        public static event Action OnFirstObjective;
 
         void Start()
         {
@@ -23,6 +26,10 @@ namespace UISpace
                 lastUpdateTime += 1f;
                 totalSeconds++;       
                 UpdateTimerText();
+            }
+            if(totalSeconds == 20)
+            {
+                OnFirstObjective?.Invoke();
             }
         }
 

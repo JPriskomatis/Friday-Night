@@ -6,13 +6,16 @@ using UnityEngine;
 
 public class IntroToMansion : MonoBehaviour
 {
-    [Header("Intro Settings")]
+    [Header("Intro Text Components")]
     [SerializeField] private string[] introText;
     [SerializeField] private string objectiveText;
-    [SerializeField] private GameObject blackScreen;
+
+    [Header("Audio Settings")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private GameObject vhsAudio;
 
+    [Header("Extra Components")]
+    [SerializeField] private GameObject blackScreen;
     IEnumerator Start()
     {
         yield return new WaitForSeconds(2f);
@@ -24,14 +27,17 @@ public class IntroToMansion : MonoBehaviour
             
             if (i == 0)
             {
+                //Turning the camera on audio;
                 audioSource.Play();
                 yield return new WaitForSeconds(0.5f);
 
+                //Our camera is on so we enable the ambient audio;
                 vhsAudio.SetActive(true);
                 blackScreen.SetActive(false);
             }
         }
 
+        //Once the monologue ends, we showcase the objective to the player;
         ObjectiveManager.Instance.ShowObjective(objectiveText);
         
     }

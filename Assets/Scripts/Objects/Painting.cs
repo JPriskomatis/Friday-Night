@@ -19,6 +19,15 @@ namespace ObjectSpace
             FirstObjective.OnDropPainting -= DropPainting;
         }
 
+        //TESTING
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                DropPainting();
+            }
+        }
+
         private void DropPainting()
         {
             anim.SetTrigger("Drop");

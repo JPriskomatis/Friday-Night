@@ -6638,6 +6638,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7860395498815269461, guid: 654dd02befd841e4ba31f254ee518c69, type: 3}
   m_PrefabInstance: {fileID: 177010127}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &187563461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 187563462}
+  m_Layer: 0
+  m_Name: -------OBJECTIVES----------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &187563462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187563461}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 266.20474, y: 7.266314, z: 267.10916}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1835460691}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &188523561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42697,7 +42729,6 @@ GameObject:
   - component: {fileID: 1272711483}
   - component: {fileID: 1272711482}
   - component: {fileID: 1272711481}
-  - component: {fileID: 1272711485}
   m_Layer: 0
   m_Name: Objective
   m_TagString: Untagged
@@ -42802,18 +42833,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1272711485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1272711479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f9a02a77b04f814e9f3a2c6d5617968, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1273982035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48081,8 +48100,8 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 0.5550834, g: 1, b: 0.5235849, a: 1}
-  m_Intensity: 10
-  m_Range: 10
+  m_Intensity: 5
+  m_Range: 50
   m_SpotAngle: 69.550385
   m_InnerSpotAngle: 0
   m_CookieSize: 10
@@ -62486,6 +62505,76 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5404951453901034340, guid: a352c9eb4f128bb409595e3c86e21b70, type: 3}
   m_PrefabInstance: {fileID: 1834803419}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1835460690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1835460691}
+  - component: {fileID: 1835460693}
+  - component: {fileID: 1835460692}
+  m_Layer: 0
+  m_Name: FistObjective
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1835460691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835460690}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 187563462}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1835460692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835460690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1694b106dfc5443b20da67c8ff207c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText:
+  - "It\u2019s pitch black in here\u2026 Let\u2019s get the camera on."
+  - "Alright, there we go\u2026 much better. Now we\u2019ll see what\u2019s really
+    hiding in this place."
+  - "Let\u2019s find out if the rumors are true\u2026 or if I\u2019m just chasing
+    shadows."
+  objectiveText: Search around the house
+  audioSource: {fileID: 2103834331}
+  entranceAudio: {fileID: 8300000, guid: 91eb98be6c15ca54aad8f49c193d1e66, type: 3}
+  cameraAudio: {fileID: 8300000, guid: 5bdcadc13a7112f46817712a94165976, type: 3}
+  vhsAudio: {fileID: 927242012}
+  blackScreen: {fileID: 12406589}
+  skipIntro: 1
+--- !u!114 &1835460693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835460690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f9a02a77b04f814e9f3a2c6d5617968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1838188343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71605,7 +71694,6 @@ GameObject:
   - component: {fileID: 2103834327}
   - component: {fileID: 2103834326}
   - component: {fileID: 2103834329}
-  - component: {fileID: 2103834330}
   - component: {fileID: 2103834331}
   m_Layer: 0
   m_Name: PlayerThoughts
@@ -71711,30 +71799,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thoughtsText: {fileID: 285448380}
   showTextDuration: 2
---- !u!114 &2103834330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2103834324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b1694b106dfc5443b20da67c8ff207c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  introText:
-  - "It\u2019s pitch black in here\u2026 Let\u2019s get the camera on."
-  - "Alright, there we go\u2026 much better. Now we\u2019ll see what\u2019s really
-    hiding in this place."
-  - "Let\u2019s find out if the rumors are true\u2026 or if I\u2019m just chasing
-    shadows."
-  objectiveText: Search around the house
-  audioSource: {fileID: 2103834331}
-  entranceAudio: {fileID: 8300000, guid: 91eb98be6c15ca54aad8f49c193d1e66, type: 3}
-  cameraAudio: {fileID: 8300000, guid: 5bdcadc13a7112f46817712a94165976, type: 3}
-  vhsAudio: {fileID: 927242012}
-  blackScreen: {fileID: 12406589}
 --- !u!82 &2103834331
 AudioSource:
   m_ObjectHideFlags: 0
@@ -74270,3 +74334,4 @@ SceneRoots:
   - {fileID: 1148378604}
   - {fileID: 148680711}
   - {fileID: 1790191469}
+  - {fileID: 187563462}

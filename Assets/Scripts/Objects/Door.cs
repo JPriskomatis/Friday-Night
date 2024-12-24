@@ -9,13 +9,14 @@ namespace ObjectSpace
     {
         [Header("Door Settings")]
         [SerializeField] private float rotationDuration;
+        [SerializeField] private bool canOpen;
         private bool isOpen;
         private float targetRotation = 90f;
         private bool isRotating;
 
         public void Interact()
         {
-            if (Input.GetKeyDown(GlobalConstants.OPEN_DOOR_KEY) && !isOpen)
+            if (Input.GetKeyDown(GlobalConstants.OPEN_DOOR_KEY) && !isOpen && canOpen)
             {
                 StartCoroutine(OpenDoor());
                 InteractionText.instance.SetText("");

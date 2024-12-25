@@ -52,7 +52,6 @@ namespace EJETAGame
                     {
                         //We deactivate our text component;
                         InteractionText.instance.textAppear.gameObject.SetActive(false);
-
                         currentInteractable.OnInteractExit();
                         currentInteractable = null;
                     }
@@ -65,6 +64,8 @@ namespace EJETAGame
             }
 
         }
+
+
 
     }
 }

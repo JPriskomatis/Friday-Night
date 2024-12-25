@@ -20,17 +20,21 @@ namespace ObjectSpace
             {
                 StartCoroutine(OpenDoor());
                 InteractionText.instance.SetText("");
+                canOpen = false;
             }
         }
 
         public void OnInteractEnter()
         {
-            InteractionText.instance.SetText("Open Door");
+            if (canOpen)
+            {
+                InteractionText.instance.SetText("Open Door");
+            }
         }
 
         public void OnInteractExit()
         {
-            Debug.Log("exit");
+            InteractionText.instance.SetText("");
         }
 
         //Open Door Method;

@@ -8,7 +8,7 @@ namespace GlobalSpace
     {
         [SerializeField] private TextMeshProUGUI thoughtsText;
         public float showTextDuration;
-
+        
         public void SetText(string text)
         {
             thoughtsText.gameObject.SetActive(true);
@@ -23,6 +23,7 @@ namespace GlobalSpace
 
         IEnumerator DeactivateText()
         {
+            Debug.Log(showTextDuration);
             yield return new WaitForSeconds(showTextDuration);
             RemoveText();
         }

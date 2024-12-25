@@ -1,53 +1,52 @@
 using EJETAGame;
 using GlobalSpace;
+using ObjectiveSpace;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
 namespace ObjectSpace
 {
-    public class InspectNewspaper : MonoBehaviour, IInteractable
+    public class InspectNewspaper : InteractableItem
     {
         [Header("Newspaper Text")]
         [SerializeField] private string[] newspaperText;
-        [SerializeField] private bool canInteractWith;
 
+        private void OnEnable()
+        {
+            FirstObjective.OnDropPainting += EnableInteraction;
+        }
+
+        private void OnDisable()
+        {
+            FirstObjective.OnDropPainting -= EnableInteraction;
+        }
         private void Start()
+        {
+            canInteractWith = false;
+        }
+
+        private void EnableInteraction()
         {
             canInteractWith = true;
         }
-
-        public void Interact()
-        {
-            if (Input.GetKeyUp(GlobalConstants.INTERACTION) && canInteractWith)
-            {
-                canInteractWith = false;
-                StartCoroutine(ReadNewspaper());
-            } 
-        }
-
-        public void OnInteractEnter()
-        {
-            if(canInteractWith)
-                PlayerThoughts.Instance.SetText("Read Newspaper");
-        }
-
-        public void OnInteractExit()
-        {
-            
-        }
-
         IEnumerator ReadNewspaper()
         {
+            PlayerThoughts.Instance.showTextDuration = 3f;
             for (int i = 0; i < newspaperText.Length; i++)
             {
                 PlayerThoughts.Instance.SetText(newspaperText[i]);
-                yield return new WaitForSeconds(PlayerThoughts.Instance.showTextDuration);
+                yield return new WaitForSeconds(PlayerThoughts.Instance.showTextDuration+0.5f);
 
             }
             canInteractWith = true;
         }
 
+        protected override void BeginInteraction()
+        {
+            StartCoroutine(ReadNewspaper());
+            canInteractWith = false;
+        }
     }
 
 }

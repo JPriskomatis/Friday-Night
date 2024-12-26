@@ -17,11 +17,14 @@ public class IntroToMansion : MonoBehaviour
 
     [Header("Extra Components")]
     [SerializeField] private GameObject blackScreen;
-    [SerializeField] private bool skipIntro;
+    [HideInInspector] public bool skipIntro;
     IEnumerator Start()
     {
         if (!skipIntro)
         {
+            blackScreen.SetActive(true);
+
+            yield return new WaitForSeconds(3f);
             //Entrance to Mansion audio;
             audioSource.clip = entranceAudio;
             audioSource.Play();
@@ -44,6 +47,8 @@ public class IntroToMansion : MonoBehaviour
                     //Our camera is on so we enable the ambient audio;
                     vhsAudio.SetActive(true);
                     blackScreen.SetActive(false);
+
+                    
                 }
             }
 

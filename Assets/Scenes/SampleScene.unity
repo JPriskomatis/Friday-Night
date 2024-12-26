@@ -540,7 +540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &12406590
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5319,6 +5319,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 148680711}
+  - component: {fileID: 148680712}
   m_Layer: 0
   m_Name: ------TEST-------
   m_TagString: Untagged
@@ -5341,6 +5342,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &148680712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148680710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32b6c6375f9b2c468ca5c3f3de71abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skipIntroToMansion: 1
 --- !u!1001 &149712614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58384,8 +58398,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 9.878418, y: -6.5856934}
+  m_SizeDelta: {x: 243.6702, y: 210.7413}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1722122313
 MonoBehaviour:
@@ -58925,6 +58939,10 @@ PrefabInstance:
     - target: {fileID: 5480920537240996256, guid: 8186490b6923cdd4587f5a50be1547e4, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480920537240996256, guid: 8186490b6923cdd4587f5a50be1547e4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5480920537240996256, guid: 8186490b6923cdd4587f5a50be1547e4, type: 3}
       propertyPath: m_TagString
@@ -62611,7 +62629,7 @@ MonoBehaviour:
   cameraAudio: {fileID: 8300000, guid: 5bdcadc13a7112f46817712a94165976, type: 3}
   vhsAudio: {fileID: 927242012}
   blackScreen: {fileID: 12406589}
-  skipIntro: 1
+  skipIntro: 0
 --- !u!114 &1835460693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68029,6 +68047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 679683223}
+  skipFirstObjective: 0
 --- !u!1001 &1995957748
 PrefabInstance:
   m_ObjectHideFlags: 0

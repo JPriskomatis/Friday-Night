@@ -31,7 +31,7 @@ namespace UISpace
                 totalSeconds++;
                 UpdateTimerText();
             }
-            if (totalSeconds == 20 || skipFirstObjective) //TESTING skips to enable the first objective event
+            if (totalSeconds == 210 || skipFirstObjective) //TESTING skips to enable the first objective event
             {
                 OnFirstObjective?.Invoke();
             }

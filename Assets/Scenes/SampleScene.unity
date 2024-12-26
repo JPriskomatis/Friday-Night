@@ -18381,6 +18381,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 874729683691553653, guid: c5c9ed0d80713f94ca3450a6f659e7f0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7614125936383667159, guid: c5c9ed0d80713f94ca3450a6f659e7f0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.113
@@ -40641,10 +40645,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Key
       objectReference: {fileID: 0}
+    - target: {fileID: 6238717404764587705, guid: 1828ac2a1d6164c4ca214263561a46e3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1983184077178841970, guid: 1828ac2a1d6164c4ca214263561a46e3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1284442002}
+    - targetCorrespondingSourceObject: {fileID: 1983184077178841970, guid: 1828ac2a1d6164c4ca214263561a46e3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1284442003}
   m_SourcePrefab: {fileID: 100100000, guid: 1828ac2a1d6164c4ca214263561a46e3, type: 3}
 --- !u!4 &1217415793 stripped
 Transform:
@@ -43312,6 +43326,49 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.2604675, y: 2.2661633, z: 1.7434692}
   m_Center: {x: 0.12663269, y: 1.1330817, z: -0.53338623}
+--- !u!1 &1284442000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1983184077178841970, guid: 1828ac2a1d6164c4ca214263561a46e3, type: 3}
+  m_PrefabInstance: {fileID: 1217415792}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1284442002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284442000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f31e707cda7a44c90b3bb0f2622dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canInteractWith: 0
+  interactionText: Grab Key
+  doorToUnlock: {fileID: 8479541102517924676}
+  sphereCollider: {fileID: 1284442003}
+  keyText: Hmm...bathroom key
+--- !u!135 &1284442003
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284442000}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1285823549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55893,15 +55950,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3074625153374920184, guid: 96c650b10ce4a25458c1a4eb2fa0f784, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3074625153374920184, guid: 96c650b10ce4a25458c1a4eb2fa0f784, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3074625153374920184, guid: 96c650b10ce4a25458c1a4eb2fa0f784, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3074625153374920184, guid: 96c650b10ce4a25458c1a4eb2fa0f784, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -65448,7 +65505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1916970497
 Transform:
   m_ObjectHideFlags: 0
@@ -67735,6 +67792,10 @@ PrefabInstance:
     - target: {fileID: 225679490047793025, guid: 13c8377414d5756438071ca7a967d2b3, type: 3}
       propertyPath: m_Name
       value: Picture_05 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 225679490047793025, guid: 13c8377414d5756438071ca7a967d2b3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 606322253173591355, guid: 13c8377414d5756438071ca7a967d2b3, type: 3}
       propertyPath: m_RootOrder

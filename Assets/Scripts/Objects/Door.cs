@@ -9,7 +9,7 @@ namespace ObjectSpace
     {
         [Header("Door Settings")]
         [SerializeField] private float rotationDuration;
-        [SerializeField] private bool canOpen;
+        public bool canOpen;
         private bool isOpen;
         private float targetRotation = 90f;
         private bool isRotating;

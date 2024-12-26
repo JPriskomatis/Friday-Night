@@ -1,5 +1,6 @@
 using EJETAGame;
 using GlobalSpace;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace ObjectSpace
     public class DrawingTable : InteractableItem
     {
         [SerializeField] private Animator anim;
+        public static event Action OnDraw;
 
  
 
@@ -21,6 +23,8 @@ namespace ObjectSpace
         protected override void BeginInteraction()
         {
             anim.SetTrigger("Open");
+            GetComponent<SphereCollider>().enabled = false;
+            OnDraw?.Invoke();
             StartCoroutine(ShowTextRoutine());
         }
     }

@@ -46,7 +46,7 @@ public class IntroToMansion : MonoBehaviour
 
                     //Our camera is on so we enable the ambient audio;
                     vhsAudio.SetActive(true);
-                    blackScreen.SetActive(false);
+                    blackScreen.GetComponent<CanvasGroup>().alpha = 0;
 
                     
                 }
@@ -56,7 +56,7 @@ public class IntroToMansion : MonoBehaviour
             ObjectiveManager.Instance.ShowObjective(objectiveText);
         } else
         {
-            blackScreen.SetActive(false);
+            blackScreen.GetComponent<CanvasGroup>().alpha = 0;
         }
         
         

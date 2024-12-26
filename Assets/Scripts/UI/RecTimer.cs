@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -7,9 +8,15 @@ namespace UISpace
     {
         [Header("Text Timer")]
         public TextMeshProUGUI timerText;
-        private int totalSeconds = 0;  
+        private int totalSeconds = 0;
 
-        private float lastUpdateTime = 0f; 
+        private float lastUpdateTime = 0f;
+
+        public static event Action OnFirstObjective;
+
+        #region FOR TESTING VARIABLES
+        public bool skipFirstObjective;
+        #endregion
 
         void Start()
         {
@@ -21,8 +28,12 @@ namespace UISpace
             if (Time.time >= lastUpdateTime + 1f)
             {
                 lastUpdateTime += 1f;
-                totalSeconds++;       
+                totalSeconds++;
                 UpdateTimerText();
+            }
+            if (totalSeconds == 210 || skipFirstObjective) //TESTING skips to enable the first objective event
+            {
+                OnFirstObjective?.Invoke();
             }
         }
 

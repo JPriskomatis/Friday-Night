@@ -9,27 +9,32 @@ namespace ObjectSpace
     {
         [Header("Door Settings")]
         [SerializeField] private float rotationDuration;
+        public bool canOpen;
         private bool isOpen;
         private float targetRotation = 90f;
         private bool isRotating;
 
         public void Interact()
         {
-            if (Input.GetKeyDown(GlobalConstants.OPEN_DOOR_KEY) && !isOpen)
+            if (Input.GetKeyDown(GlobalConstants.OPEN_DOOR_KEY) && !isOpen && canOpen)
             {
                 StartCoroutine(OpenDoor());
                 InteractionText.instance.SetText("");
+                canOpen = false;
             }
         }
 
         public void OnInteractEnter()
         {
-            InteractionText.instance.SetText("Open Door");
+            if (canOpen)
+            {
+                InteractionText.instance.SetText("Open Door");
+            }
         }
 
         public void OnInteractExit()
         {
-            Debug.Log("exit");
+            InteractionText.instance.SetText("");
         }
 
         //Open Door Method;

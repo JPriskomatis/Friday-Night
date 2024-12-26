@@ -18,8 +18,8 @@ namespace ObjectSpace
         {
             if(Input.GetKeyDown(GlobalConstants.INTERACTION) && canInteractWith)
             {
-                BeginInteraction();
                 canInteractWith = false;
+                BeginInteraction();
             }
         }
 

@@ -3,35 +3,60 @@ using UnityEngine;
 
 namespace ObjectSpace
 {
-    public class Hide : InteractableItem
+    public abstract class Hide : InteractableItem
     {
         [SerializeField] private Animator anim;
         [SerializeField] private SphereCollider sphere;
+        [SerializeField] private GameObject micVolume;
+        [SerializeField] private GameObject micVolumeUI;
+
+        [Header("Specific Animation's Settings")]
+        [SerializeField] protected int rootMotionDelay;
+        [SerializeField] protected string enterAnimationName;
+        [SerializeField] protected string exitAnimationName;
 
         private void Awake()
         {
             sphere = GetComponent<SphereCollider>();
         }
-        private void Update()
+        
+
+        protected virtual void EndAnimation()
         {
-            if (Input.GetKeyDown(KeyCode.J))
-            {
-                anim.SetTrigger("KitchenOut");
-                StartCoroutine(EnableRootMotion());
-            }
+            anim.SetTrigger(exitAnimationName);
+            StartCoroutine(EnableRootMotion());
+            micVolume.SetActive(false);
+            micVolumeUI.SetActive(false);
+
         }
         protected override void BeginInteraction()
         {
-            anim.SetTrigger("Kitchen");
+            anim.SetTrigger(enterAnimationName);
+
+            //Enable Mic Detection;
+            micVolume.SetActive(true);
+            micVolumeUI.SetActive(true);
+
             sphere.enabled = false;
             anim.applyRootMotion = false;
+
+            StartCoroutine(CheckForInput());
         }
+
+        IEnumerator CheckForInput()
+        {
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.J));
+            EndAnimation();
+        }
+
         IEnumerator EnableRootMotion()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(rootMotionDelay);
             anim.applyRootMotion = true;
             sphere.enabled = true;
         }
+
+
     }
 
 }

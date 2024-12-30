@@ -1,5 +1,5 @@
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+
 
 namespace MonsterSpace
 {
@@ -8,7 +8,10 @@ namespace MonsterSpace
         [SerializeField] private Transform target;
         [SerializeField] private GameObject monsterHead;
 
-
+        private void Start()
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
 
         private void Update()
         {

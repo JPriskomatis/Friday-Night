@@ -1,40 +1,37 @@
+using GlobalSpace;
 using System.Collections;
 using UnityEngine;
 
 namespace PlayerSpace
 {
-    public class PlayerCamera : MonoBehaviour
+    public class PlayerCamera : Singleton<PlayerCamera>
     {
         [Header("Camera Settings")]
         [SerializeField] private Camera mainCamera;
-        public string layerName = "Monster";
-        int layerIndex;
 
+        [Header("Glitch Effects")]
+        [SerializeField] private GameObject suddenGlitch;
 
-        private void Start()
-        {
-            //Finds the specific layer we want to use;
-            layerIndex = LayerMask.NameToLayer(layerName);
-        }
+        //TESTING
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.C))
             {
-                AddMonsterLayer();
-            }
-        }
-        private void AddMonsterLayer()
-        {
-            mainCamera.cullingMask |= 1 << layerIndex;
-
-            StartCoroutine(RemoveMonsterLayer());
+                StartCoroutine(GlitchEffect());
+            } 
         }
 
-        IEnumerator RemoveMonsterLayer()
+        public void InitiateGlitchEffect()
         {
-            yield return new WaitForSeconds(2f);
-            mainCamera.cullingMask &= ~(1 << layerIndex);
+            StartCoroutine(GlitchEffect());
         }
+        IEnumerator GlitchEffect()
+        {
+            suddenGlitch.SetActive(true);
+            yield return new WaitForSeconds(3f);
+            suddenGlitch.SetActive(false);
+        }
+
     }
 
 }

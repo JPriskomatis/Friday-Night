@@ -1,0 +1,18 @@
+{
+    "name": "TriggerSpace",
+    "rootNamespace": "",
+    "references": [
+        "MonsterSpace",
+        "GlobalSpace",
+        "PlayerSpace"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

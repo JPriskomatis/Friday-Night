@@ -1,0 +1,16 @@
+{
+    "name": "MonsterSpace",
+    "rootNamespace": "",
+    "references": [
+        "GUID:63e4ac5ddd9bb9941a71e29903778d70"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

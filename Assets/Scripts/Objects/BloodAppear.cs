@@ -1,6 +1,7 @@
 using EJETAGame;
 using PlayerSpace;
 using System.Collections;
+using UISpace;
 using UnityEngine;
 
 namespace ObjectSpace
@@ -10,7 +11,7 @@ namespace ObjectSpace
 
         [SerializeField] private Transform targetPos;
         [SerializeField] private float speed;
-
+        [SerializeField] private string messageHint;
         [Header("Extra Components")]
         [SerializeField] private Component voiceRecScript;
 
@@ -23,6 +24,9 @@ namespace ObjectSpace
 
             ((MonoBehaviour)voiceRecScript).enabled = true;
 
+            //Show the UI Indications;
+            VoiceRecUI.Instance.SetMessage(messageHint);
+
         }
 
         private void Update()
@@ -31,6 +35,7 @@ namespace ObjectSpace
             {
                 ((MonoBehaviour)voiceRecScript).enabled = false;
                 PlayerMovement.Instance.ResetMovement();
+                VoiceRecUI.Instance.RemoveMessage();
             }
         }
 

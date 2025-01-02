@@ -2,6 +2,7 @@ using EJETAGame;
 using GlobalSpace;
 using PlayerSpace;
 using System.Collections;
+using UISpace;
 using UnityEngine;
 using VoiceSpace;
 
@@ -11,6 +12,7 @@ namespace ObjectSpace
     {
         [Header("Extra Components")]
         [SerializeField] private Component voiceRecScript;
+        [SerializeField] private string hintMessage;
 
 
         [Header("Move to Position Settings")]
@@ -25,6 +27,7 @@ namespace ObjectSpace
             //We do this to enable/disable the script of voice recognition;
             ((MonoBehaviour)voiceRecScript).enabled = true;
             InteractionText.instance.SetText("");
+            VoiceRecUI.Instance.SetMessage(hintMessage);
             
         }
 
@@ -35,6 +38,7 @@ namespace ObjectSpace
                 PlayerMovement.Instance.ResetMovement();
                 ((MonoBehaviour)voiceRecScript).enabled = false;
                 canInteractWith = true;
+                VoiceRecUI.Instance.RemoveMessage();
             } 
         }
     }

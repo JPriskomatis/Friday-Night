@@ -15,7 +15,6 @@ namespace VoiceSpace
         private void Start()
         {
             AddDictionaryFunctions();
-            voiceActions.Add("forward", ForwardFun);
             //When we want to stop it;
             //keywordRecognizer.Stop();
             keywordRecognizer = new KeywordRecognizer(voiceActions.Keys.ToArray());

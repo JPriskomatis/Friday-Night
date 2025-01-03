@@ -28,6 +28,8 @@ namespace ObjectSpace
             micVolume.SetActive(false);
             micVolumeUI.SetActive(false);
 
+            canInteractWith = true;
+
         }
         protected override void BeginInteraction()
         {

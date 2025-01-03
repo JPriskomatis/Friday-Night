@@ -17,6 +17,7 @@ public class SlideThrough : InteractableItem
     {
         yield return new WaitForSeconds(delayRootMotion);
         anim.applyRootMotion = true;
+        canInteractWith = true;
     }
 
     private void DisableRootMotion()

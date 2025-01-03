@@ -23,6 +23,8 @@ public class IntroToMansion : MonoBehaviour
         if (!skipIntro)
         {
             blackScreen.SetActive(true);
+            vhsAudio.SetActive(false);
+            
 
             yield return new WaitForSeconds(3f);
             //Entrance to Mansion audio;

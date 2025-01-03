@@ -40258,7 +40258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1126434198}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: TVScreen_Placement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40272,12 +40272,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126434197}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 269.52, y: 6.829, z: 254.414}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.4375305, y: -3.3770833, z: -12.351074}
   m_LocalScale: {x: 0.28405, y: 0.28405, z: 0.28405}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1238727346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1135956163 stripped
 Transform:
@@ -43600,6 +43600,7 @@ Transform:
   m_Children:
   - {fileID: 340771852}
   - {fileID: 134128480}
+  - {fileID: 1126434198}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1239922216
@@ -78809,4 +78810,3 @@ SceneRoots:
   - {fileID: 629571191}
   - {fileID: 1238727346}
   - {fileID: 2014521195}
-  - {fileID: 1126434198}

@@ -1,9 +1,11 @@
+using GlobalSpace;
+using System.Collections;
 using UnityEngine;
 
 namespace PlayerSpace
 {
 
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : Singleton<PlayerMovement>
     {
         [Header("Movement Settings")]
         public float movementSpeed = 5.0f;
@@ -73,6 +75,27 @@ namespace PlayerSpace
             controller.Move(moveDirection * Time.deltaTime);
         }
 
+        public void MoveToPosition(Transform targetPos, float speed)
+        {
+            StartCoroutine(StartMoving(targetPos, speed));
+        }
+
+        IEnumerator StartMoving(Transform targetPos, float speed)
+        {
+            while (Vector3.Distance(transform.position, targetPos.position) > 0.3f)
+            {
+                Vector3 direction = (targetPos.position - transform.position).normalized;
+                controller.Move(direction * speed * Time.deltaTime);
+                yield return null;
+            }
+            Debug.Log("end");
+            controller.enabled = false;
+        }
+
+        public void ResetMovement()
+        {
+            controller.enabled = true;
+        }
         void MovePlayer()
         {
             float moveHorizontal = Input.GetAxis("Horizontal");

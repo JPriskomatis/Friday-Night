@@ -22,7 +22,7 @@ namespace ObjectSpace
         protected override void BeginInteraction()
         {
             //MovePlayer;
-            PlayerMovement.Instance.MoveToPosition(targetTransform, speed);
+            PlayerController.Instance.MoveToPosition(targetTransform, speed);
 
             //We do this to enable/disable the script of voice recognition;
             ((MonoBehaviour)voiceRecScript).enabled = true;
@@ -35,7 +35,7 @@ namespace ObjectSpace
         {
             if (Input.GetKeyDown(KeyCode.X))
             {
-                PlayerMovement.Instance.ResetMovement();
+                PlayerController.Instance.ResetMovement();
                 ((MonoBehaviour)voiceRecScript).enabled = false;
                 canInteractWith = true;
                 VoiceRecUI.Instance.RemoveMessage();

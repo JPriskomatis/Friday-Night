@@ -19,7 +19,7 @@ namespace ObjectSpace
         protected override void BeginInteraction()
         {
             //Move player to position;
-            PlayerMovement.Instance.MoveToPosition(targetPos, speed);
+            PlayerController.Instance.MoveToPosition(targetPos, speed);
             InteractionText.instance.SetText("");
 
             ((MonoBehaviour)voiceRecScript).enabled = true;
@@ -34,7 +34,7 @@ namespace ObjectSpace
             if (Input.GetKeyDown(KeyCode.X))
             {
                 ((MonoBehaviour)voiceRecScript).enabled = false;
-                PlayerMovement.Instance.ResetMovement();
+                PlayerController.Instance.ResetMovement();
                 VoiceRecUI.Instance.RemoveMessage();
             }
         }

@@ -15,7 +15,7 @@ namespace ObjectSpace
         [SerializeField] private Component tvMessage;
         protected override void BeginInteraction()
         {
-            PlayerMovement.Instance.MoveToPosition(targetPos, speed);
+            PlayerController.Instance.MoveToPosition(targetPos, speed);
             InteractionText.instance.SetText("");
 
             ((MonoBehaviour)tvMessage).enabled = true;
@@ -28,7 +28,7 @@ namespace ObjectSpace
             if (Input.GetKeyDown(KeyCode.X))
             {
                 ((MonoBehaviour)tvMessage).enabled = false;
-                PlayerMovement.Instance.ResetMovement();
+                PlayerController.Instance.ResetMovement();
                 VoiceRecUI.Instance.RemoveMessage();
             }
         }

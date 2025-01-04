@@ -1,6 +1,7 @@
 using GlobalSpace;
 using PlayerSpace;
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +20,10 @@ public class PlayerController : Singleton<PlayerController>
     public float verticalLookLimit = 80.0f;
     private bool canLook;
     private float verticalRotation = 0.0f;
+
+    [Header("Cinemachine Settings")]
+    public CinemachineCamera virtualCamera; // Reference to the Cinemachine Virtual Camera
+    private CinemachineBasicMultiChannelPerlin noise; // Reference to the Noise component
 
     private float gravity = -9.81f;
     private Vector3 velocity;
@@ -48,7 +53,10 @@ public class PlayerController : Singleton<PlayerController>
         Cursor.lockState = CursorLockMode.Locked;
         canLook = true;
         UpdateMovementVectors();
+        noise = virtualCamera.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
+
     }
+
 
     private void UpdateMovementVectors()
     {
@@ -62,6 +70,23 @@ public class PlayerController : Singleton<PlayerController>
     public void Move(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>();
+    }
+
+    public void StopCameraNoice()
+    {
+        ApplyNoise(0f, 0f);
+    }
+    public void ResetCameraNoise()
+    {
+        ApplyNoise(1f, 1f);
+    }
+    void ApplyNoise(float amplitude, float frequency)
+    {
+        if (noise != null)
+        {
+            noise.AmplitudeGain = amplitude;  // Set noise intensity
+            noise.FrequencyGain = frequency;  // Set noise frequency (speed of noise)
+        }
     }
 
     private void Update()
@@ -84,6 +109,8 @@ public class PlayerController : Singleton<PlayerController>
 
         Vector3 movement = direction * speed;
         characterController.Move((movement + velocity) * Time.deltaTime);
+
+
     }
 
     void Look()

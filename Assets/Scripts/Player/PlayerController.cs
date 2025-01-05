@@ -38,14 +38,14 @@ public class PlayerController : Singleton<PlayerController>
 
     private void OnEnable()
     {
-        RedirectDirection.onChangeDirection += DisableMovement;
-        RedirectDirection.onAllowMovement += EnableMovement;
+        RedirectDirection.onChangeDirection += DisableCameraMovement;
+        RedirectDirection.onAllowMovement += EnableCaneraMovement;
     }
 
     private void OnDisable()
     {
-        RedirectDirection.onChangeDirection -= DisableMovement;
-        RedirectDirection.onAllowMovement -= EnableMovement;
+        RedirectDirection.onChangeDirection -= DisableCameraMovement;
+        RedirectDirection.onAllowMovement -= EnableCaneraMovement;
     }
 
     private void Start()
@@ -148,13 +148,17 @@ public class PlayerController : Singleton<PlayerController>
     {
         characterController.enabled = true;
     }
+    public void StopMovement()
+    {
+        characterController.enabled = false;
+    }
 
-    private void DisableMovement()
+    public void DisableCameraMovement()
     {
         canLook = false;
     }
 
-    private void EnableMovement()
+    public void EnableCaneraMovement()
     {
         canLook = true;
     }

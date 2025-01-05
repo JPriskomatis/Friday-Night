@@ -30,6 +30,11 @@ public class PlayerController : Singleton<PlayerController>
     public Transform cameraTransform;
     private CharacterController characterController;
 
+    private Vector3 savedCameraPosition;
+    private Quaternion savedCameraRotation;
+
+
+
     protected override void Awake()
     {
         base.Awake();
@@ -56,7 +61,6 @@ public class PlayerController : Singleton<PlayerController>
         noise = virtualCamera.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
 
     }
-
 
     private void UpdateMovementVectors()
     {
@@ -159,10 +163,26 @@ public class PlayerController : Singleton<PlayerController>
     public void DisableCameraMovement()
     {
         canLook = false;
+        
+    }
+    public void GetCameraPos()
+    {
+        savedCameraPosition = cameraTransform.localPosition;
+        savedCameraRotation = cameraTransform.localRotation;
+        Debug.Log(savedCameraPosition);
+    }
+    public void ResetCameraPos()
+    {
+        cameraTransform.localPosition = savedCameraPosition; // Restore position
+        cameraTransform.localRotation = savedCameraRotation;
+        virtualCamera.gameObject.transform.localPosition = savedCameraPosition;
     }
 
     public void EnableCaneraMovement()
     {
         canLook = true;
+        cameraTransform.localPosition = savedCameraPosition; // Restore position
+        virtualCamera.gameObject.transform.localPosition = savedCameraPosition;
+
     }
 }

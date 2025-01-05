@@ -18,7 +18,12 @@ namespace MonsterSpace
 
         [SerializeField] private GameObject cinemaCam;
 
-
+        private void Start()
+        {
+            mat.SetFloat("_NoiseAmount", 0);
+            mat.SetFloat("_GlitchStrength", 0);
+            mat.SetFloat("_ScanLinesStrength", 1);
+        }
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.L))
@@ -45,15 +50,17 @@ namespace MonsterSpace
 
         public void ShowcaseBlackScreen()
         {
-            blackScreen.DOFade(1, 0.2f).OnComplete(() 
-                => monster.SetActive(true));
+
+            blackScreen.DOFade(1, 0f).OnComplete(() =>
+            {
+                monster.SetActive(true);
+            });
 
             StartCoroutine(Delay());
-            
         }
         public void RemoveBlackScreen()
         {
-            blackScreen.DOFade(0, 0.2f);
+            blackScreen.DOFade(0, 0.05f);
         }
 
         IEnumerator Delay()

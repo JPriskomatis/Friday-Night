@@ -11,13 +11,17 @@ public class SlideThrough : InteractableItem
     {
         DisableRootMotion();
         anim.SetTrigger(animationName);
+        PlayerController.Instance.GetCameraPos();
     }
+
+    
 
     IEnumerator EnableRootMotion()
     {
         yield return new WaitForSeconds(delayRootMotion);
         anim.applyRootMotion = true;
         canInteractWith = true;
+        PlayerController.Instance.ResetCameraPos();
     }
 
     private void DisableRootMotion()

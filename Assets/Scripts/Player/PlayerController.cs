@@ -18,7 +18,7 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Look Settings")]
     public float mouseSensitivity = 2.0f;
     public float verticalLookLimit = 80.0f;
-    private bool canLook;
+    [SerializeField] private bool canLook;
     private float verticalRotation = 0.0f;
 
     [Header("Cinemachine Settings")]
@@ -94,6 +94,9 @@ public class PlayerController : Singleton<PlayerController>
         if (canLook)
         {
             Look();
+        } else
+        {
+            return;
         }
 
         direction = (forward * input.y + right * input.x).normalized;

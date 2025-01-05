@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 namespace MonsterSpace
@@ -15,9 +16,18 @@ namespace MonsterSpace
         [SerializeField] private CanvasGroup blackScreen;
         [SerializeField] private GameObject monster;
 
+        [SerializeField] private GameObject cinemaCam;
+
+
         private void Update()
         {
-            StartGlitchEffect();
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                StopController();
+                ShowcaseBlackScreen();
+                StartGlitchEffect();
+            }
+            
         }
         public void StartGlitchEffect()
         {
@@ -30,12 +40,27 @@ namespace MonsterSpace
         {
             PlayerController.Instance.StopMovement();
             PlayerController.Instance.DisableCameraMovement();
+            cinemaCam.SetActive(false);
         }
 
-        public void EnableScreen()
+        public void ShowcaseBlackScreen()
         {
-            blackScreen.DOFade(1, 0.2f);
-            monster.SetActive(true);
+            blackScreen.DOFade(1, 0.2f).OnComplete(() 
+                => monster.SetActive(true));
+
+            StartCoroutine(Delay());
+            
+        }
+        public void RemoveBlackScreen()
+        {
+            blackScreen.DOFade(0, 0.2f);
+        }
+
+        IEnumerator Delay()
+        {
+            yield return new WaitForSeconds(1f);
+            RemoveBlackScreen();
+
         }
 
     }

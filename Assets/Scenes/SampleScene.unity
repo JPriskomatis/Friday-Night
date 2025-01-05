@@ -8674,13 +8674,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 236404961}
+  - component: {fileID: 236404962}
   m_Layer: 0
   m_Name: Jumpscare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &236404961
 Transform:
   m_ObjectHideFlags: 0
@@ -8697,6 +8698,24 @@ Transform:
   - {fileID: 859027720}
   m_Father: {fileID: 71258533}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &236404962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236404960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46c8bb150c30e44ca53ce82b049ee59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: be4eb6f13ea2cf149a6fe5f3bff33b66, type: 2}
+  noiseAmount: 0
+  glitchStrength: 0
+  scanlinesStrength: 1
+  blackScreen: {fileID: 12406594}
+  monster: {fileID: 2134876032}
 --- !u!1001 &237474948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31239,7 +31258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &859027720
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31290,10 +31309,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

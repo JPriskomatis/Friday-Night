@@ -66,6 +66,7 @@ namespace TriggerSpace
             yield return new WaitForSeconds(0.5f);
             PlayerCamera.Instance.InitiateGlitchEffect();
             Destroy(spawnedMonster.gameObject);
+            Destroy(this);
         }
     }
 

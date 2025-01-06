@@ -15,7 +15,7 @@ namespace MonsterSpace
         [Header("Jumpscare Components")]
         [SerializeField] private CanvasGroup blackScreen;
         [SerializeField] private GameObject monster;
-
+        [SerializeField] private AudioSource audioSource;
         [SerializeField] private GameObject cinemaCam;
 
         private void Start()
@@ -61,6 +61,10 @@ namespace MonsterSpace
         public void RemoveBlackScreen()
         {
             blackScreen.DOFade(0, 0.05f);
+            audioSource.Play();
+
+            StartCoroutine(RemoveJumpscare());
+
         }
 
         IEnumerator Delay()
@@ -68,6 +72,24 @@ namespace MonsterSpace
             yield return new WaitForSeconds(1f);
             RemoveBlackScreen();
 
+        }
+
+        IEnumerator RemoveJumpscare()
+        {
+            yield return new WaitForSeconds(1f);
+            blackScreen.DOFade(1, 0f);
+            monster.SetActive(false);
+
+            mat.SetFloat("_NoiseAmount", 0);
+            mat.SetFloat("_GlitchStrength", 0);
+            mat.SetFloat("_ScanLinesStrength", 1);
+
+            //Reset player control;
+            PlayerController.Instance.EnableCaneraMovement();
+            PlayerController.Instance.ResetMovement();
+
+            yield return new WaitForSeconds(0.5f);
+            blackScreen.DOFade(0, 0.2f);
         }
 
     }

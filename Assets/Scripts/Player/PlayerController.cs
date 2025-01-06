@@ -162,6 +162,7 @@ public class PlayerController : Singleton<PlayerController>
 
     public void DisableCameraMovement()
     {
+        GetCameraPos();
         canLook = false;
         
     }
@@ -181,8 +182,7 @@ public class PlayerController : Singleton<PlayerController>
     public void EnableCaneraMovement()
     {
         canLook = true;
-        cameraTransform.localPosition = savedCameraPosition; // Restore position
-        virtualCamera.gameObject.transform.localPosition = savedCameraPosition;
+        ResetCameraPos();
 
     }
 }

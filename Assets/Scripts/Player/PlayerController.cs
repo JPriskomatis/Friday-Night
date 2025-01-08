@@ -18,7 +18,7 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Look Settings")]
     public float mouseSensitivity = 2.0f;
     public float verticalLookLimit = 80.0f;
-    private bool canLook;
+    [SerializeField] private bool canLook;
     private float verticalRotation = 0.0f;
 
     [Header("Cinemachine Settings")]
@@ -30,6 +30,11 @@ public class PlayerController : Singleton<PlayerController>
     public Transform cameraTransform;
     private CharacterController characterController;
 
+    private Vector3 savedCameraPosition;
+    private Quaternion savedCameraRotation;
+
+
+
     protected override void Awake()
     {
         base.Awake();
@@ -38,14 +43,14 @@ public class PlayerController : Singleton<PlayerController>
 
     private void OnEnable()
     {
-        RedirectDirection.onChangeDirection += DisableMovement;
-        RedirectDirection.onAllowMovement += EnableMovement;
+        RedirectDirection.onChangeDirection += DisableCameraMovement;
+        RedirectDirection.onAllowMovement += EnableCaneraMovement;
     }
 
     private void OnDisable()
     {
-        RedirectDirection.onChangeDirection -= DisableMovement;
-        RedirectDirection.onAllowMovement -= EnableMovement;
+        RedirectDirection.onChangeDirection -= DisableCameraMovement;
+        RedirectDirection.onAllowMovement -= EnableCaneraMovement;
     }
 
     private void Start()
@@ -56,7 +61,6 @@ public class PlayerController : Singleton<PlayerController>
         noise = virtualCamera.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
 
     }
-
 
     private void UpdateMovementVectors()
     {
@@ -94,6 +98,9 @@ public class PlayerController : Singleton<PlayerController>
         if (canLook)
         {
             Look();
+        } else
+        {
+            return;
         }
 
         direction = (forward * input.y + right * input.x).normalized;
@@ -148,14 +155,34 @@ public class PlayerController : Singleton<PlayerController>
     {
         characterController.enabled = true;
     }
-
-    private void DisableMovement()
+    public void StopMovement()
     {
-        canLook = false;
+        characterController.enabled = false;
     }
 
-    private void EnableMovement()
+    public void DisableCameraMovement()
+    {
+        GetCameraPos();
+        canLook = false;
+        
+    }
+    public void GetCameraPos()
+    {
+        savedCameraPosition = cameraTransform.localPosition;
+        savedCameraRotation = cameraTransform.localRotation;
+        Debug.Log(savedCameraPosition);
+    }
+    public void ResetCameraPos()
+    {
+        cameraTransform.localPosition = savedCameraPosition; // Restore position
+        cameraTransform.localRotation = savedCameraRotation;
+        virtualCamera.gameObject.transform.localPosition = savedCameraPosition;
+    }
+
+    public void EnableCaneraMovement()
     {
         canLook = true;
+        ResetCameraPos();
+
     }
 }

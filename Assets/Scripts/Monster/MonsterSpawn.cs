@@ -5,12 +5,12 @@ namespace MonsterSpace
 {
     public class MonsterSpawn : MonoBehaviour
     {
-        [SerializeField] private Transform target;
+        private Transform target;
         [SerializeField] private GameObject monsterHead;
 
         private void Start()
         {
-            target = GameObject.FindGameObjectWithTag("Player").transform;
+            target = GameObject.FindGameObjectWithTag("PlayerHead").transform;
         }
 
         private void Update()
@@ -23,6 +23,8 @@ namespace MonsterSpace
             this.transform.position.y,
                                        target.position.z);
             this.transform.LookAt(targetPostition);
+
+            monsterHead.transform.LookAt(target);
         }
     }
 

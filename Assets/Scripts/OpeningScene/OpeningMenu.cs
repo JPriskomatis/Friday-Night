@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace OpeningScene
@@ -6,11 +7,13 @@ namespace OpeningScene
     {
         [SerializeField] private Animator cameraAnim, sceneCameraAnim;
 
+        public static event Action OnClick;
         private void OnMouseDown()
         {
             Debug.Log($"{gameObject.name} clicked!");
             cameraAnim.SetTrigger("Zoom");
             sceneCameraAnim.SetTrigger("Open");
+            OnClick?.Invoke();
         }
 
 

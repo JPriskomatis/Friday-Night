@@ -1,5 +1,7 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
@@ -11,6 +13,9 @@ public class MenuScript : MonoBehaviour
     {
         anim = Camera.main.gameObject.GetComponent<Animator>();
         blackPanel = Camera.main.GetComponentInChildren<CanvasGroup>();
+
+        //Load next scene;
+        
     }
     public void StartGamePanel()
     {
@@ -21,5 +26,13 @@ public class MenuScript : MonoBehaviour
     {
         anim.SetTrigger("Enter");
         blackPanel.DOFade(1, 0.5f);
+
+        StartCoroutine(TransitionToScene());
+    }
+
+    IEnumerator TransitionToScene()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(0);
     }
 }

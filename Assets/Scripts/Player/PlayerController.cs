@@ -25,6 +25,13 @@ public class PlayerController : Singleton<PlayerController>
     public CinemachineCamera virtualCamera; // Reference to the Cinemachine Virtual Camera
     private CinemachineBasicMultiChannelPerlin noise; // Reference to the Noise component
 
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource footstepAudioSource;
+    [SerializeField] private AudioClip footstepClip;
+
+    private float footstepTimer = 0f;
+    [SerializeField] private float footstepInterval = 0.5f; // Adjust to match the player's step speed
+
     private float gravity = -9.81f;
     private Vector3 velocity;
     public Transform cameraTransform;
@@ -104,7 +111,19 @@ public class PlayerController : Singleton<PlayerController>
         }
 
         direction = (forward * input.y + right * input.x).normalized;
-
+        if (direction.magnitude > 0.1f) // Moving on the ground
+        {
+            footstepTimer -= Time.deltaTime;
+            if (footstepTimer <= 0f)
+            {
+                PlayFootstepSound();
+                footstepTimer = footstepInterval; // Reset timer
+            }
+        }
+        else
+        {
+            footstepTimer = 0f; // Reset timer if not moving
+        }
         if (characterController.isGrounded)
         {
             velocity.y = 0f;
@@ -119,7 +138,13 @@ public class PlayerController : Singleton<PlayerController>
 
 
     }
-
+    private void PlayFootstepSound()
+    {
+        if (footstepAudioSource != null && footstepClip != null)
+        {
+            footstepAudioSource.PlayOneShot(footstepClip);  // Play a single footstep sound
+        }
+    }
     void Look()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;

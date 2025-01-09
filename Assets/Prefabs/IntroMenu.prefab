@@ -840,19 +840,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6152992779806928040}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 571035122277415245}
-        m_TargetAssemblyTypeName: MenuScript, OpeningScene
-        m_MethodName: EnterGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &3543643706832072402
 GameObject:
   m_ObjectHideFlags: 0
@@ -2314,7 +2302,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7999659462046137526}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 4c2848d16a2bfc8468fee33af6933785, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 1111c22113a3df944a86d263273fe3ca, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -2864,4 +2852,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startGamePanel: {fileID: 3167023389129939541}
-  anim: {fileID: 0}

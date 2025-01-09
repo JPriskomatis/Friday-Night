@@ -1472,6 +1472,7 @@ GameObject:
   - component: {fileID: 1023995546}
   - component: {fileID: 1023995547}
   - component: {fileID: 1023995548}
+  - component: {fileID: 1023995549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1717,6 +1718,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1023995549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023995542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25ffeb8dbad4604da13c28cbe3521a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1301195042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2871,6 +2884,58 @@ PrefabInstance:
     - target: {fileID: 1494312910430399418, guid: b04f4feb6474a124b943a6d247349881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534925408948479261, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534925408948479261, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534925408948479261, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534925408948479261, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1023995549}
+    - target: {fileID: 3534925408948479261, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 8177515848157039596}
+    - target: {fileID: 3534925408948479261, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534925408948479261, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534925408948479261, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534925408948479261, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnterGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534925408948479261, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OpeningScene.SceneTransition, OpeningScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534925408948479261, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MenuScript, OpeningScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534925408948479261, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534925408948479261, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5105278362706385972, guid: b04f4feb6474a124b943a6d247349881, type: 3}
       propertyPath: m_Camera
@@ -5752,6 +5817,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1494312910430399418, guid: b04f4feb6474a124b943a6d247349881, type: 3}
   m_PrefabInstance: {fileID: 407062019165331111}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8177515848157039596 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 571035122277415245, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+  m_PrefabInstance: {fileID: 407062019165331111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6886178793634741001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49caa45d1a9df394fa3a70b9916c3959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8188963527399062495
 GameObject:
   m_ObjectHideFlags: 0

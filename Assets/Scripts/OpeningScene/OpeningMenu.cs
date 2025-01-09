@@ -7,7 +7,13 @@ namespace OpeningScene
     public class OpeningMenu : MonoBehaviour
     {
         [SerializeField] private Animator cameraAnim, sceneCameraAnim;
+
+        [Header("Game Panels to Activate")]
         [SerializeField] private GameObject menuObject;
+
+
+
+        [SerializeField] private AudioSource audioSource;
 
         public static event Action OnClick;
         private void OnMouseDown()
@@ -15,14 +21,21 @@ namespace OpeningScene
             Debug.Log($"{gameObject.name} clicked!");
             cameraAnim.SetTrigger("Zoom");
             sceneCameraAnim.SetTrigger("Open");
-            StartCoroutine(ActivateMenu());
+            StartCoroutine(StartGamePanel());
             OnClick?.Invoke();
         }
 
-        IEnumerator ActivateMenu()
+        IEnumerator StartGamePanel()
         {
             yield return new WaitForSeconds(2.5f);
             menuObject.SetActive(true);
+        }
+
+
+
+        public void ButtonClickAudio()
+        {
+            audioSource.Play();
         }
 
     }

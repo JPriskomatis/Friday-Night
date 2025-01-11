@@ -69695,6 +69695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72beeff863a6c04ebbd5981e38b76a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speechWords: []
   dissolveMat: {fileID: 2100000, guid: be9655e7a6b13134fb60774eaf39ba30, type: 2}
   duration: 3
   bloodAppear: {fileID: 1943018962}
@@ -72508,6 +72509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149d3975ff93ce94294378e1a434ff13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speechWords: []
 --- !u!135 &2014521199
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -73661,6 +73663,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a5d9a925ad6fa48a6a45388ac89fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speechWords:
+  - yes
+  - no
   arrow: {fileID: 2046798144}
   positionYES: {x: -0.196, y: 0, z: 0.174}
   targetPosition2: {x: 0, y: 0, z: 0.072}

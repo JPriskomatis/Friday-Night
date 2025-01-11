@@ -2889,6 +2889,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3167023389129939541, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3498899110776164621, guid: b04f4feb6474a124b943a6d247349881, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2905,13 +2909,25 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1023995544}
+    - target: {fileID: 5348577847336367088, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7274236131515032983, guid: b04f4feb6474a124b943a6d247349881, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 919132149238235439}
+    - target: {fileID: 7864259603173450294, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9218614772705775310, guid: b04f4feb6474a124b943a6d247349881, type: 3}
       propertyPath: m_Name
       value: IntroMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218614772705775310, guid: b04f4feb6474a124b943a6d247349881, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

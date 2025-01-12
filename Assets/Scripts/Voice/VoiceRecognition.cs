@@ -12,6 +12,8 @@ namespace VoiceSpace
 
         protected Dictionary<string, Action> voiceActions = new Dictionary<string, Action>();
 
+        [SerializeField] protected string[] speechWords;
+
         private void Start()
         {
             AddDictionaryFunctions();

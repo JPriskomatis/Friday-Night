@@ -1,3 +1,4 @@
+using AISpace;
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
@@ -18,6 +19,14 @@ namespace MonsterSpace
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private GameObject cinemaCam;
 
+        private void OnEnable()
+        {
+            MonsterAI.OnPlayerCapture += InitiateJumpscare;
+        }
+        private void OnDisable()
+        {
+            MonsterAI.OnPlayerCapture -= InitiateJumpscare;
+        }
         private void Start()
         {
             mat.SetFloat("_NoiseAmount", 0);
@@ -28,11 +37,14 @@ namespace MonsterSpace
         {
             if (Input.GetKeyDown(KeyCode.L))
             {
-                
-                StartCoroutine(StartGlitchEffect());
-                StartCoroutine(ShowcaseBlackScreen());
+                InitiateJumpscare();
             }
             
+        }
+        private void InitiateJumpscare()
+        {
+            StartCoroutine(StartGlitchEffect());
+            StartCoroutine(ShowcaseBlackScreen());
         }
         IEnumerator StartGlitchEffect()
         {
@@ -57,7 +69,7 @@ namespace MonsterSpace
                 mat.SetFloat("_ScanLinesStrength", currentScanlinesStrength);
             }, scanlinesStrength, 1f);
 
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.5f);
             StopController();
         }
 
@@ -71,7 +83,7 @@ namespace MonsterSpace
 
         IEnumerator ShowcaseBlackScreen()
         {
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.5f);
 
             blackScreen.DOFade(1, 0f).OnComplete(() =>
             {

@@ -1,3 +1,4 @@
+using AudioSpace;
 using EJETAGame;
 using GlobalSpace;
 using System.Collections;
@@ -13,6 +14,8 @@ namespace ObjectSpace
         private bool isOpen;
         private float targetRotation = 90f;
         private bool isRotating;
+        [SerializeField] private AudioClip audioClip;
+        [SerializeField] private bool playAudio;
 
         public void Interact()
         {
@@ -21,6 +24,10 @@ namespace ObjectSpace
                 StartCoroutine(OpenDoor());
                 InteractionText.instance.SetText("");
                 canOpen = false;
+                if (playAudio)
+                {
+                    Audio.Instance.PlayAudio(audioClip);
+                }
             }
         }
 

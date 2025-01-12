@@ -11,6 +11,10 @@ public class SlideThrough : InteractableItem
     [SerializeField] float delayRootMotion;
     [SerializeField] Transform animPosition;
 
+    private void Awake()
+    {
+        anim = PlayerController.Instance.gameObject.GetComponent<Animator>();
+    }
     protected override void BeginInteraction()
     {
         //Move character to position;

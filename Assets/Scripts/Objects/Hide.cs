@@ -9,6 +9,7 @@ namespace ObjectSpace
         [SerializeField] private SphereCollider sphere;
         [SerializeField] private GameObject micVolume;
         [SerializeField] private GameObject micVolumeUI;
+        public static bool isHiding;
 
         [Header("Specific Animation's Settings")]
         [SerializeField] protected int rootMotionDelay;

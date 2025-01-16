@@ -720,16 +720,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feaa96d40f1dff7428303cf55a31dac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
-  waypoints:
-  - {fileID: 400552978}
-  - {fileID: 106018610}
-  - {fileID: 1072412952}
-  chaseSpeed: 3
-  searchSpeed: 2
-  captureDistance: 1.5
-  detectionRange: 10
-  playerDetectionAngle: 45
+  speed: 0
+  waypoint: []
 --- !u!135 &1798475717
 SphereCollider:
   m_ObjectHideFlags: 0

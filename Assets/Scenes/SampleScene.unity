@@ -73209,7 +73209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149d3975ff93ce94294378e1a434ff13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speechWords: []
+  speechWords:
+  - what do you want
 --- !u!135 &2014521199
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -80365,7 +80366,7 @@ Transform:
   m_GameObject: {fileID: 5480920538975201794}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.020643663, z: -0, w: 0.9997869}
-  m_LocalPosition: {x: 275.363, y: 6.778, z: 253.978}
+  m_LocalPosition: {x: 268.658, y: 6.778, z: 256.617}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

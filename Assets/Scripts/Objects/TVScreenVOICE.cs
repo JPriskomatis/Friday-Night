@@ -9,7 +9,7 @@ namespace VoiceSpace
 
         public override void AddDictionaryFunctions()
         {
-            voiceActions.Add("what", WhatDoYouWant);
+            voiceActions.Add(speechWords[0], WhatDoYouWant);
         }
         private void WhatDoYouWant()
         {

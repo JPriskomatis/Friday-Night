@@ -9,7 +9,7 @@ namespace AISpace
     {
         public static event Action OnPlayerCapture;
 
-        // Target Components
+        //Target Components;
         private Transform player;
         private Transform target;
 
@@ -23,7 +23,7 @@ namespace AISpace
         private Coroutine moveCoroutine;
         private bool invokeEvent;
 
-        // Monster States
+        //Monster States;
         private enum State { chase, patrol }
         private State currentState;
 
@@ -33,30 +33,32 @@ namespace AISpace
             player = GameObject.FindGameObjectWithTag("Player").transform;
             previousPosition = transform.position;
 
-            // Start initial state
+           //Start the initial state;
             StartMovement();
         }
 
         private void Update()
         {
-            // Continuously check if the player is hiding
-            bool isPlayerHiding = Hide.isHiding; // Assuming Hide.isHiding is a bool indicating if the player is hiding
+            //We want to continually check if the player is hiding;
+            //TODO:
+            //we can create an event system taht triggers an event architecture design instead of putting everything in update;
+
+            bool isPlayerHiding = Hide.isHiding;
 
             if (isPlayerHiding && currentState != State.patrol)
             {
-                // If the player is hiding and monster is not patrolling, switch to patrol state
+                //if the player is hiding and monster is not patrolling, switch to patrol statef
                 currentState = State.patrol;
-                waypointIndex = 0; // Reset waypoint index to start from the first waypoint
                 StartMovement();
             }
             else if (!isPlayerHiding && currentState != State.chase)
             {
-                // If the player stops hiding and monster is not chasing, switch to chase state
+                //If the player stops hiding and monster is not chasing, switch to chase state;
                 currentState = State.chase;
                 StartMovement();
             }
 
-            // Perform the current behavior based on state
+            //Perform the current behavior based on state;
             if (currentState == State.chase)
             {
                 if (moveCoroutine == null)
@@ -68,11 +70,9 @@ namespace AISpace
                     moveCoroutine = StartCoroutine(MoveTowardsWaypoint());
             }
 
-            // Look at target (player or waypoint)
             Vector3 targetPosition = new Vector3(target.position.x, transform.position.y, target.position.z);
             transform.LookAt(targetPosition);
 
-            // Update animation based on movement
             if (transform.position != previousPosition)
             {
                 anim.SetBool("IsMoving", true);
@@ -90,14 +90,14 @@ namespace AISpace
             if (moveCoroutine != null)
             {
                 StopCoroutine(moveCoroutine);
-                moveCoroutine = null; // Stop any existing movement coroutine
+                moveCoroutine = null;
             }
 
             if (currentState == State.patrol)
             {
                 if (waypoint.Length > 0)
                 {
-                    waypointIndex = Mathf.Min(waypointIndex, waypoint.Length - 1); // Avoid out-of-bounds access
+                    waypointIndex = Mathf.Min(waypointIndex, waypoint.Length - 1);
                     moveCoroutine = StartCoroutine(MoveTowardsWaypoint());
                 }
             }
@@ -109,7 +109,7 @@ namespace AISpace
 
         private IEnumerator MoveTowardsWaypoint()
         {
-            if (waypoint.Length == 0) yield break; // Handle empty waypoint array
+            if (waypoint.Length == 0) yield break;
 
             target = waypoint[waypointIndex];
             Debug.Log("Going to waypoint: " + waypointIndex);
@@ -137,14 +137,13 @@ namespace AISpace
             target = player;
             Debug.Log("Chasing player");
 
-            // Move towards the player until within capture range (2f)
             while (Vector3.Distance(transform.position, target.position) > 2f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.position.x, transform.position.y, player.position.z), speed * 2 * Time.deltaTime);
                 yield return null;
             }
 
-            // Capture the player and trigger the event
+            //Capture the player and trigger the event;
             Debug.Log("Captured Player");
             if (!invokeEvent)
             {
@@ -153,7 +152,7 @@ namespace AISpace
                 Destroy(gameObject, 1f);
             }
 
-            // Stop the coroutine after the player is captured
+            //Stop the coroutine after the player is captured;
             moveCoroutine = null;
         }
     }

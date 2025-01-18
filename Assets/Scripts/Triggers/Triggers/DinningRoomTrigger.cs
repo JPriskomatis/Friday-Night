@@ -1,4 +1,4 @@
-using Codice.Client.Common.GameUI;
+using Codice.CM.Common;
 using GlobalSpace;
 using ObjectSpace;
 using System.Collections;
@@ -14,13 +14,17 @@ namespace TriggerSpace
 
         [Header("Extra Components")]
         [SerializeField] private GameObject door;
+        [SerializeField] private Transform player;
         private Animator anim;
 
         [Header("Monster Settings")]
         [SerializeField] private GameObject monster;
+        [SerializeField] private Transform wayPoint;
+        [SerializeField] private float speed;
 
         private void Start()
         {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
             anim = door.GetComponent<Animator>();
         }
         protected override void InitiateAction()
@@ -43,7 +47,7 @@ namespace TriggerSpace
 
         IEnumerator StartCountdown()
         {
-            int count = 10;
+            int count = 3;
             while (count > 0)
             {
                 Debug.Log(count);  // Logs the countdown number to the console
@@ -54,31 +58,13 @@ namespace TriggerSpace
             anim.SetTrigger("open");
 
             //Monster Activity;
-            StartCoroutine(StartMonsterActivity());
+            StartMonsterActivity();
         }
 
-        private IEnumerator StartMonsterActivity()
+        private void StartMonsterActivity()
         {
             monster.SetActive(true);
-            float duration = 10f;
-            float elapsedTime = 0f;
-
-            while (elapsedTime < duration)
-            {
-                if (HideUnderTable.isHiding)
-                {
-                    Debug.Log("Player is Hiding");
-                } 
-                else
-                {
-                    Debug.Log("Player is not hiding");
-                    elapsedTime += 0.5f;
-                    yield return new WaitForSeconds(0.5f);  // Check every 0.5 seconds
-                }
-                
-            }
         }
-
     }
 
 }

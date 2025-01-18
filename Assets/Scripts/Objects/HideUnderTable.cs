@@ -5,7 +5,7 @@ namespace ObjectSpace
 {
     public class HideUnderTable : Hide
     {
-        public static bool isHiding;
+        
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private GameObject monster;
 

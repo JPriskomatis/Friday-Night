@@ -19,7 +19,14 @@ namespace ObjectSpace
         protected override void EndAnimation()
         {
             base.EndAnimation();
+            StartCoroutine(DelayFoHide());
+        }
+
+        IEnumerator DelayFoHide()
+        {
+            yield return new WaitForSeconds(1f);
             isHiding = false;
+
         }
     }
 

@@ -134,7 +134,10 @@ public class PlayerController : Singleton<PlayerController>
         }
 
         Vector3 movement = direction * speed;
-        characterController.Move((movement + velocity) * Time.deltaTime);
+        if (characterController.enabled)
+        {
+            characterController.Move((movement + velocity) * Time.deltaTime);
+        }
 
 
     }

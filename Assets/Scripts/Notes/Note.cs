@@ -1,5 +1,4 @@
 using System;
-using GlobalSpace;
 using ObjectSpace;
 using UnityEngine;
 

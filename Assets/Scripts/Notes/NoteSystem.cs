@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace NoteSpace
@@ -8,6 +9,10 @@ namespace NoteSpace
         [Header("Quad that displays the Note")]
         [SerializeField] private GameObject quad;
         [SerializeField] private Material mat;
+        [SerializeField] private TextMeshProUGUI noteDescription;
+
+        private int index;
+
 
         //Available Notes;
         private List<Note> notes = new List<Note>();
@@ -37,14 +42,15 @@ namespace NoteSpace
             notes.Add(note);
         }
 
+        //This function sets up the notes in the notebook;
         private void DisplayNote()
         {
-            foreach (var note in notes)
-            {
-                Debug.Log(note.noteSO.title);
-                quad.GetComponent<MeshRenderer>().material = note.noteSO.mat;
-                Debug.Log(note.noteSO.mat);
-            }
+
+            Debug.Log(notes[index].noteSO.title);
+            noteDescription.text = notes[index].noteSO.description;
+            quad.GetComponent<MeshRenderer>().material = notes[index].noteSO.mat;
+            
+            index++;
         }
     }
 

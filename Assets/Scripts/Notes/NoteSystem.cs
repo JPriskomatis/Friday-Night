@@ -7,9 +7,10 @@ namespace NoteSpace
     public class NoteSystem : MonoBehaviour
     {
         [Header("Quad that displays the Note")]
-        [SerializeField] private GameObject quad;
-        [SerializeField] private Material mat;
-        [SerializeField] private TextMeshProUGUI noteDescription;
+        [SerializeField] private GameObject quadImage;
+        [SerializeField] private GameObject quadDescription;
+
+        [SerializeField] private GameObject noteBook;
 
         private int index;
 
@@ -45,11 +46,16 @@ namespace NoteSpace
         //This function sets up the notes in the notebook;
         private void DisplayNote()
         {
+            //We activate the book;
+            noteBook.SetActive(true);
 
+            //We pass the information to the UI;
             Debug.Log(notes[index].noteSO.title);
-            noteDescription.text = notes[index].noteSO.description;
-            quad.GetComponent<MeshRenderer>().material = notes[index].noteSO.mat;
             
+            quadImage.GetComponent<MeshRenderer>().material = notes[index].noteSO.matImage;
+            quadDescription.GetComponent<MeshRenderer>().material = notes[index].noteSO.matDescription;
+
+
             index++;
         }
     }

@@ -74,6 +74,11 @@ namespace NoteSpace
             else
             {
                 noteBook.SetActive(true);
+                
+                //TODO:
+                //if player stays in journal for took long
+                //initiate a jumpscare;
+                
             }
             isOpen = !isOpen;
 

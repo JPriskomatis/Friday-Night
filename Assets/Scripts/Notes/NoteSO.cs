@@ -6,8 +6,8 @@ namespace NoteSpace
     public class NoteSO : ScriptableObject
     {
         public string title;
-        public Material matImage;
-        public Material matDescription;
+        [TextArea(5, 15)]
+        public string description;
     }
 
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GlobalSpace;
 using TMPro;
 using UnityEngine;
 
@@ -7,12 +8,15 @@ namespace NoteSpace
     public class NoteSystem : MonoBehaviour
     {
         [Header("Quad that displays the Note")]
-        [SerializeField] private GameObject quadImage;
-        [SerializeField] private GameObject quadDescription;
+
+        [SerializeField] private TextMeshProUGUI descriptionLeft;
+        [SerializeField] private TextMeshProUGUI descriptionRight;
 
         [SerializeField] private GameObject noteBook;
 
         private int index;
+
+        private bool isOpen;
 
 
         //Available Notes;
@@ -31,7 +35,7 @@ namespace NoteSpace
         //TESTING PURPOSES
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(GlobalConstants.NOTE))
             {
                 DisplayNote();
             }
@@ -41,22 +45,38 @@ namespace NoteSpace
         public void AcquiredNote(Note note)
         {
             notes.Add(note);
+            SetNoteUI();
+        }
+
+        private void SetNoteUI()
+        {
+            foreach (Note note in notes)
+            {
+                if (index % 2 == 0)
+                {
+                    descriptionLeft.text = notes[index].noteSO.description;
+                }
+                else
+                {
+                    descriptionRight.text = notes[index].noteSO.description;
+                }
+                index++;
+            }
         }
 
         //This function sets up the notes in the notebook;
         private void DisplayNote()
         {
-            //We activate the book;
-            noteBook.SetActive(true);
+            if (isOpen)
+            {
+                noteBook.SetActive(false);
+            }
+            else
+            {
+                noteBook.SetActive(true);
+            }
+            isOpen = !isOpen;
 
-            //We pass the information to the UI;
-            Debug.Log(notes[index].noteSO.title);
-            
-            quadImage.GetComponent<MeshRenderer>().material = notes[index].noteSO.matImage;
-            quadDescription.GetComponent<MeshRenderer>().material = notes[index].noteSO.matDescription;
-
-
-            index++;
         }
     }
 

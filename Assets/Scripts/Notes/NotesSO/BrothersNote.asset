@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5018ada5847b8d48bc0bf599bca56f4, type: 3}
+  m_Name: BrothersNote
+  m_EditorClassIdentifier: 
+  title: Brother's Diary
+  description: "I saw it again tonight. \n\nThe shadow. It\u2019s in the corner by
+    my closet. \n\nIt doesn\u2019t move. It just watches me. I told Mom and Dad,
+    but they said it\u2019s just my imagination. \n\nIT\u2019S NOT! \n\n I tried
+    to sleep with the light on, but it\u2019s still there. It\u2019s like it\u2019s
+    waiting for something. I think it wants me to come closer, but I\u2019m too scared. 
+    What if it\u2019s real? \n\nWhat if it\u2019s not just a shadow? I wish they
+    would believe me. I don\u2019t know what to do.  \n\nPlease don\u2019t let it
+    get me."

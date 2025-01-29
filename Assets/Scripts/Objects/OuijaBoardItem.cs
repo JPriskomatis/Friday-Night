@@ -27,7 +27,7 @@ namespace ObjectSpace
             //We do this to enable/disable the script of voice recognition;
             ((MonoBehaviour)voiceRecScript).enabled = true;
             InteractionText.instance.SetText("");
-            VoiceRecUI.Instance.SetMessage(hintMessage);
+            HintMessage.Instance.SetMessage(hintMessage);
             
         }
 
@@ -38,7 +38,7 @@ namespace ObjectSpace
                 PlayerController.Instance.ResetMovement();
                 ((MonoBehaviour)voiceRecScript).enabled = false;
                 canInteractWith = true;
-                VoiceRecUI.Instance.RemoveMessage();
+                HintMessage.Instance.RemoveMessage();
             } 
         }
     }

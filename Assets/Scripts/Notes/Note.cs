@@ -10,18 +10,19 @@ namespace NoteSpace
 
         public static event Action<Note> OnNoteTaken;
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                OnNoteTaken?.Invoke(this);
-            }
-        }
+        //private void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.O))
+        //    {
+        //        OnNoteTaken?.Invoke(this);
+        //    }
+        //}
         protected override void BeginInteraction()
         {
             //Display Note;
             //DisplayNote();
             OnNoteTaken?.Invoke(this);
+            Destroy(gameObject);
         }
     }
 

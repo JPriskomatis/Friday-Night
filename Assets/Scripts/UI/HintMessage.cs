@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace UISpace
 {
-    public class VoiceRecUI : Singleton<VoiceRecUI>
+    public class HintMessage : Singleton<HintMessage>
     {
         [SerializeField] private TextMeshProUGUI hintMessage;
         [SerializeField] private CanvasGroup messageCanvasGroup;

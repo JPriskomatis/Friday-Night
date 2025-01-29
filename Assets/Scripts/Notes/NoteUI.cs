@@ -68,7 +68,7 @@ namespace NoteSpace
 
         private void EnableHint()
         {
-            VoiceRecUI.Instance.SetMessage("Press X to escape");
+            HintMessage.Instance.SetMessage("Press X to escape");
         }
         private IEnumerator WaitForGKey()
         {
@@ -76,7 +76,7 @@ namespace NoteSpace
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.X));
 
             instantNote.SetActive(false);
-            VoiceRecUI.Instance.RemoveMessage();
+            HintMessage.Instance.RemoveMessage();
         }
 
     }

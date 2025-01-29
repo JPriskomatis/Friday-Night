@@ -22,3 +22,4 @@ MonoBehaviour:
     and erratic, was seen loitering in the area days prior. Police apprehended him
     after finding bloodied clothing in a nearby abandoned lot.  \n\nThe community
     remains shaken, struggling to process the senseless violence."
+  material: {fileID: 2100000, guid: e245243ab0198d5449155636880b13f0, type: 2}

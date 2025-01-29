@@ -8,6 +8,7 @@ namespace NoteSpace
         public string title;
         [TextArea(5, 15)]
         public string description;
+        public Material material;
     }
 
 }

@@ -7,6 +7,7 @@ namespace NoteSpace
     public class NoteSystem : MonoBehaviour
     {
         public static event Action<List<Note>, int> OnNotesUpdated; // Event to update UI
+        public static event Action<Note> OnNotePickup;
 
         private List<Note> notes = new List<Note>();
         private int index = 0;
@@ -47,6 +48,14 @@ namespace NoteSpace
             }
 
             OnNotesUpdated?.Invoke(notes, index);
+
+            //Display Note in the UI;
+            InstantDisplayNote(note);
+        }
+
+        private void InstantDisplayNote(Note note)
+        {
+            OnNotePickup?.Invoke(note);
         }
 
         public void LeftButton()

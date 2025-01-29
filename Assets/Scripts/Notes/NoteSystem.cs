@@ -1,26 +1,15 @@
+using System;
 using System.Collections.Generic;
-using GlobalSpace;
-using TMPro;
 using UnityEngine;
 
 namespace NoteSpace
 {
     public class NoteSystem : MonoBehaviour
     {
-        [Header("Quad that displays the Note")]
+        public static event Action<List<Note>, int> OnNotesUpdated; // Event to update UI
 
-        [SerializeField] private TextMeshProUGUI descriptionLeft;
-        [SerializeField] private TextMeshProUGUI descriptionRight;
-
-        [SerializeField] private GameObject noteBook;
-
-        private int index;
-
-        private bool isOpen;
-
-
-        //Available Notes;
         private List<Note> notes = new List<Note>();
+        private int index = 0;
 
         private void OnEnable()
         {
@@ -32,57 +21,58 @@ namespace NoteSpace
             Note.OnNoteTaken -= AcquiredNote;
         }
 
-        //TESTING PURPOSES
         private void Update()
         {
-            if (Input.GetKeyDown(GlobalConstants.NOTE))
+            if (Input.GetKeyDown(KeyCode.A))
             {
-                DisplayNote();
+                LeftButton();
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                RightButton();
             }
         }
 
-        //Acquire Note;
         public void AcquiredNote(Note note)
         {
             notes.Add(note);
-            SetNoteUI();
-        }
 
-        private void SetNoteUI()
-        {
-            foreach (Note note in notes)
+            if (notes.Count == 1)
             {
-                if (index % 2 == 0)
-                {
-                    descriptionLeft.text = notes[index].noteSO.description;
-                }
-                else
-                {
-                    descriptionRight.text = notes[index].noteSO.description;
-                }
-                index++;
+                index = 0;
             }
+            else if (notes.Count % 2 == 1)
+            {
+                index = notes.Count - 1;
+            }
+
+            OnNotesUpdated?.Invoke(notes, index);
         }
 
-        //This function sets up the notes in the notebook;
-        private void DisplayNote()
+        public void LeftButton()
         {
-            if (isOpen)
+            if (index - 2 >= 0)
             {
-                noteBook.SetActive(false);
+                index -= 2;
             }
             else
             {
-                noteBook.SetActive(true);
-                
-                //TODO:
-                //if player stays in journal for took long
-                //initiate a jumpscare;
-                
+                index = 0;
             }
-            isOpen = !isOpen;
+            OnNotesUpdated?.Invoke(notes, index);
+        }
 
+        public void RightButton()
+        {
+            if (index + 2 < notes.Count)
+            {
+                index += 2;
+            }
+            else
+            {
+                index = (notes.Count % 2 == 0) ? notes.Count - 2 : notes.Count - 1;
+            }
+            OnNotesUpdated?.Invoke(notes, index);
         }
     }
-
 }

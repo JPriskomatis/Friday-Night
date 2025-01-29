@@ -13,13 +13,14 @@ namespace NoteSpace
         [Header("Notebook Pages")]
         [SerializeField] private TextMeshProUGUI descriptionLeft;
         [SerializeField] private TextMeshProUGUI descriptionRight;
+        [SerializeField] private TextMeshProUGUI pageNumber;
         [SerializeField] private GameObject noteCanva;
 
         [Header("Instant Note UI")]
         [SerializeField] private GameObject instantNote;
         [SerializeField] private Image noteMat;
 
-
+        private bool firstNote;
         private Coroutine hideInstantNoteRoutine;
 
         //We listen for events from out NoteSystem class about new page added to the journal;
@@ -35,6 +36,10 @@ namespace NoteSpace
             NoteSystem.OnNotePickup -= ShowcaseNote;
         }
 
+        private void Start()
+        {
+            firstNote = true;
+        }
         private void Update()
         {
             if (Input.GetKeyDown(GlobalConstants.NOTE))
@@ -47,6 +52,8 @@ namespace NoteSpace
         {
             if (notes.Count == 0) return;
 
+            //upper round of number;
+            pageNumber.text = "Page " + Mathf.CeilToInt((index + 1) / 2f).ToString();
             descriptionLeft.text = notes[index].noteSO.description;
 
             descriptionRight.text = (index + 1 < notes.Count) ? notes[index + 1].noteSO.description : "";
@@ -77,6 +84,12 @@ namespace NoteSpace
 
             instantNote.SetActive(false);
             HintMessage.Instance.RemoveMessage();
+
+            if (firstNote)
+            {
+                firstNote = false;
+                PlayerThoughts.Instance.SetText("Press J to Read Notes ");
+            }
         }
 
     }

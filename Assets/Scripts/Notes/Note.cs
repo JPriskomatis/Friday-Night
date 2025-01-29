@@ -10,6 +10,7 @@ namespace NoteSpace
 
         public static event Action<Note> OnNoteTaken;
 
+
         //private void Update()
         //{
         //    if (Input.GetKeyDown(KeyCode.O))
@@ -23,6 +24,7 @@ namespace NoteSpace
             //DisplayNote();
             OnNoteTaken?.Invoke(this);
             Destroy(gameObject);
+            
         }
     }
 

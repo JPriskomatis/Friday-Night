@@ -30,13 +30,11 @@ namespace TriggerSpace
             {
                 if (IsPlayerLookingAt(spawnedMonster))
                 {
-                    Debug.Log("Found target.");
 
                     StartCoroutine(DelayMethod());
                 }
                 else
                 {
-                    Debug.Log("Player is no longer looking at the target.");
                 }
 
                 yield return null; // Wait for the next frame

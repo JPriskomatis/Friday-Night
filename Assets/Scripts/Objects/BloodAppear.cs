@@ -25,7 +25,7 @@ namespace ObjectSpace
             ((MonoBehaviour)voiceRecScript).enabled = true;
 
             //Show the UI Indications;
-            VoiceRecUI.Instance.SetMessage(messageHint);
+            HintMessage.Instance.SetMessage(messageHint);
 
         }
 
@@ -35,7 +35,7 @@ namespace ObjectSpace
             {
                 ((MonoBehaviour)voiceRecScript).enabled = false;
                 PlayerController.Instance.ResetMovement();
-                VoiceRecUI.Instance.RemoveMessage();
+                HintMessage.Instance.RemoveMessage();
             }
         }
 

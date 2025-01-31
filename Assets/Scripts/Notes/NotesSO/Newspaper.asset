@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5018ada5847b8d48bc0bf599bca56f4, type: 3}
+  m_Name: Newspaper
+  m_EditorClassIdentifier: 
+  title: Newspaper
+  description: "Grisly 1980s Murder Stuns Small Town \n\nA quiet suburban neighborhood
+    in the 1980s became the site of a horrifying tragedy when a homeless man, believed
+    to be mentally unstable, brutally murdered a local resident.  \n\nAuthorities
+    discovered the victim, a young woman, in her home, her body showing signs of
+    a violent struggle. Neighbors reported hearing strange noises the night before,
+    but no one suspected the unimaginable.  \n\nThe suspect, described as disheveled
+    and erratic, was seen loitering in the area days prior. Police apprehended him
+    after finding bloodied clothing in a nearby abandoned lot.  \n\nThe community
+    remains shaken, struggling to process the senseless violence."
+  material: {fileID: 2100000, guid: e245243ab0198d5449155636880b13f0, type: 2}

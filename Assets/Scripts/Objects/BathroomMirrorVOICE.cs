@@ -18,7 +18,7 @@ namespace VoiceSpace
         }
         public override void AddDictionaryFunctions()
         {
-            voiceActions.Add("Appear", AreYouHere);
+            voiceActions.Add(speechWords[0], AreYouHere);
         }
 
         private void AreYouHere()

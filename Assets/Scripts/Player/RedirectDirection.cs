@@ -14,13 +14,13 @@ namespace PlayerSpace
         [SerializeField] private GameObject glitchEffectGO;
         [SerializeField] private GameObject mainCamera;
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                StartCoroutine(ChangePlayerDirection());
-            }
-        }
+        //private void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.G))
+        //    {
+        //        StartCoroutine(ChangePlayerDirection());
+        //    }
+        //}
 
         IEnumerator ChangePlayerDirection()
         {

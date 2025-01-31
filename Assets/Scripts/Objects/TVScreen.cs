@@ -21,7 +21,7 @@ namespace ObjectSpace
             ((MonoBehaviour)tvMessage).enabled = true;
 
             //Show the UI Indications;
-            VoiceRecUI.Instance.SetMessage(messageHint);
+            HintMessage.Instance.SetMessage(messageHint);
         }
         private void Update()
         {
@@ -29,7 +29,7 @@ namespace ObjectSpace
             {
                 ((MonoBehaviour)tvMessage).enabled = false;
                 PlayerController.Instance.ResetMovement();
-                VoiceRecUI.Instance.RemoveMessage();
+                HintMessage.Instance.RemoveMessage();
             }
         }
     }

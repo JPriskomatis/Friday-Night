@@ -1,0 +1,20 @@
+{
+    "name": "NoteSpace",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3b4f1931c59a08d4087781d9d8bb9718",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:63e4ac5ddd9bb9941a71e29903778d70",
+        "GUID:2183a2fe3f55ae94192df042d743f47b",
+        "GUID:29af96e09763bda4fb6f0e0ea1c641bf"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

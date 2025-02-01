@@ -1,6 +1,7 @@
 using System;
 using ObjectSpace;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace NoteSpace
 {
@@ -9,6 +10,8 @@ namespace NoteSpace
         public NoteSO noteSO;
 
         public static event Action<Note> OnNoteTaken;
+        [SerializeField] private bool hasEvent;
+        public UnityEvent OnPickup;
 
 
         //private void Update()
@@ -23,7 +26,14 @@ namespace NoteSpace
             //Display Note;
             //DisplayNote();
             OnNoteTaken?.Invoke(this);
+
+            if (hasEvent)
+            {
+                OnPickup?.Invoke();
+            }
+            
             Destroy(gameObject);
+
             
         }
     }

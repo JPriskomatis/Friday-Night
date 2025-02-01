@@ -47,6 +47,7 @@ namespace ObjectSpace
         //Open Door Method;
         private IEnumerator OpenDoor()
         {
+            yield return new WaitForSeconds(0.3f);
             isOpen = true;
             if (!isRotating)
             {

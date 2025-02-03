@@ -14,7 +14,7 @@ namespace VoiceSpace
 
         [SerializeField] protected string[] speechWords;
 
-        private void Start()
+        protected virtual void Start()
         {
             AddDictionaryFunctions();
             //When we want to stop it;

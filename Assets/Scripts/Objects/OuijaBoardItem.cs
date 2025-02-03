@@ -18,7 +18,7 @@ namespace ObjectSpace
         [Header("Move to Position Settings")]
         [SerializeField] Transform targetTransform;
         [SerializeField] float speed;
- 
+
         protected override void BeginInteraction()
         {
             //MovePlayer;

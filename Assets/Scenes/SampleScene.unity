@@ -25244,6 +25244,7 @@ MonoBehaviour:
   monsterSpawnPoint: {fileID: 1907877337}
   camera: {fileID: 7874697746756088101}
   source: {fileID: 653324828}
+  jumpscare: {fileID: 8300000, guid: d8c1224512f19fa4e8c91e802c9a66f4, type: 3}
 --- !u!65 &653324827
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -79681,7 +79682,7 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 0.5550834, g: 1, b: 0.5235849, a: 1}
-  m_Intensity: 10
+  m_Intensity: 8
   m_Range: 10
   m_SpotAngle: 179
   m_InnerSpotAngle: 109.449615
@@ -79985,7 +79986,7 @@ Transform:
   m_GameObject: {fileID: 3602741435607406848}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -81035,6 +81036,7 @@ GameObject:
   - component: {fileID: 8772695545639363954}
   - component: {fileID: 2945124147603691150}
   - component: {fileID: 306678515502191488}
+  - component: {fileID: 9005362504384719306}
   m_Layer: 6
   m_Name: Point Light
   m_TagString: Untagged
@@ -81042,6 +81044,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9005362504384719306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9005362504384719305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2251dcad3da0cf0458d41cabd98f7ad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashlight: {fileID: 2945124147603691150}
 --- !u!33 &9135486473429325856
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -11,6 +11,8 @@ namespace TriggerSpace
         [SerializeField] private GameObject monsterSpawnPoint;
         [SerializeField] private Camera camera;
         [SerializeField] private AudioSource source;
+        [SerializeField] private AudioClip jumpscare;
+
         private GameObject spawnedMonster;
 
         protected override void InitiateAction()
@@ -67,6 +69,10 @@ namespace TriggerSpace
         IEnumerator DelayMethod()
         {
             yield return new WaitForSeconds(0.5f);
+
+            //Jumpscare Audio;
+            Audio.Instance.PlayAudio(jumpscare);
+
             PlayerCamera.Instance.InitiateGlitchEffect();
             Destroy(spawnedMonster.gameObject);
             Destroy(this);

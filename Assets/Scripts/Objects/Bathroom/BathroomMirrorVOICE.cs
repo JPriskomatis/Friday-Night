@@ -35,6 +35,7 @@ namespace VoiceSpace
             if (!hasAppeared)
             {
                 StartCoroutine(Dissolve(1f, 0.25f, duration));
+                OnFlickering?.Invoke();
             }
             UnityEngine.Debug.Log("I will appear now");
 

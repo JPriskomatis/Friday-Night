@@ -6,12 +6,10 @@ public class Drops : ObjectPool
 {
     [SerializeField] private Transform spawner;
     [SerializeField] AudioSource source;
-    private void Update()
+
+    public void Start()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            StartCoroutine(StarSpawning());
-        }
+        StartCoroutine(StarSpawning());
     }
 
     IEnumerator StarSpawning()

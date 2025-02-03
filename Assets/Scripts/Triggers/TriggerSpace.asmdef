@@ -5,7 +5,8 @@
         "MonsterSpace",
         "GlobalSpace",
         "PlayerSpace",
-        "ObjectsSpace"
+        "ObjectsSpace",
+        "AudioSpace"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

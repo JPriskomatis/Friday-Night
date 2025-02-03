@@ -13,13 +13,17 @@ MonoBehaviour:
   m_Name: Newspaper
   m_EditorClassIdentifier: 
   title: Newspaper
-  description: "Grisly 1980s Murder Stuns Small Town \n\nA quiet suburban neighborhood
-    in the 1980s became the site of a horrifying tragedy when a homeless man, believed
-    to be mentally unstable, brutally murdered a local resident.  \n\nAuthorities
-    discovered the victim, a young woman, in her home, her body showing signs of
-    a violent struggle. Neighbors reported hearing strange noises the night before,
-    but no one suspected the unimaginable.  \n\nThe suspect, described as disheveled
-    and erratic, was seen loitering in the area days prior. Police apprehended him
-    after finding bloodied clothing in a nearby abandoned lot.  \n\nThe community
-    remains shaken, struggling to process the senseless violence."
+  description: "HORROR IN HILLSIDE: FAMILY SLAIN IN GRUESOME HOME INVASION \n\nPolice
+    Search for Answers in Grisly Murder-Suicide\n\nHILLSIDE, Sept. 18 \u2014 The
+    quiet community of Hillside is reeling after the brutal slaying of the Wingstone
+    family\u2014James, 42, Margaret, 39, and their two children, Emily, 12, and Todd,
+    9\u2014inside their home. Police say the suspect, Barkle Worren, a 47-year-old
+    transient, allegedly broke in and held them captive for four days before murdering
+    them and taking his own life. Authorities remain uncertain of his motive.\n\n\"We
+    are working around the clock to piece together what led to this tragedy,\" said
+    Police Chief Harold Grayson. \"This was a deliberate and deeply disturbing crime.\"
+    Neighbors describe the Wingstones as a kind and well-respected family, leaving
+    the community in shock.\n\nAuthorities urge anyone with information about Worren\u2019s
+    activities to come forward as investigators continue their probe into one of
+    the most horrifying crimes in Hillside\u2019s history."
   material: {fileID: 2100000, guid: e245243ab0198d5449155636880b13f0, type: 2}

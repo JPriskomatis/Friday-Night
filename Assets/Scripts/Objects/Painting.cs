@@ -1,5 +1,7 @@
+using GlobalSpace;
 using ObjectiveSpace;
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace ObjectSpace
@@ -34,6 +36,13 @@ namespace ObjectSpace
             anim.SetTrigger("Drop");
             
             glassShattered.SetActive(true);
+            StartCoroutine(WhatWasThat());
+        }
+
+        IEnumerator WhatWasThat()
+        {
+            yield return new WaitForSeconds(2f);
+            PlayerThoughts.Instance.SetText("What was that");
         }
 
         public void ShatteredAudio()

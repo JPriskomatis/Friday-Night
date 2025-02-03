@@ -1,4 +1,6 @@
+using AudioSpace;
 using PlayerSpace;
+using System;
 using System.Collections;
 using System.Diagnostics;
 using UnityEngine;
@@ -10,12 +12,19 @@ namespace VoiceSpace
         [SerializeField] private Material dissolveMat;
         [SerializeField] private float duration;
         [SerializeField] private Component bloodAppear;
+        [SerializeField] private AudioClip clip;
+
+
+        public static event Action OnFlickering;
+
+
 
         private bool hasAppeared;
         private void Awake()
         {
             dissolveMat.SetFloat("_DissolveStrength", 1f);
         }
+
         public override void AddDictionaryFunctions()
         {
             voiceActions.Add(speechWords[0], AreYouHere);
@@ -26,6 +35,7 @@ namespace VoiceSpace
             if (!hasAppeared)
             {
                 StartCoroutine(Dissolve(1f, 0.25f, duration));
+                OnFlickering?.Invoke();
             }
             UnityEngine.Debug.Log("I will appear now");
 
@@ -33,6 +43,9 @@ namespace VoiceSpace
 
         private IEnumerator Dissolve(float startValue, float endValue, float duration)
         {
+
+
+            Audio.Instance.PlayAudioFadeIn(clip);
             float elapsedTime = 0f;
 
             while (elapsedTime < duration)
@@ -45,7 +58,9 @@ namespace VoiceSpace
 
             // Ensure final value is set
             dissolveMat.SetFloat("_DissolveStrength", endValue);
+
         }
+
 
  
     }

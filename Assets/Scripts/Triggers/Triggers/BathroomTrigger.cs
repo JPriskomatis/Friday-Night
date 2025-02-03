@@ -1,3 +1,4 @@
+using AudioSpace;
 using MonsterSpace;
 using PlayerSpace;
 using System.Collections;
@@ -9,12 +10,18 @@ namespace TriggerSpace
     {
         [SerializeField] private GameObject monsterSpawnPoint;
         [SerializeField] private Camera camera;
+        [SerializeField] private AudioSource source;
+        [SerializeField] private AudioClip jumpscare;
+
         private GameObject spawnedMonster;
 
         protected override void InitiateAction()
         {
             //Spawn monster in the correct position;
             SpawnManager.Instance.SpawnMonster(monsterSpawnPoint);
+
+            //Play Audio;
+            source.Play();
 
             StartCoroutine(CheckPlayerLookingAt());
 
@@ -30,13 +37,11 @@ namespace TriggerSpace
             {
                 if (IsPlayerLookingAt(spawnedMonster))
                 {
-                    Debug.Log("Found target.");
 
                     StartCoroutine(DelayMethod());
                 }
                 else
                 {
-                    Debug.Log("Player is no longer looking at the target.");
                 }
 
                 yield return null; // Wait for the next frame
@@ -64,6 +69,10 @@ namespace TriggerSpace
         IEnumerator DelayMethod()
         {
             yield return new WaitForSeconds(0.5f);
+
+            //Jumpscare Audio;
+            Audio.Instance.PlayAudio(jumpscare);
+
             PlayerCamera.Instance.InitiateGlitchEffect();
             Destroy(spawnedMonster.gameObject);
             Destroy(this);

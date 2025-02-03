@@ -2,6 +2,7 @@ using AISpace;
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+using VoiceSpace;
 
 namespace MonsterSpace
 {
@@ -18,6 +19,8 @@ namespace MonsterSpace
         [SerializeField] private GameObject monster;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private GameObject cinemaCam;
+
+        //Subscribe to events;
 
         private void OnEnable()
         {

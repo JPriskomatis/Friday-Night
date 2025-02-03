@@ -58507,6 +58507,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 283540403885314593, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a93a05f603868a4fb2c06bb66df6d0d, type: 3}
+    - target: {fileID: 283540403885314593, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+      propertyPath: HowYouDiedText
+      value: You were stangled?
+      objectReference: {fileID: 0}
     - target: {fileID: 1302798982340314849, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 273.74387

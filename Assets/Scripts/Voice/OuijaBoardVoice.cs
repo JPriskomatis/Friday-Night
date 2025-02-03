@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using AudioSpace;
 using DG.Tweening;
+using GlobalSpace;
 using UnityEngine;
 
 namespace VoiceSpace
@@ -17,6 +20,9 @@ namespace VoiceSpace
 
         private Dictionary<string, Vector3> letterMap = new();
 
+        [SerializeField] private AudioClip clip;
+        private bool firstClip;
+        [SerializeField] private string HowYouDiedText;
         protected override void Start()
         {
             for(int i=0; i<characters.Length; i++)
@@ -70,17 +76,42 @@ namespace VoiceSpace
         }
         private void AreYouHere()
         {
+            PlayAudio();
             Debug.Log("This actually works");
             arrow.DOLocalMove(positionYES, 2f).SetEase(Ease.InOutQuad);
         
         }
         private void HowDidYouDie()
         {
+            PlayAudio();
             string answer = "STRANGLED";
             Debug.Log("This actually works");
-            StartCoroutine(MoveArrowToWord(answer));
+
+            // Call MoveArrowToWord and pass a callback for completion
+            StartCoroutine(MoveArrowToWordWithCompletion(answer, () =>
+            {
+                // This will execute when the MoveArrowToWord coroutine completes
+                PlayerThoughts.Instance.SetText(HowYouDiedText);
+                // Trigger any additional actions you want after the movement completes
+            }));
         }
 
+        private void PlayAudio()
+        {
+            if (!firstClip)
+            {
+                Audio.Instance.PlayAudioFadeIn(clip, 0.3f);
+                firstClip = true;
+            }
+        }
+        private IEnumerator MoveArrowToWordWithCompletion(string word, Action onComplete)
+        {
+            // Call the existing MoveArrowToWord coroutine
+            yield return StartCoroutine(MoveArrowToWord(word));
+
+            // Call the callback after the MoveArrowToWord coroutine finishes
+            onComplete?.Invoke();
+        }
         private IEnumerator MoveArrowToWord(string word)
         {
             foreach (char letter in word)

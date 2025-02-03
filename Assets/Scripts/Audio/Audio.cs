@@ -14,18 +14,18 @@ namespace AudioSpace
             audioSource.Play();
         }
 
-        public void PlayAudioFadeIn(AudioClip clip)
+        public void PlayAudioFadeIn(AudioClip clip, float? maxIntensity = null)
         {
-            StartCoroutine(FadeInAudio(clip, duration));
+            StartCoroutine(FadeInAudio(clip, duration, maxIntensity));
 
         }
-        private IEnumerator FadeInAudio(AudioClip clip, float duration)
+        private IEnumerator FadeInAudio(AudioClip clip, float duration, float? maxIntensity = null)
         {
             audioSource.clip = clip;
             audioSource.volume = 0;
             audioSource.Play();
 
-            float targetVolume = 1.0f; // Change this if you have a different default volume
+            float targetVolume = maxIntensity ?? 1.0f; // Change this if you have a different default volume
             float elapsedTime = 0f;
 
             while (elapsedTime < duration)

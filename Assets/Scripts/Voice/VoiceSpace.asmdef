@@ -1,7 +1,11 @@
 {
     "name": "VoiceSpace",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:06fad9224f16e9247817160957f45f79",
+        "GUID:63e4ac5ddd9bb9941a71e29903778d70",
+        "GUID:2183a2fe3f55ae94192df042d743f47b"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using EJETAGame;
 using GlobalSpace;
 using UnityEngine;
@@ -14,6 +15,8 @@ namespace ObjectSpace
 
         private bool canInteract = true;
 
+        private bool hasSheet = true;
+        [SerializeField] private GameObject sheet;
         private void OnEnable()
         {
             FinalPainting.OnChangeImages += ChangeMaterial;
@@ -27,6 +30,7 @@ namespace ObjectSpace
         {
             if (Input.GetKeyDown(GlobalConstants.INTERACTION) && canInteract)
             {
+                hasSheet = false;
                 anim.SetTrigger("drop");
                 canInteract = false;
                 InteractionText.instance.SetText("");
@@ -49,6 +53,12 @@ namespace ObjectSpace
 
         private void ChangeMaterial(Transform transform)
         {
+            canInteract = false;
+            InteractionText.instance.SetText("");
+            if (hasSheet)
+            {
+                sheet.gameObject.SetActive(false);
+            }
             paintingRenderer.material = newImage;
 
             this.transform.LookAt(transform);

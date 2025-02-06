@@ -13,11 +13,13 @@ namespace ObjectSpace
         private void OnEnable()
         {
             BathroomMirrorVOICE.OnFlickering += StartFlicker;
+            FinalPainting.OnFlicker += StartFlicker;
         }
 
         private void OnDisable()
         {
             BathroomMirrorVOICE.OnFlickering -= StartFlicker;
+            FinalPainting.OnFlicker -= StartFlicker;
         }
         void Start()
         {

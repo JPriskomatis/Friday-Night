@@ -16270,6 +16270,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6465370785612092364, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 45bd57fde1b0c9246ae685bf450dc3e8, type: 2}
+    - target: {fileID: 6930394985048472702, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+      propertyPath: newImage
+      value: 
+      objectReference: {fileID: 2100000, guid: 4f3013db791435f4396fdaa4119066dc, type: 2}
     - target: {fileID: 9074598295464411094, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
       propertyPath: m_Name
       value: Painting (6)
@@ -22952,6 +22960,10 @@ PrefabInstance:
     - target: {fileID: 6465370785612092364, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
+      objectReference: {fileID: 2100000, guid: 14118f1b32f6cff4d8d8e9fb3ea56ed6, type: 2}
+    - target: {fileID: 6930394985048472702, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+      propertyPath: newImage
+      value: 
       objectReference: {fileID: 2100000, guid: 4fb4266f9c6bcb3458699e524f7b75ed, type: 2}
     - target: {fileID: 9074598295464411094, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
       propertyPath: m_Name
@@ -24801,6 +24813,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6465370785612092364, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 3739e562a03fc0b4982d8aa66cc50865, type: 3}
+    - target: {fileID: 6930394985048472702, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+      propertyPath: newImage
       value: 
       objectReference: {fileID: 2100000, guid: 8b04455ab9fe47d4e9a9f7aa61fc6f8d, type: 2}
     - target: {fileID: 9074598295464411094, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
@@ -27806,6 +27822,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6465370785612092364, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d39597af39bc68941b0167a65307d4ec, type: 2}
+    - target: {fileID: 6930394985048472702, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+      propertyPath: newImage
       value: 
       objectReference: {fileID: 2100000, guid: 4fb4266f9c6bcb3458699e524f7b75ed, type: 2}
     - target: {fileID: 9074598295464411094, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
@@ -36070,6 +36090,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6139497804277657844, guid: 730ad49cb45eff64a86cc0c46e2a277c, type: 3}
   m_PrefabInstance: {fileID: 1019522509}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1020762963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9074598295464411094, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+  m_PrefabInstance: {fileID: 1849768420}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1020762968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020762963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb7ac82988b9034429d69eba7bbfab52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1023195200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55538,6 +55575,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6465370785612092364, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6149a50ced365d2419a1f737becd2fcd, type: 2}
+    - target: {fileID: 6930394985048472702, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+      propertyPath: newImage
+      value: 
+      objectReference: {fileID: 2100000, guid: 4f3013db791435f4396fdaa4119066dc, type: 2}
     - target: {fileID: 9074598295464411094, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
       propertyPath: m_Name
       value: Painting (3)
@@ -56964,6 +57009,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6465370785612092364, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 13aaf49b6a5fe474fb08a842ae0800c0, type: 2}
+    - target: {fileID: 6930394985048472702, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+      propertyPath: newImage
       value: 
       objectReference: {fileID: 2100000, guid: 4fb4266f9c6bcb3458699e524f7b75ed, type: 2}
     - target: {fileID: 9074598295464411094, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
@@ -65572,6 +65621,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 8b04455ab9fe47d4e9a9f7aa61fc6f8d, type: 2}
+    - target: {fileID: 6930394985048472702, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+      propertyPath: newImage
+      value: 
+      objectReference: {fileID: 2100000, guid: 8b04455ab9fe47d4e9a9f7aa61fc6f8d, type: 2}
     - target: {fileID: 9074598295464411094, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
       propertyPath: m_Name
       value: Painting (2)
@@ -65583,7 +65636,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9074598295464411094, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1020762968}
   m_SourcePrefab: {fileID: 100100000, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
 --- !u!1001 &1850156169
 PrefabInstance:
@@ -74886,6 +74942,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6465370785612092364, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b6b08de131953646b37453bc0f9b045, type: 2}
+    - target: {fileID: 6930394985048472702, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+      propertyPath: newImage
+      value: 
+      objectReference: {fileID: 2100000, guid: 4f3013db791435f4396fdaa4119066dc, type: 2}
     - target: {fileID: 9074598295464411094, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
       propertyPath: m_Name
       value: Painting (4)

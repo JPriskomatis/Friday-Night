@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7778937639535730201}
   - component: {fileID: 6465370785612092364}
   m_Layer: 0
-  m_Name: pCube6
+  m_Name: Painting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,6 +222,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 8606042230655068291}
+  paintingRenderer: {fileID: 6465370785612092364}
+  newImage: {fileID: 0}
 --- !u!95 &8606042230655068291
 Animator:
   serializedVersion: 7

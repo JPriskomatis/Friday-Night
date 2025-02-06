@@ -10,6 +10,7 @@ namespace TriggerSpace
 
         public static event Action OnSetCollider;
         [SerializeField] Animator anim;
+        [SerializeField] AudioSource source;
 
         private void OnEnable()
         {
@@ -33,6 +34,7 @@ namespace TriggerSpace
         }
         protected override void InitiateAction()
         {
+            source.Play();
             anim.SetTrigger("boom");
             Debug.Log("Boom");
             OnSetCollider?.Invoke();

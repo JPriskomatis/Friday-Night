@@ -1,29 +1,49 @@
+using System.Collections;
 using AudioSpace;
 using MonsterSpace;
 using PlayerSpace;
-using System.Collections;
 using UnityEngine;
 
 namespace TriggerSpace
 {
-    public class BathroomTrigger : FloorTrigger
+    public class PaintingMonsterTrigger : FloorTrigger
     {
         [SerializeField] private GameObject monsterSpawnPoint;
         [SerializeField] private Camera camera;
-        [SerializeField] private AudioSource source;
-        [SerializeField] private AudioClip jumpscare;
+        [SerializeField] private AudioClip jumpscareClip;
+
+        [SerializeField] private Jumpscare jumpscare;
 
         private GameObject spawnedMonster;
 
+        private void Start()
+        {
+            interactAgain = false;
+            interactable = false;
+        }
+
+        private void OnEnable()
+        {
+            PaintingsTrigger.OnSetCollider += ActivateCollider;
+        }
+        private void OnDisable()
+        {
+            PaintingsTrigger.OnSetCollider -= ActivateCollider;
+        }
+
+        private void ActivateCollider()
+        {
+            interactable = true;
+        }
         protected override void InitiateAction()
         {
-            //Spawn monster in the correct position;
+            Debug.Log("yes");
+            //We spawn the monster;
             SpawnManager.Instance.SpawnMonster(monsterSpawnPoint);
 
-            //Play Audio;
-            source.Play();
-
+            
             StartCoroutine(CheckPlayerLookingAt());
+
 
         }
 
@@ -48,6 +68,18 @@ namespace TriggerSpace
             }
         }
 
+        IEnumerator DelayMethod()
+        {
+            yield return new WaitForSeconds(0f);
+            jumpscare.InitiateJumpscare();
+            //Jumpscare Audio;
+            Audio.Instance.PlayAudio(jumpscareClip);
+
+            //PlayerCamera.Instance.InitiateGlitchEffect();
+            Destroy(spawnedMonster.gameObject,0.5f);
+            Destroy(this);
+        }
+
         private bool IsPlayerLookingAt(GameObject target)
         {
             RaycastHit hit;
@@ -64,18 +96,6 @@ namespace TriggerSpace
                 Debug.Log("Target not found.");
             }
             return false;
-        }
-
-        IEnumerator DelayMethod()
-        {
-            yield return new WaitForSeconds(0.5f);
-
-            //Jumpscare Audio;
-            Audio.Instance.PlayAudio(jumpscare);
-
-            PlayerCamera.Instance.InitiateGlitchEffect();
-            Destroy(spawnedMonster.gameObject);
-            Destroy(this);
         }
     }
 

@@ -1,3 +1,4 @@
+using System;
 using ObjectSpace;
 using TriggerSpace;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace TriggerSpace
     public class PaintingsTrigger : FloorTrigger
     {
 
-        
+        public static event Action OnSetCollider;
         [SerializeField] Animator anim;
 
         private void OnEnable()
@@ -34,6 +35,7 @@ namespace TriggerSpace
         {
             anim.SetTrigger("boom");
             Debug.Log("Boom");
+            OnSetCollider?.Invoke();
         }
     }
 

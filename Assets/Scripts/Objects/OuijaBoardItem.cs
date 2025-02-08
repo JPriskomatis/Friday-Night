@@ -14,7 +14,7 @@ namespace ObjectSpace
         [SerializeField] private Component voiceRecScript;
         [SerializeField] private string hintMessage;
         [SerializeField] private string findLighterTxt;
-
+        [SerializeField] private GameObject candleLight;
 
         [Header("Move to Position Settings")]
         [SerializeField] Transform targetTransform;
@@ -46,6 +46,9 @@ namespace ObjectSpace
                 ((MonoBehaviour)voiceRecScript).enabled = true;
                 InteractionText.instance.SetText("");
                 HintMessage.Instance.SetMessage(hintMessage);
+
+                //Light candle;
+                LightCandle();
             }
             else
             {
@@ -56,10 +59,19 @@ namespace ObjectSpace
             
         }
 
+        private void LightCandle()
+        {
+            candleLight.SetActive(true);
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.X))
             {
+
+                //TESTING
+                hasLighter = true;
+                //END
                 PlayerController.Instance.ResetMovement();
                 ((MonoBehaviour)voiceRecScript).enabled = false;
                 canInteractWith = true;

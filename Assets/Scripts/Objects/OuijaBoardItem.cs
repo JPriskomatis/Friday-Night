@@ -27,11 +27,13 @@ namespace ObjectSpace
         private void OnEnable()
         {
             LighterDesk.OnGrabLighter += HasLighter;
+            OuijaBoardVoice.OnOuijaJumpscare += EscapeOuija;
         }
 
         private void OnDisable()
         {
             LighterDesk.OnGrabLighter -= HasLighter;
+            OuijaBoardVoice.OnOuijaJumpscare -= EscapeOuija;
         }
         private void HasLighter()
         {
@@ -77,12 +79,26 @@ namespace ObjectSpace
                 //TESTING
                 hasLighter = true;
                 //END
-                PlayerController.Instance.ResetMovement();
-                ((MonoBehaviour)voiceRecScript).enabled = false;
-                canInteractWith = true;
-                HintMessage.Instance.RemoveMessage();
+                EscapeOuija();
+                EscapeOuijaTemporary();
             } 
         }
+        private void EscapeOuijaTemporary()
+        {
+            canInteractWith = true;
+            PlayerController.Instance.ResetMovement();
+            ((MonoBehaviour)voiceRecScript).enabled = false;
+            HintMessage.Instance.RemoveMessage();
+        }
+
+        public void EscapeOuija()
+        {
+            canInteractWith = false;
+            PlayerController.Instance.ResetMovement();
+            ((MonoBehaviour)voiceRecScript).enabled = false;
+            HintMessage.Instance.RemoveMessage();
+        }
+
     }
 
 }

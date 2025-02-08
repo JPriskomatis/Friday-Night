@@ -5,12 +5,15 @@ using AudioSpace;
 using Codice.Client.Common.GameUI;
 using DG.Tweening;
 using GlobalSpace;
+using PlayerSpace;
 using UnityEngine;
 
 namespace VoiceSpace
 {
     public class OuijaBoardVoice : VoiceRecognition
     {
+        public static Action OnOuijaJumpscare;
+
         [SerializeField] private Transform arrow;
         public Vector3 positionYES;
         public Vector3 targetPosition2 = new Vector3(0f,0f,0.0719999969f);
@@ -28,9 +31,8 @@ namespace VoiceSpace
 
         [Header("Object Behind Player")]
         [SerializeField] private GameObject behindPlayer;
+        [SerializeField] private GameObject jack;
         private Camera camera;
-        private bool looked;
-
 
         protected override void Start()
         {
@@ -42,25 +44,6 @@ namespace VoiceSpace
             base.Start();
         }
 
-        #region testing
-        //TESTING PURPOSES;
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                StartCoroutine(MoveArrow());
-            }
-        }
-
-        IEnumerator MoveArrow()
-        {
-            foreach (var letterPos in letterMap.Values)
-            {
-                yield return arrow.DOLocalMove(letterPos, 0.5f).SetEase(Ease.InOutQuad).WaitForCompletion();
-                yield return new WaitForSeconds(0.5f);
-            }
-        }
-        #endregion
         public override void AddDictionaryFunctions()
         {
             //Are you here questions;
@@ -94,46 +77,66 @@ namespace VoiceSpace
             string answer = "BEHIND YOU";
             Debug.Log("This actually works");
 
-            // Call MoveArrowToWord and pass a callback for completion
             StartCoroutine(MoveArrowToWordWithCompletion(answer, () =>
             {
-                // This will execute when the MoveArrowToWord coroutine completes
                 PlayerThoughts.Instance.SetText(BehindYouTxt);
             }));
-            StartCoroutine(CheckPlayerLookingAt());
-        }
-        IEnumerator CheckPlayerLookingAt()
-        {
-            while (!looked)
-            {
-                if (IsPlayerLookingAt(behindPlayer))
-                {
-                    looked = true;
-                    Debug.Log("Looked behind");
-                }
 
-                yield return null; // Wait for the next frame to prevent freezing
+            //First check if the player looks at behindPlayer;
+            StartCoroutine(CheckPlayerLookingAt(behindPlayer, () =>
+            {
+                Debug.Log("Looked behind");
+                jack.SetActive(true);
+
+                //Now check if the player looks at Jack;
+                StartCoroutine(CheckPlayerLookingAt(jack, () =>
+                {
+                    Debug.Log("Looked at Jack");
+
+                    StartCoroutine(DelayForGlitch());
+
+                }));
+            }));
+        }
+
+        IEnumerator DelayForGlitch()
+        {
+            yield return new WaitForSeconds(0.3f);
+            PlayerCamera.Instance.InitiateGlitchEffect();
+            jack.SetActive(false);
+
+            OnOuijaJumpscare?.Invoke();
+            
+            Destroy(this);
+
+        }
+
+        IEnumerator CheckPlayerLookingAt(GameObject target, System.Action onLooked)
+        {
+            while (true)
+            {
+                if (IsPlayerLookingAt(target))
+                {
+                    onLooked?.Invoke();
+                    yield break; // Stop coroutine after detection
+                }
+                yield return null;
             }
         }
-
 
         private bool IsPlayerLookingAt(GameObject target)
         {
             RaycastHit hit;
-            if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit))
+            if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, 10f)) // Adjust distance if needed
             {
-                if (hit.collider.gameObject.layer == 7)
+                if (hit.collider.gameObject == target && hit.collider.gameObject.layer == 7) // Layer 7 check
                 {
-
                     return true;
                 }
             }
-            else
-            {
-                Debug.Log("Target not found.");
-            }
             return false;
         }
+
 
 
 

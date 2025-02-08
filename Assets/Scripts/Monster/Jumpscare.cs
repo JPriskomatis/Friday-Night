@@ -25,6 +25,7 @@ namespace MonsterSpace
         private void OnEnable()
         {
             MonsterAI.OnPlayerCapture += InitiateJumpscare;
+            
         }
         private void OnDisable()
         {
@@ -44,7 +45,7 @@ namespace MonsterSpace
             }
             
         }
-        private void InitiateJumpscare()
+        public void InitiateJumpscare()
         {
             StartCoroutine(StartGlitchEffect());
             StartCoroutine(ShowcaseBlackScreen());

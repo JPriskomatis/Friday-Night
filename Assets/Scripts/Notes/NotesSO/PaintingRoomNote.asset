@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5018ada5847b8d48bc0bf599bca56f4, type: 3}
+  m_Name: PaintingRoomNote
+  m_EditorClassIdentifier: 
+  title: PaintingRoomNote
+  description: 'I tried contacting it
+
+
+    I used the old ouija board I found in
+    the basement. I thought maybe I could convince it to go away and let me alone.
+
+
+    I
+    closed all lights and lit a candle. After that I got the board and asked the
+    first question.
+
+
+    It didn''t answer. I asked over 30 questions, but received
+    no answer.
+
+
+    Then I got up and went to bathroom and I swear when I can back
+    the arrow was moved.'
+  material: {fileID: 2100000, guid: 1f3b9f95ddcada44799dc121a4608f07, type: 2}

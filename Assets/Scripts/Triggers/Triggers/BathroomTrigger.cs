@@ -53,9 +53,9 @@ namespace TriggerSpace
             RaycastHit hit;
             if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit))
             {
-                if (hit.collider.gameObject.layer==7)
+                if (hit.collider.gameObject.layer == 7)
                 {
-                    
+
                     return true;
                 }
             }

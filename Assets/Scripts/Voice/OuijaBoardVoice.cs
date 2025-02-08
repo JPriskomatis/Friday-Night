@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AudioSpace;
+using Codice.Client.Common.GameUI;
 using DG.Tweening;
 using GlobalSpace;
 using UnityEngine;
@@ -23,9 +24,18 @@ namespace VoiceSpace
         [SerializeField] private AudioClip clip;
         private bool firstClip;
         [SerializeField] private string HowYouDiedText;
+        [SerializeField] private string BehindYouTxt;
+
+        [Header("Object Behind Player")]
+        [SerializeField] private GameObject behindPlayer;
+        private Camera camera;
+        private bool looked;
+
+
         protected override void Start()
         {
-            for(int i=0; i<characters.Length; i++)
+            camera = Camera.main;
+            for (int i=0; i<characters.Length; i++)
             {
                 letterMap.Add(characters[i], positions[i]);
             }
@@ -73,7 +83,60 @@ namespace VoiceSpace
             voiceActions.Add(speechWords[7], HowDidYouDie);
             Debug.Log("Added: " + speechWords[7]);
 
+            //Where are you
+            voiceActions.Add(speechWords[8], WhereAreYou);
+            Debug.Log("Added: " + speechWords[8]);
+
         }
+        private void WhereAreYou()
+        {
+            PlayAudio();
+            string answer = "BEHIND YOU";
+            Debug.Log("This actually works");
+
+            // Call MoveArrowToWord and pass a callback for completion
+            StartCoroutine(MoveArrowToWordWithCompletion(answer, () =>
+            {
+                // This will execute when the MoveArrowToWord coroutine completes
+                PlayerThoughts.Instance.SetText(BehindYouTxt);
+            }));
+            StartCoroutine(CheckPlayerLookingAt());
+        }
+        IEnumerator CheckPlayerLookingAt()
+        {
+            while (!looked)
+            {
+                if (IsPlayerLookingAt(behindPlayer))
+                {
+                    looked = true;
+                    Debug.Log("Looked behind");
+                }
+
+                yield return null; // Wait for the next frame to prevent freezing
+            }
+        }
+
+
+        private bool IsPlayerLookingAt(GameObject target)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit))
+            {
+                if (hit.collider.gameObject.layer == 7)
+                {
+
+                    return true;
+                }
+            }
+            else
+            {
+                Debug.Log("Target not found.");
+            }
+            return false;
+        }
+
+
+
         private void AreYouHere()
         {
             PlayAudio();

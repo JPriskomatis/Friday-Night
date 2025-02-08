@@ -22164,6 +22164,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 313615035262364492, guid: 34ab17443f543aa4fbc4c912da3cfc86, type: 3}
   m_PrefabInstance: {fileID: 604156336}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &604780419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 604780421}
+  - component: {fileID: 604780420}
+  m_Layer: 7
+  m_Name: BehindYouPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &604780420
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604780419}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 3, z: 0.075683594}
+  m_Center: {x: 0, y: 0, z: 0.4621582}
+--- !u!4 &604780421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604780419}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 273.863, y: 10.909, z: 268.132}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &608163458
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56994,8 +57047,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 7a93a05f603868a4fb2c06bb66df6d0d, type: 3}
     - target: {fileID: 283540403885314593, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+      propertyPath: BehindYouTxt
+      value: B-behind me?
+      objectReference: {fileID: 0}
+    - target: {fileID: 283540403885314593, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+      propertyPath: behindPlayer
+      value: 
+      objectReference: {fileID: 604780419}
+    - target: {fileID: 283540403885314593, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
       propertyPath: HowYouDiedText
       value: You were stangled?
+      objectReference: {fileID: 0}
+    - target: {fileID: 283540403885314593, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+      propertyPath: speechWords.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 283540403885314593, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+      propertyPath: 'speechWords.Array.data[8]'
+      value: Where are you?
       objectReference: {fileID: 0}
     - target: {fileID: 1302798982340314849, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -81837,7 +81906,7 @@ Transform:
   m_GameObject: {fileID: 5480920538975201794}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.020643663, z: -0, w: 0.9997869}
-  m_LocalPosition: {x: 266.94, y: 6.722, z: 256.554}
+  m_LocalPosition: {x: 272.26, y: 10.805, z: 265.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -82466,3 +82535,4 @@ SceneRoots:
   - {fileID: 1055734957}
   - {fileID: 632820563}
   - {fileID: 1743799852}
+  - {fileID: 604780421}

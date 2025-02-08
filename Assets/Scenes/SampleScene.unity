@@ -25096,6 +25096,7 @@ MonoBehaviour:
   interactionText: Open Drawer
   lighterTxt: Grab Lighter
   lighter: {fileID: 1566835796}
+  ligherClip: {fileID: 8300000, guid: 5e2d994968dea174e930a8ba148d8abc, type: 3}
   targetX: 0.8406
   duration: 0.5
 --- !u!135 &663625039
@@ -57180,6 +57181,10 @@ PrefabInstance:
       propertyPath: candleLight
       value: 
       objectReference: {fileID: 265352494}
+    - target: {fileID: 8875182573916579537, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+      propertyPath: lighterClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1db86c0155119bf41a2bc3bcc6a5b6b0, type: 3}
     - target: {fileID: 8875182573916579537, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
       propertyPath: findLighterTxt
       value: I think there's a lighter somewhere in here to light this candle

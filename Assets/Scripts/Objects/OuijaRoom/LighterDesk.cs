@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using AudioSpace;
 using ObjectSpace;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
@@ -9,6 +10,7 @@ public class LighterDesk : InteractableItem
     public static event Action OnGrabLighter;
     [SerializeField] private string lighterTxt;
     [SerializeField] private GameObject lighter;
+    [SerializeField] private AudioClip ligherClip;
 
     public float targetX = 0.8406f;
     public float duration = 0.5f;
@@ -24,6 +26,7 @@ public class LighterDesk : InteractableItem
         {
             Debug.Log("grab lighter");
             OnGrabLighter?.Invoke();
+            Audio.Instance.PlayAudio(ligherClip);
             Destroy(lighter);
             Destroy(this);
         }

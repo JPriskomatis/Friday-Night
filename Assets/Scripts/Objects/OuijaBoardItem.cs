@@ -1,3 +1,4 @@
+using AudioSpace;
 using EJETAGame;
 using GlobalSpace;
 using PlayerSpace;
@@ -15,6 +16,7 @@ namespace ObjectSpace
         [SerializeField] private string hintMessage;
         [SerializeField] private string findLighterTxt;
         [SerializeField] private GameObject candleLight;
+        [SerializeField] private AudioClip lighterClip;
 
         [Header("Move to Position Settings")]
         [SerializeField] Transform targetTransform;
@@ -48,7 +50,7 @@ namespace ObjectSpace
                 HintMessage.Instance.SetMessage(hintMessage);
 
                 //Light candle;
-                LightCandle();
+                StartCoroutine(LightCandle());
             }
             else
             {
@@ -59,8 +61,11 @@ namespace ObjectSpace
             
         }
 
-        private void LightCandle()
+        private IEnumerator LightCandle()
         {
+            Audio.Instance.PlayAudio(lighterClip);
+            yield return new WaitForSeconds(0.8f);
+
             candleLight.SetActive(true);
         }
 

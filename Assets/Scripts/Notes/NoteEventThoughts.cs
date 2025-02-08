@@ -1,3 +1,4 @@
+using System.Collections;
 using GlobalSpace;
 using UnityEngine;
 
@@ -5,10 +6,10 @@ namespace NoteSpace
 {
     public class NoteEventThoughts : MonoBehaviour
     {
-        public void PlayerThough()
+        public void PlayerThough(string thoughts)
         {
-            Debug.Log("dsf");
-            PlayerThoughts.Instance.SetText("Maybe I can find more notes around here");
+            PlayerThoughts.Instance.DelaySetText(thoughts);
+
         }
     }
 

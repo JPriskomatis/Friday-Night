@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using GlobalSpace;
@@ -10,6 +11,8 @@ namespace NoteSpace
 {
     public class NoteUI : MonoBehaviour
     {
+
+
         [Header("Notebook Pages")]
         [SerializeField] private TextMeshProUGUI descriptionLeft;
         [SerializeField] private TextMeshProUGUI descriptionRight;
@@ -19,6 +22,8 @@ namespace NoteSpace
         [Header("Instant Note UI")]
         [SerializeField] private GameObject instantNote;
         [SerializeField] private Image noteMat;
+
+        [SerializeField] PlayerController playerController;
 
         private bool firstNote;
         private Coroutine hideInstantNoteRoutine;
@@ -61,6 +66,8 @@ namespace NoteSpace
 
         private void ShowcaseNote(Note note)
         {
+            playerController.DisableCameraMovement();
+
             instantNote.SetActive(true);
             noteMat.material = note.noteSO.material;
 
@@ -84,6 +91,7 @@ namespace NoteSpace
 
             instantNote.SetActive(false);
             HintMessage.Instance.RemoveMessage();
+            playerController.EnableCaneraMovement();
 
             if (firstNote)
             {

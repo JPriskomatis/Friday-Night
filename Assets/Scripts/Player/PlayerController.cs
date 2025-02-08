@@ -99,7 +99,6 @@ public class PlayerController : Singleton<PlayerController>
             noise.FrequencyGain = frequency;  // Set noise frequency (speed of noise)
         }
     }
-
     private void Update()
     {
         if (canLook)
@@ -192,6 +191,11 @@ public class PlayerController : Singleton<PlayerController>
     {
         GetCameraPos();
         canLook = false;
+
+        cameraTransform.localRotation = savedCameraRotation;
+        cameraTransform.localPosition = savedCameraPosition;
+
+        virtualCamera.enabled = false;
         
     }
     public void GetCameraPos()
@@ -211,6 +215,8 @@ public class PlayerController : Singleton<PlayerController>
     {
         canLook = true;
         ResetCameraPos();
+
+        virtualCamera.enabled = true;
 
     }
 }

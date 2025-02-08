@@ -1,3 +1,4 @@
+using AudioSpace;
 using EJETAGame;
 using GlobalSpace;
 using PlayerSpace;
@@ -13,28 +14,69 @@ namespace ObjectSpace
         [Header("Extra Components")]
         [SerializeField] private Component voiceRecScript;
         [SerializeField] private string hintMessage;
-
+        [SerializeField] private string findLighterTxt;
+        [SerializeField] private GameObject candleLight;
+        [SerializeField] private AudioClip lighterClip;
 
         [Header("Move to Position Settings")]
         [SerializeField] Transform targetTransform;
         [SerializeField] float speed;
 
+        private bool hasLighter;
+
+        private void OnEnable()
+        {
+            LighterDesk.OnGrabLighter += HasLighter;
+        }
+
+        private void OnDisable()
+        {
+            LighterDesk.OnGrabLighter -= HasLighter;
+        }
+        private void HasLighter()
+        {
+            hasLighter = true;
+        }
         protected override void BeginInteraction()
         {
-            //MovePlayer;
-            PlayerController.Instance.MoveToPosition(targetTransform, speed);
+            if (hasLighter)
+            {
+                //MovePlayer;
+                PlayerController.Instance.MoveToPosition(targetTransform, speed);
 
-            //We do this to enable/disable the script of voice recognition;
-            ((MonoBehaviour)voiceRecScript).enabled = true;
-            InteractionText.instance.SetText("");
-            HintMessage.Instance.SetMessage(hintMessage);
+                //We do this to enable/disable the script of voice recognition;
+                ((MonoBehaviour)voiceRecScript).enabled = true;
+                InteractionText.instance.SetText("");
+                HintMessage.Instance.SetMessage(hintMessage);
+
+                //Light candle;
+                StartCoroutine(LightCandle());
+            }
+            else
+            {
+                PlayerThoughts.Instance.SetText(findLighterTxt);
+                canInteractWith = true;
+            }
             
+            
+        }
+
+        private IEnumerator LightCandle()
+        {
+            Audio.Instance.PlayAudio(lighterClip);
+            yield return new WaitForSeconds(0.8f);
+
+            candleLight.SetActive(true);
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.X))
             {
+
+                //TESTING
+                hasLighter = true;
+                //END
                 PlayerController.Instance.ResetMovement();
                 ((MonoBehaviour)voiceRecScript).enabled = false;
                 canInteractWith = true;

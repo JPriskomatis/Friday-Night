@@ -13,6 +13,7 @@ namespace ObjectSpace
         [Header("Components")]
         [SerializeField] private AudioSource source;
         [SerializeField] private Animator anim;
+        [SerializeField] private Transform paintingTransform;
         private bool canInteract = true;
 
         public void Interact()
@@ -30,7 +31,7 @@ namespace ObjectSpace
         {
             yield return new WaitForSeconds(1f);
             source.Play();
-            OnChangeImages?.Invoke(transform);
+            OnChangeImages?.Invoke(paintingTransform);
             OnFlicker?.Invoke();
 
         }

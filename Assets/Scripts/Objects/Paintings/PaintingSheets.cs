@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using EJETAGame;
 using GlobalSpace;
@@ -10,12 +11,15 @@ namespace ObjectSpace
     {
         [SerializeField] private Animator anim;
         [SerializeField] private MeshRenderer paintingRenderer;
-
         [SerializeField] private Material newImage;
+        [SerializeField] private string firstPaintingText;
 
         private bool canInteract = true;
 
         private bool hasSheet = true;
+
+        private static bool firstToCheck = true;
+
         [SerializeField] private GameObject sheet;
         private void OnEnable()
         {
@@ -30,11 +34,22 @@ namespace ObjectSpace
         {
             if (Input.GetKeyDown(GlobalConstants.INTERACTION) && canInteract)
             {
+                StartCoroutine(FirstPainting());
                 hasSheet = false;
                 anim.SetTrigger("drop");
                 canInteract = false;
                 InteractionText.instance.SetText("");
                 //Destroy(this, 2f);
+            }
+        }
+
+        IEnumerator FirstPainting()
+        {
+            if (firstToCheck)
+            {
+                yield return new WaitForSeconds(1f);
+                PlayerThoughts.Instance.SetText(firstPaintingText);
+                firstToCheck = false;
             }
         }
 
@@ -53,6 +68,7 @@ namespace ObjectSpace
 
         private void ChangeMaterial(Transform transform)
         {
+            this.transform.LookAt(transform);
             canInteract = false;
             InteractionText.instance.SetText("");
             if (hasSheet)
@@ -61,7 +77,7 @@ namespace ObjectSpace
             }
             paintingRenderer.material = newImage;
 
-            this.transform.LookAt(transform);
+            
         }
     }
 

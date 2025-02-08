@@ -15,6 +15,19 @@ namespace GlobalSpace
             thoughtsText.text = text;
             StartCoroutine(DeactivateText());
         }
+
+        public void DelaySetText(string text)
+        {
+            StartCoroutine(DelayText(text));
+            
+        }
+        IEnumerator DelayText(string text)
+        {
+            yield return new WaitForSeconds(2f);
+            thoughtsText.gameObject.SetActive(true);
+            thoughtsText.text = text;
+            StartCoroutine(DeactivateText());
+        }
         public void RemoveText()
         {
             thoughtsText.gameObject.SetActive(false);

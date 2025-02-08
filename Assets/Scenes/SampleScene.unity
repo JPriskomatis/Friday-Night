@@ -2271,6 +2271,42 @@ PrefabInstance:
       propertyPath: noteSO
       value: 
       objectReference: {fileID: 11400000, guid: 51c69163a6e622d45b3d314b132715aa, type: 2}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: hasEvent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 338760162}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayerThough
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NoteSpace.NoteEventThoughts, NoteSpace
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Seems like I gotta try that Uoija Board
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8859909622679435961, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -2278,7 +2314,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3476030320619547554, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 338760162}
   m_SourcePrefab: {fileID: 100100000, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
 --- !u!1001 &45112231
 PrefabInstance:
@@ -12257,11 +12296,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7916073004719092499, guid: 00d8c4c0fabed8c4a84b235b86b3b802, type: 3}
   m_PrefabInstance: {fileID: 338175091}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &338760156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3476030320619547554, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+  m_PrefabInstance: {fileID: 42215140}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &338760161 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2189794252732552478, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
   m_PrefabInstance: {fileID: 42215140}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &338760162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338760156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d8905bbc218ea74187f7e9ad29a0a0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &340771851
 GameObject:
   m_ObjectHideFlags: 0

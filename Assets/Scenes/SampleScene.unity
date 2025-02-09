@@ -5552,7 +5552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32b6c6375f9b2c468ca5c3f3de71abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntroToMansion: 1
+  skipIntroToMansion: 0
 --- !u!1001 &149712614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67709,11 +67709,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introText:
-  - "It\u2019s pitch black in here\u2026 Let\u2019s get the camera on."
-  - "Alright, there we go\u2026 much better. Now we\u2019ll see what\u2019s really
-    hiding in this place."
-  - "Let\u2019s find out if the rumors are true\u2026 or if I\u2019m just chasing
-    shadows."
+  - "My name is Michael Maxwell. I\u2019m a detective\u2014and the sole survivor
+    of my family."
+  - A few weeks ago, they were murdered in their home by a homeless maniac
+  - The police claim it was a random act, an alcoholic who broke in and slaughtered
+    them
+  - Case closed. No further details. No real investigation. And no media coverage.
+  - "It\u2019s like the town wants to erase it\u2014pretend it never happened. "
+  - "But I won\u2019t let that happen. "
+  - "I\u2019m going back. Back to my childhood home. Back to uncover the truth\u2026
+    no matter what I find lurking in the dark. "
   objectiveText: Document 5 Paranormal Activities
   audioSource: {fileID: 2103834331}
   entranceAudio: {fileID: 8300000, guid: 91eb98be6c15ca54aad8f49c193d1e66, type: 3}

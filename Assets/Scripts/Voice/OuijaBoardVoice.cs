@@ -2,14 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AudioSpace;
+using Codice.Client.Common.GameUI;
 using DG.Tweening;
 using GlobalSpace;
+using PlayerSpace;
 using UnityEngine;
 
 namespace VoiceSpace
 {
     public class OuijaBoardVoice : VoiceRecognition
     {
+        public static Action OnOuijaJumpscare;
+
         [SerializeField] private Transform arrow;
         public Vector3 positionYES;
         public Vector3 targetPosition2 = new Vector3(0f,0f,0.0719999969f);
@@ -23,34 +27,23 @@ namespace VoiceSpace
         [SerializeField] private AudioClip clip;
         private bool firstClip;
         [SerializeField] private string HowYouDiedText;
+        [SerializeField] private string BehindYouTxt;
+
+        [Header("Object Behind Player")]
+        [SerializeField] private GameObject behindPlayer;
+        [SerializeField] private GameObject jack;
+        private Camera camera;
+
         protected override void Start()
         {
-            for(int i=0; i<characters.Length; i++)
+            camera = Camera.main;
+            for (int i=0; i<characters.Length; i++)
             {
                 letterMap.Add(characters[i], positions[i]);
             }
             base.Start();
         }
 
-        #region testing
-        //TESTING PURPOSES;
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                StartCoroutine(MoveArrow());
-            }
-        }
-
-        IEnumerator MoveArrow()
-        {
-            foreach (var letterPos in letterMap.Values)
-            {
-                yield return arrow.DOLocalMove(letterPos, 0.5f).SetEase(Ease.InOutQuad).WaitForCompletion();
-                yield return new WaitForSeconds(0.5f);
-            }
-        }
-        #endregion
         public override void AddDictionaryFunctions()
         {
             //Are you here questions;
@@ -73,7 +66,80 @@ namespace VoiceSpace
             voiceActions.Add(speechWords[7], HowDidYouDie);
             Debug.Log("Added: " + speechWords[7]);
 
+            //Where are you
+            voiceActions.Add(speechWords[8], WhereAreYou);
+            Debug.Log("Added: " + speechWords[8]);
+
         }
+        private void WhereAreYou()
+        {
+            PlayAudio();
+            string answer = "BEHIND YOU";
+            Debug.Log("This actually works");
+
+            StartCoroutine(MoveArrowToWordWithCompletion(answer, () =>
+            {
+                PlayerThoughts.Instance.SetText(BehindYouTxt);
+            }));
+
+            //First check if the player looks at behindPlayer;
+            StartCoroutine(CheckPlayerLookingAt(behindPlayer, () =>
+            {
+                Debug.Log("Looked behind");
+                jack.SetActive(true);
+
+                //Now check if the player looks at Jack;
+                StartCoroutine(CheckPlayerLookingAt(jack, () =>
+                {
+                    Debug.Log("Looked at Jack");
+
+                    StartCoroutine(DelayForGlitch());
+
+                }));
+            }));
+        }
+
+        IEnumerator DelayForGlitch()
+        {
+            yield return new WaitForSeconds(0.3f);
+            PlayerCamera.Instance.InitiateGlitchEffect();
+            jack.SetActive(false);
+
+            OnOuijaJumpscare?.Invoke();
+            
+            Destroy(this);
+
+        }
+
+        IEnumerator CheckPlayerLookingAt(GameObject target, System.Action onLooked)
+        {
+            while (true)
+            {
+                if (IsPlayerLookingAt(target))
+                {
+                    onLooked?.Invoke();
+                    yield break; // Stop coroutine after detection
+                }
+                yield return null;
+            }
+        }
+
+        private bool IsPlayerLookingAt(GameObject target)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, 10f)) // Adjust distance if needed
+            {
+                if (hit.collider.gameObject == target && hit.collider.gameObject.layer == 7) // Layer 7 check
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+
+
         private void AreYouHere()
         {
             PlayAudio();

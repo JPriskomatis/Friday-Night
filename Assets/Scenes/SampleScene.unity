@@ -82687,7 +82687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fac52213497184a887946afb572edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationDuration: 2
+  rotationDuration: 1
   canOpen: 1
   audioClip: {fileID: 8300000, guid: 2851d5678d5e32f4a9b2b0a10bbcd8bf, type: 3}
   closeDoorClip: {fileID: 8300000, guid: c68dc14cb616ceb4190fec6dfae5730d, type: 3}

@@ -2,6 +2,7 @@ using GlobalSpace;
 using ObjectiveSpace;
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class IntroToMansion : MonoBehaviour
@@ -9,6 +10,8 @@ public class IntroToMansion : MonoBehaviour
     [Header("Intro Text Components")]
     [SerializeField] private string[] introText;
     [SerializeField] private string objectiveText;
+    [SerializeField] private TextMeshProUGUI introTextUI;
+    [SerializeField] private float showTextDuration;
 
     [Header("Audio Settings")]
     [SerializeField] private AudioSource audioSource;
@@ -29,18 +32,17 @@ public class IntroToMansion : MonoBehaviour
             yield return new WaitForSeconds(3f);
 
 
+            showTextDuration = 5f;
 
-            //Entrance to Mansion audio;
-            
-
-            PlayerThoughts.Instance.showTextDuration = 5f;
             for (int i = 0; i < introText.Length; i++)
             {
-                PlayerThoughts.Instance.SetText(introText[i]);
-                yield return new WaitForSeconds(PlayerThoughts.Instance.showTextDuration);
+                introTextUI.text = introText[i];
+
+                yield return new WaitForSeconds(showTextDuration);
 
             }
 
+            introTextUI.gameObject.SetActive(false);
             EntranceDoorAudio();
             yield return new WaitForSeconds(5f);
 

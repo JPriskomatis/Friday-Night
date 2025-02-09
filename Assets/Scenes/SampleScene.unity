@@ -3220,6 +3220,7 @@ MonoBehaviour:
   rotationDuration: 2
   canOpen: 1
   audioClip: {fileID: 8300000, guid: 2851d5678d5e32f4a9b2b0a10bbcd8bf, type: 3}
+  closeDoorClip: {fileID: 0}
   playAudio: 1
 --- !u!1 &81786586
 GameObject:
@@ -5553,7 +5554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32b6c6375f9b2c468ca5c3f3de71abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntroToMansion: 0
+  skipIntroToMansion: 1
 --- !u!1001 &149712614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24676,7 +24677,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &653324825
 Transform:
   m_ObjectHideFlags: 0
@@ -24699,7 +24700,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653324824}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f05e6381a2db364a84f865556c7fbab, type: 3}
   m_Name: 
@@ -24708,8 +24709,9 @@ MonoBehaviour:
   interactable: 1
   monsterSpawnPoint: {fileID: 1907877337}
   camera: {fileID: 7874697746756088101}
-  source: {fileID: 0}
+  source: {fileID: 653324828}
   jumpscare: {fileID: 8300000, guid: d8c1224512f19fa4e8c91e802c9a66f4, type: 3}
+  door: {fileID: 8479541102517924676}
 --- !u!65 &653324827
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29423,6 +29425,7 @@ GameObject:
   - component: {fileID: 765397126}
   - component: {fileID: 765397124}
   - component: {fileID: 765397129}
+  - component: {fileID: 765397130}
   m_Layer: 0
   m_Name: BrotherNote
   m_TagString: Untagged
@@ -29445,10 +29448,34 @@ MonoBehaviour:
   canInteractWith: 1
   interactionText: Read Note
   noteSO: {fileID: 11400000, guid: 3963b7321e7c1fb479ee2a3e9349dc77, type: 2}
-  hasEvent: 0
+  hasEvent: 1
   OnPickup:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 765397130}
+        m_TargetAssemblyTypeName: NoteMirror, NoteSpace
+        m_MethodName: PickedUpNote
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 653324824}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!23 &765397126
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29538,6 +29565,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &765397130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765397123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a8b5908c74f094da3a0d49f19d2967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodAppears: {fileID: 1943018957}
 --- !u!1001 &773878507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58219,6 +58259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BathroomTriggerFloor
       objectReference: {fileID: 0}
+    - target: {fileID: 4874383578969292889, guid: ff7d0db56bece5a4c816647356bf6494, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5255307855120440035, guid: ff7d0db56bece5a4c816647356bf6494, type: 3}
       propertyPath: m_RootOrder
       value: 88
@@ -59465,6 +59509,7 @@ MonoBehaviour:
   rotationDuration: 2
   canOpen: 1
   audioClip: {fileID: 8300000, guid: 2851d5678d5e32f4a9b2b0a10bbcd8bf, type: 3}
+  closeDoorClip: {fileID: 0}
   playAudio: 1
 --- !u!1001 &1676738206
 PrefabInstance:
@@ -60854,7 +60899,6 @@ GameObject:
   - component: {fileID: 1718790739}
   - component: {fileID: 1718790738}
   - component: {fileID: 1718790737}
-  - component: {fileID: 1718790742}
   m_Layer: 0
   m_Name: BrotherNote (2)
   m_TagString: Untagged
@@ -60898,11 +60942,11 @@ MonoBehaviour:
   canInteractWith: 1
   interactionText: Read Note
   noteSO: {fileID: 11400000, guid: 9eeb557b3d8fe1a498816ad4af6a18dc, type: 2}
-  hasEvent: 1
+  hasEvent: 0
   OnPickup:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1718790742}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NoteMirror, NoteSpace
         m_MethodName: PickedUpNote
         m_Mode: 1
@@ -60982,19 +61026,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 290611532}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!114 &1718790742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718790736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a8b5908c74f094da3a0d49f19d2967, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bloodAppears: {fileID: 1943018957}
 --- !u!1001 &1718801812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70411,7 +70442,7 @@ Transform:
   m_GameObject: {fileID: 1907877337}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.285, y: 0, z: -1.993}
+  m_LocalPosition: {x: -0.729, y: 0, z: -1.993}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -71960,6 +71991,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1695170182903440857, guid: f1ee52ab5a67c7442b575a2dc2835648, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1943018966}
+    - targetCorrespondingSourceObject: {fileID: 1695170182903440857, guid: f1ee52ab5a67c7442b575a2dc2835648, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1943018970}
   m_SourcePrefab: {fileID: 100100000, guid: f1ee52ab5a67c7442b575a2dc2835648, type: 3}
 --- !u!4 &1943018956 stripped
 Transform:
@@ -72031,6 +72065,104 @@ MonoBehaviour:
   duration: 3
   bloodAppear: {fileID: 1943018962}
   clip: {fileID: 8300000, guid: b9dcb6af2ba767b4388104893ee2da1e, type: 3}
+  door: {fileID: 8479541102517924676}
+--- !u!82 &1943018970
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943018957}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 27d2f3af40fb383478c6ab790b3bf8c9, type: 3}
+  m_Resource: {fileID: 8300000, guid: 27d2f3af40fb383478c6ab790b3bf8c9, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.7
+  m_Pitch: 1.61
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1944407478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82335,7 +82467,7 @@ Transform:
   m_GameObject: {fileID: 5480920538975201794}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.020643663, z: -0, w: 0.9997869}
-  m_LocalPosition: {x: 272.26, y: 10.805, z: 265.23}
+  m_LocalPosition: {x: 272.26, y: 6.783, z: 265.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -82560,6 +82692,7 @@ MonoBehaviour:
   rotationDuration: 2
   canOpen: 1
   audioClip: {fileID: 8300000, guid: 2851d5678d5e32f4a9b2b0a10bbcd8bf, type: 3}
+  closeDoorClip: {fileID: 8300000, guid: c68dc14cb616ceb4190fec6dfae5730d, type: 3}
   playAudio: 1
 --- !u!95 &8606042230232620629
 Animator:

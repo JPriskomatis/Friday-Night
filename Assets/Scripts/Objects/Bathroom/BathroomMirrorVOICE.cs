@@ -1,4 +1,5 @@
 using AudioSpace;
+using ObjectSpace;
 using PlayerSpace;
 using System;
 using System.Collections;
@@ -14,6 +15,8 @@ namespace VoiceSpace
         [SerializeField] private Component bloodAppear;
         [SerializeField] private AudioClip clip;
 
+        [SerializeField] private Door door;
+
 
         public static event Action OnFlickering;
 
@@ -28,6 +31,9 @@ namespace VoiceSpace
         public override void AddDictionaryFunctions()
         {
             voiceActions.Add(speechWords[0], AreYouHere);
+            voiceActions.Add(speechWords[1], AreYouHere);
+            voiceActions.Add(speechWords[2], AreYouHere);
+            voiceActions.Add(speechWords[3], AreYouHere);
         }
 
         private void AreYouHere()
@@ -38,6 +44,7 @@ namespace VoiceSpace
                 OnFlickering?.Invoke();
             }
             UnityEngine.Debug.Log("I will appear now");
+            door.canOpen = true;
 
         }
 

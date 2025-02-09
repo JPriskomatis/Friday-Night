@@ -15,6 +15,7 @@ namespace ObjectSpace
         private float targetRotation = 90f;
         private bool isRotating;
         [SerializeField] private AudioClip audioClip;
+        [SerializeField] private AudioClip closeDoorClip;
         [SerializeField] private bool playAudio;
 
         public void Interact()
@@ -28,6 +29,36 @@ namespace ObjectSpace
                 {
                     Audio.Instance.PlayAudio(audioClip);
                 }
+            }
+        }
+        public void PublicCloseDoor()
+        {
+            StartCoroutine(CloseDoor());
+        }
+        private IEnumerator CloseDoor()
+        {
+            //yield return new WaitForSeconds(0.3f);
+            isOpen = false;
+
+            if (!isRotating)
+            {
+                isRotating = true;
+                float startRotation = transform.rotation.eulerAngles.y;
+                float targetAngle = startRotation - targetRotation;
+                float timeElapsed = 0f;
+
+                while (timeElapsed < 0.2f)
+                {
+                    float newRotation = Mathf.Lerp(startRotation, targetAngle, timeElapsed / 0.2f);
+                    transform.rotation = Quaternion.Euler(0, newRotation, 0);
+                    timeElapsed += Time.deltaTime;
+                    yield return null;
+                }
+
+                transform.rotation = Quaternion.Euler(0, targetAngle, 0);
+                isRotating = false;
+
+                if (playAudio) Audio.Instance.PlayAudio(closeDoorClip);
             }
         }
 

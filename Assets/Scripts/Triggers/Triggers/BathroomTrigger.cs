@@ -1,5 +1,6 @@
 using AudioSpace;
 using MonsterSpace;
+using ObjectSpace;
 using PlayerSpace;
 using System.Collections;
 using UnityEngine;
@@ -13,17 +14,23 @@ namespace TriggerSpace
         [SerializeField] private AudioSource source;
         [SerializeField] private AudioClip jumpscare;
 
+        [SerializeField] private Door door;
+
         private GameObject spawnedMonster;
 
         protected override void InitiateAction()
         {
-            //Spawn monster in the correct position;
-            SpawnManager.Instance.SpawnMonster(monsterSpawnPoint);
+            //Slam the door;
 
-            //Play Audio;
-            source.Play();
+            door.PublicCloseDoor();
 
-            StartCoroutine(CheckPlayerLookingAt());
+            ////Spawn monster in the correct position;
+            //SpawnManager.Instance.SpawnMonster(monsterSpawnPoint);
+
+            ////Play Audio;
+            //source.Play();
+
+            //StartCoroutine(CheckPlayerLookingAt());
 
         }
 

@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace VoiceSpace
 {
@@ -15,8 +16,9 @@ namespace VoiceSpace
         [SerializeField] private Component bloodAppear;
         [SerializeField] private AudioClip clip;
 
+        [Header("Extra Components")]
         [SerializeField] private Door door;
-
+        [SerializeField] private AudioSource source;
 
         public static event Action OnFlickering;
 
@@ -45,6 +47,27 @@ namespace VoiceSpace
             }
             UnityEngine.Debug.Log("I will appear now");
             door.canOpen = true;
+            StartCoroutine(StopEffects());
+
+        }
+
+        IEnumerator StopEffects()
+        {
+            yield return new WaitForSeconds(3f);
+
+            float startVolume = source.volume;
+            float timeElapsed = 0f;
+
+            while (timeElapsed < 3)
+            {
+                source.volume = Mathf.Lerp(startVolume, 0, timeElapsed / 3);
+                timeElapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            source.volume = 0;
+            source.Stop();
+            source.gameObject.SetActive(false);
 
         }
 

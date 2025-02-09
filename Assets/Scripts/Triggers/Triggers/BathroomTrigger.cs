@@ -4,86 +4,47 @@ using ObjectSpace;
 using PlayerSpace;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace TriggerSpace
 {
     public class BathroomTrigger : FloorTrigger
     {
-        [SerializeField] private GameObject monsterSpawnPoint;
-        [SerializeField] private Camera camera;
         [SerializeField] private AudioSource source;
-        [SerializeField] private AudioClip jumpscare;
 
         [SerializeField] private Door door;
 
-        private GameObject spawnedMonster;
 
         protected override void InitiateAction()
         {
             //Slam the door;
-
+            interactAgain = false;
             door.PublicCloseDoor();
-
-            ////Spawn monster in the correct position;
-            //SpawnManager.Instance.SpawnMonster(monsterSpawnPoint);
-
-            ////Play Audio;
-            //source.Play();
-
-            //StartCoroutine(CheckPlayerLookingAt());
+            StartCoroutine(IncreaseAudio());
 
         }
 
-        private IEnumerator CheckPlayerLookingAt()
+        IEnumerator IncreaseAudio()
         {
-            spawnedMonster = SpawnManager.Instance.GetMonster();
+            float targetVolume = 1.0f; // Full volume
+            float startVolume = source.volume;
+            float timeElapsed = 0f;
+            float duration = 3f; // 3 seconds
 
-            float checkDuration = 10f; // Check for 10 seconds
-            float elapsedTime = 0f;
-            while (elapsedTime < checkDuration)
+            source.Play(); // Ensure the audio starts playing
+
+            while (timeElapsed < duration)
             {
-                if (IsPlayerLookingAt(spawnedMonster))
-                {
-
-                    StartCoroutine(DelayMethod());
-                }
-                else
-                {
-                }
-
-                yield return null; // Wait for the next frame
+                source.volume = Mathf.Lerp(startVolume, targetVolume, timeElapsed / duration);
+                timeElapsed += Time.deltaTime;
+                yield return null;
             }
+
+            source.volume = targetVolume; 
         }
 
-        private bool IsPlayerLookingAt(GameObject target)
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit))
-            {
-                if (hit.collider.gameObject.layer == 7)
-                {
 
-                    return true;
-                }
-            }
-            else
-            {
-                Debug.Log("Target not found.");
-            }
-            return false;
-        }
 
-        IEnumerator DelayMethod()
-        {
-            yield return new WaitForSeconds(0.5f);
-
-            //Jumpscare Audio;
-            Audio.Instance.PlayAudio(jumpscare);
-
-            PlayerCamera.Instance.InitiateGlitchEffect();
-            Destroy(spawnedMonster.gameObject);
-            Destroy(this);
-        }
     }
 
 }

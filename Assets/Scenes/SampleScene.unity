@@ -24700,17 +24700,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653324824}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f05e6381a2db364a84f865556c7fbab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactAgain: 0
   interactable: 1
-  monsterSpawnPoint: {fileID: 1907877337}
-  camera: {fileID: 7874697746756088101}
-  source: {fileID: 653324828}
-  jumpscare: {fileID: 8300000, guid: d8c1224512f19fa4e8c91e802c9a66f4, type: 3}
+  source: {fileID: 1943018970}
   door: {fileID: 8479541102517924676}
 --- !u!65 &653324827
 BoxCollider:
@@ -24731,8 +24728,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: -0.95, z: 4}
-  m_Center: {x: 2, y: -0.01999942, z: -2}
+  m_Size: {x: 4.5016174, y: 0.95, z: 4}
+  m_Center: {x: 2.2508087, y: -0.019999415, z: -2}
 --- !u!82 &653324828
 AudioSource:
   m_ObjectHideFlags: 0
@@ -72066,6 +72063,7 @@ MonoBehaviour:
   bloodAppear: {fileID: 1943018962}
   clip: {fileID: 8300000, guid: b9dcb6af2ba767b4388104893ee2da1e, type: 3}
   door: {fileID: 8479541102517924676}
+  source: {fileID: 1943018970}
 --- !u!82 &1943018970
 AudioSource:
   m_ObjectHideFlags: 0
@@ -72079,7 +72077,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 27d2f3af40fb383478c6ab790b3bf8c9, type: 3}
   m_Resource: {fileID: 8300000, guid: 27d2f3af40fb383478c6ab790b3bf8c9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0
   m_Pitch: 1.61
   Loop: 1
   Mute: 0

@@ -29,11 +29,15 @@ namespace ObjectSpace
             {
                 InteractionText.instance.SetText(interactionText);
             }
+            else
+            {
+                InteractionText.instance.SetText("");
+            }
         }
 
         public void OnInteractExit()
         {
-            
+            InteractionText.instance.SetText("");
         }
 
         //This is the actual interaction that each item script should create the action that we want

@@ -2138,18 +2138,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 338760162}
     - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 442890121}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
@@ -2157,15 +2169,35 @@ PrefabInstance:
       value: PlayerThough
       objectReference: {fileID: 0}
     - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: NoteSpace.NoteEventThoughts, NoteSpace
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.Collider, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Seems like I gotta try that Uoija Board
       objectReference: {fileID: 0}
     - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Seems like I gotta try that Uoija Board
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073246061661592647, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8859909622679435961, guid: 28db32bd7fffbc148af9062a10d8e775, type: 3}
@@ -15750,6 +15782,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5817516756241026484, guid: bf8fb882975cf9641a1fe9ce6fb7af5b, type: 3}
   m_PrefabInstance: {fileID: 440676694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &442890121 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 1248676616890376785, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+  m_PrefabInstance: {fileID: 1615858696}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &444308343
 PrefabInstance:
@@ -57525,6 +57562,10 @@ PrefabInstance:
       propertyPath: 'speechWords.Array.data[8]'
       value: Where are you?
       objectReference: {fileID: 0}
+    - target: {fileID: 1248676616890376785, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1302798982340314849, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 273.74387
@@ -57568,6 +57609,14 @@ PrefabInstance:
     - target: {fileID: 1828365142771031131, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
       propertyPath: m_Name
       value: ouija_board
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828365142771031131, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875182573916579537, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8875182573916579537, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
       propertyPath: candleLight
@@ -59504,10 +59553,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fac52213497184a887946afb572edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationDuration: 2
+  rotationDuration: 1
   canOpen: 1
   audioClip: {fileID: 8300000, guid: 2851d5678d5e32f4a9b2b0a10bbcd8bf, type: 3}
-  closeDoorClip: {fileID: 0}
+  closeDoorClip: {fileID: 8300000, guid: c68dc14cb616ceb4190fec6dfae5730d, type: 3}
   knocingClip: {fileID: 0}
   playAudio: 1
 --- !u!1001 &1676738206

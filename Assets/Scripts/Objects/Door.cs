@@ -2,6 +2,7 @@ using AudioSpace;
 using EJETAGame;
 using GlobalSpace;
 using System.Collections;
+using Unity.Plastic.Newtonsoft.Json.Bson;
 using UnityEngine;
 
 namespace ObjectSpace
@@ -89,6 +90,10 @@ namespace ObjectSpace
         }
 
         //Open Door Method;
+        public void CanOpenDoor()
+        {
+            canOpen = true;
+        }
         private IEnumerator OpenDoor()
         {
             yield return new WaitForSeconds(0.3f);

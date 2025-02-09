@@ -1,7 +1,5 @@
 using EJETAGame;
-using PlayerSpace;
 using UISpace;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace ObjectSpace

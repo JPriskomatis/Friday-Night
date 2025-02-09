@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AudioSpace;
-using Codice.Client.Common.GameUI;
 using DG.Tweening;
 using GlobalSpace;
 using PlayerSpace;

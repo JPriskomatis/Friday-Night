@@ -1,5 +1,4 @@
 using GlobalSpace;
-using MacFsWatcher;
 using UnityEngine;
 using UnityEngine.Events;
 

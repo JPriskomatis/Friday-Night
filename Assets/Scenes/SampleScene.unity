@@ -5587,7 +5587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32b6c6375f9b2c468ca5c3f3de71abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntroToMansion: 1
+  skipIntroToMansion: 0
 --- !u!1001 &149712614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67942,9 +67942,9 @@ MonoBehaviour:
   - "But I won\u2019t let that happen. "
   - "I\u2019m going back. Back to my childhood home. Back to uncover the truth\u2026
     no matter what I find lurking in the dark. "
-  objectiveText: Document 5 Paranormal Activities
+  objectiveText: Find hidden notes
   introTextUI: {fileID: 1269611827}
-  showTextDuration: 1
+  showTextDuration: 5
   audioSource: {fileID: 2103834331}
   entranceAudio: {fileID: 8300000, guid: 91eb98be6c15ca54aad8f49c193d1e66, type: 3}
   cameraAudio: {fileID: 8300000, guid: 5bdcadc13a7112f46817712a94165976, type: 3}
@@ -82563,14 +82563,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5480920538975201794}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.020643663, z: -0, w: 0.9997869}
-  m_LocalPosition: {x: 272.26, y: 6.783, z: 265.23}
+  m_LocalRotation: {x: -0, y: 0.68408304, z: -0, w: 0.72940415}
+  m_LocalPosition: {x: 276.808, y: 6.783, z: 261.006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1271752621}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 2.366, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 86.327, z: 0}
 --- !u!33 &7627593374595204556
 MeshFilter:
   m_ObjectHideFlags: 0

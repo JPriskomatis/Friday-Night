@@ -3,6 +3,7 @@ using ObjectiveSpace;
 using System;
 using System.Collections;
 using TMPro;
+using UISpace;
 using UnityEngine;
 
 public class IntroToMansion : MonoBehaviour
@@ -21,8 +22,10 @@ public class IntroToMansion : MonoBehaviour
     [Header("Extra Components")]
     [SerializeField] private GameObject blackScreen;
     [HideInInspector] public bool skipIntro;
+    [SerializeField] private RecTimer recTimer;
     IEnumerator Start()
     {
+        
         if (!skipIntro)
         {
             blackScreen.SetActive(true);
@@ -30,9 +33,6 @@ public class IntroToMansion : MonoBehaviour
 
 
             yield return new WaitForSeconds(3f);
-
-
-            showTextDuration = 5f;
 
             for (int i = 0; i < introText.Length; i++)
             {
@@ -59,6 +59,9 @@ public class IntroToMansion : MonoBehaviour
             //Our camera is on so we enable the ambient audio;
             vhsAudio.SetActive(true);
             blackScreen.GetComponent<CanvasGroup>().alpha = 0;
+            recTimer.StartTimer();
+
+
         }
         else
         {

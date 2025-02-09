@@ -45842,7 +45842,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -67858,13 +67858,14 @@ MonoBehaviour:
     no matter what I find lurking in the dark. "
   objectiveText: Document 5 Paranormal Activities
   introTextUI: {fileID: 1269611827}
-  showTextDuration: 5
+  showTextDuration: 1
   audioSource: {fileID: 2103834331}
   entranceAudio: {fileID: 8300000, guid: 91eb98be6c15ca54aad8f49c193d1e66, type: 3}
   cameraAudio: {fileID: 8300000, guid: 5bdcadc13a7112f46817712a94165976, type: 3}
   vhsAudio: {fileID: 927242012}
   blackScreen: {fileID: 12406589}
   skipIntro: 0
+  recTimer: {fileID: 1995553552}
 --- !u!114 &1835460693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73758,6 +73759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 679683223}
+  startCounting: 0
   skipFirstObjective: 0
 --- !u!1001 &1995957748
 PrefabInstance:

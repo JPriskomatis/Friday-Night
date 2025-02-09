@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using System.Collections;
 
 namespace UISpace
 {
@@ -10,34 +11,40 @@ namespace UISpace
         public TextMeshProUGUI timerText;
         private int totalSeconds = 0;
 
-        private float lastUpdateTime = 0f;
+        private Coroutine timerCoroutine;
 
         public static event Action OnFirstObjective;
+        public bool startCounting;
 
         #region FOR TESTING VARIABLES
         public bool skipFirstObjective;
         #endregion
 
-        void Start()
+        public void StartTimer()
         {
-            UpdateTimerText();
+            if (timerCoroutine == null) // Ensure we don't start multiple coroutines
+            {
+                timerCoroutine = StartCoroutine(TimerRoutine());
+            }
         }
 
-        void Update()
+        private IEnumerator TimerRoutine()
         {
-            if (Time.time >= lastUpdateTime + 1f)
+            while (true)
             {
-                lastUpdateTime += 1f;
+                yield return new WaitForSeconds(1f); // Wait for 1 second
                 totalSeconds++;
                 UpdateTimerText();
-            }
-            if (totalSeconds == 60 || skipFirstObjective) //TESTING skips to enable the first objective event
-            {
-                OnFirstObjective?.Invoke();
+
+                if (totalSeconds == 60 || skipFirstObjective)
+                {
+                    OnFirstObjective?.Invoke();
+                    yield break; // Stop the coroutine once the first objective is triggered
+                }
             }
         }
 
-        void UpdateTimerText()
+        public void UpdateTimerText()
         {
             int hours = totalSeconds / 3600;
             int minutes = (totalSeconds % 3600) / 60;
@@ -46,5 +53,4 @@ namespace UISpace
             timerText.text = $"{hours:D2}:{minutes:D2}:{seconds:D2}";
         }
     }
-
 }

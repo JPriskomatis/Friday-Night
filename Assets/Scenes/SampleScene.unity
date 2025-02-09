@@ -3218,9 +3218,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationDuration: 2
-  canOpen: 1
+  canOpen: 0
   audioClip: {fileID: 8300000, guid: 2851d5678d5e32f4a9b2b0a10bbcd8bf, type: 3}
-  closeDoorClip: {fileID: 0}
+  closeDoorClip: {fileID: 8300000, guid: c68dc14cb616ceb4190fec6dfae5730d, type: 3}
+  knocingClip: {fileID: 8300000, guid: c68dc14cb616ceb4190fec6dfae5730d, type: 3}
   playAudio: 1
 --- !u!1 &81786586
 GameObject:
@@ -4291,7 +4292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &116766350
 Transform:
   m_ObjectHideFlags: 0
@@ -59507,6 +59508,7 @@ MonoBehaviour:
   canOpen: 1
   audioClip: {fileID: 8300000, guid: 2851d5678d5e32f4a9b2b0a10bbcd8bf, type: 3}
   closeDoorClip: {fileID: 0}
+  knocingClip: {fileID: 0}
   playAudio: 1
 --- !u!1001 &1676738206
 PrefabInstance:
@@ -82691,6 +82693,7 @@ MonoBehaviour:
   canOpen: 1
   audioClip: {fileID: 8300000, guid: 2851d5678d5e32f4a9b2b0a10bbcd8bf, type: 3}
   closeDoorClip: {fileID: 8300000, guid: c68dc14cb616ceb4190fec6dfae5730d, type: 3}
+  knocingClip: {fileID: 0}
   playAudio: 1
 --- !u!95 &8606042230232620629
 Animator:
@@ -82714,6 +82717,111 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1001 &8728907545935649040
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6281636857561100052, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: keyText
+      value: That should open the storage room door next to dining room
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281636857561100052, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: hasEvent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281636857561100052, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: doorToUnlock
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281636857561100052, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: OnKeyPickUp.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281636857561100052, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: OnKeyPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281636857561100052, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: OnKeyPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 116766349}
+    - target: {fileID: 6281636857561100052, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: OnKeyPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281636857561100052, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: OnKeyPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281636857561100052, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: OnKeyPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281636857561100052, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: OnKeyPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281636857561100052, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: OnKeyPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282689827375783507, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: m_Name
+      value: Key
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282689827375783507, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771277247367202025, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 266.1405
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771277247367202025, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.5393467
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771277247367202025, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 265.5965
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771277247367202025, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771277247367202025, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771277247367202025, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771277247367202025, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771277247367202025, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771277247367202025, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771277247367202025, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 54a09bfe391f7c348957b7882fa34975, type: 3}
 --- !u!114 &8746515957568093854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83097,3 +83205,4 @@ SceneRoots:
   - {fileID: 1743799852}
   - {fileID: 604780421}
   - {fileID: 993221614}
+  - {fileID: 8728907545935649040}

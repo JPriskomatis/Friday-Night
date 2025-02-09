@@ -16,20 +16,29 @@ namespace ObjectSpace
         private bool isRotating;
         [SerializeField] private AudioClip audioClip;
         [SerializeField] private AudioClip closeDoorClip;
+        [SerializeField] private AudioClip knocingClip;
         [SerializeField] private bool playAudio;
 
         public void Interact()
         {
-            if (Input.GetKeyDown(GlobalConstants.OPEN_DOOR_KEY) && !isOpen && canOpen)
+            if(canOpen)
             {
-                StartCoroutine(OpenDoor());
-                InteractionText.instance.SetText("");
-                canOpen = false;
-                if (playAudio)
+                if (Input.GetKeyDown(GlobalConstants.OPEN_DOOR_KEY) && !isOpen)
                 {
-                    Audio.Instance.PlayAudio(audioClip);
+                    StartCoroutine(OpenDoor());
+                    InteractionText.instance.SetText("");
+                    canOpen = false;
+                    if (playAudio)
+                    {
+                        Audio.Instance.PlayAudio(audioClip);
+                    }
                 }
             }
+
+        }
+        public void PlayAudio()
+        {
+            Audio.Instance?.PlayAudio(knocingClip);
         }
         public void PublicCloseDoor()
         {
@@ -67,6 +76,10 @@ namespace ObjectSpace
             if (canOpen)
             {
                 InteractionText.instance.SetText("Open Door");
+            }
+            else
+            {
+                InteractionText.instance.SetText("");
             }
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.Windows.Speech;
+using DG.Tweening;
 
 namespace VoiceSpace
 {
@@ -14,6 +15,13 @@ namespace VoiceSpace
 
         [SerializeField] protected string[] speechWords;
 
+        [SerializeField] private GameObject micronhponeUI;
+        [SerializeField] private CanvasGroup micronhponeCanvas;
+
+        private void OnDisable()
+        {
+            micronhponeCanvas.DOFade(0, 1f).OnComplete(() => micronhponeUI.SetActive(false));
+        }
         protected virtual void Start()
         {
             AddDictionaryFunctions();
@@ -23,10 +31,15 @@ namespace VoiceSpace
             keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
 
             keywordRecognizer.Start();
+
+            micronhponeUI.SetActive(true);
+            micronhponeCanvas.DOFade(1, 1f);
         }
         protected void StopListening()
         {
             keywordRecognizer.Stop();
+
+            
         }
         public abstract void AddDictionaryFunctions();
 

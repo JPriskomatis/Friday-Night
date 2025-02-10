@@ -5,6 +5,7 @@ using GlobalSpace;
 using TMPro;
 using UISpace;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace NoteSpace
@@ -27,6 +28,10 @@ namespace NoteSpace
 
         private bool firstNote;
         private Coroutine hideInstantNoteRoutine;
+
+        public UnityEvent NoteAction;
+        private Note currentNote;
+        private bool voiceNote;
 
         //We listen for events from out NoteSystem class about new page added to the journal;
         private void OnEnable()
@@ -66,6 +71,8 @@ namespace NoteSpace
 
         private void ShowcaseNote(Note note)
         {
+            currentNote = note;
+
             playerController.DisableCameraMovement();
 
             instantNote.SetActive(true);
@@ -77,6 +84,14 @@ namespace NoteSpace
             {
                 StopCoroutine(hideInstantNoteRoutine);
             }
+            //if (note.CompareTag("Voice"))
+            //{
+            //    voiceNote = true;
+            //}
+            //else
+            //{
+            //    voiceNote = false;
+            //}
             hideInstantNoteRoutine = StartCoroutine(WaitForGKey());
         }
 
@@ -88,6 +103,12 @@ namespace NoteSpace
         {
             // Wait until the user presses "G"
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.X));
+            currentNote.OnPickdown?.Invoke();
+            //if (voiceNote)
+            //{
+            //    NoteAction?.Invoke();
+            //}
+
 
             instantNote.SetActive(false);
             HintMessage.Instance.RemoveMessage();

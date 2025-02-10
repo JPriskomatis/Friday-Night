@@ -13,6 +13,7 @@ namespace TriggerSpace
         [SerializeField] private AudioSource source;
 
         [SerializeField] private Door door;
+        [SerializeField] Flashlight flashlight;
 
 
         protected override void InitiateAction()
@@ -21,7 +22,13 @@ namespace TriggerSpace
             interactAgain = false;
             door.PublicCloseDoor();
             StartCoroutine(IncreaseAudio());
+            FlickeringEffect();
 
+        }
+
+        private void FlickeringEffect()
+        {
+            flashlight.StartFlicker();
         }
 
         IEnumerator IncreaseAudio()

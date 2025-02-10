@@ -12,6 +12,7 @@ namespace NoteSpace
         public static event Action<Note> OnNoteTaken;
         [SerializeField] private bool hasEvent;
         public UnityEvent OnPickup;
+        public UnityEvent OnPickdown;
 
 
         //private void Update()

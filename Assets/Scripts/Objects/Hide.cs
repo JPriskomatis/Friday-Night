@@ -1,4 +1,5 @@
 using System.Collections;
+using UISpace;
 using UnityEngine;
 
 namespace ObjectSpace
@@ -9,12 +10,15 @@ namespace ObjectSpace
         [SerializeField] private SphereCollider sphere;
         [SerializeField] private GameObject micVolume;
         [SerializeField] private GameObject micVolumeUI;
+        [SerializeField] private string hintMessageTxt;
         public static bool isHiding;
 
         [Header("Specific Animation's Settings")]
         [SerializeField] protected int rootMotionDelay;
         [SerializeField] protected string enterAnimationName;
         [SerializeField] protected string exitAnimationName;
+
+        [SerializeField] HintMessage hintMessage;
 
         private void Awake()
         {
@@ -43,12 +47,16 @@ namespace ObjectSpace
             sphere.enabled = false;
             anim.applyRootMotion = false;
 
+            //Enable hint message;
+            hintMessage.SetMessage(hintMessageTxt);
+
             StartCoroutine(CheckForInput());
         }
 
         IEnumerator CheckForInput()
         {
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.J));
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.X));
+            hintMessage.RemoveMessage();
             EndAnimation();
         }
 

@@ -24873,8 +24873,9 @@ MonoBehaviour:
   interactAgain: 0
   interactable: 1
   source: {fileID: 1943018970}
+  source2: {fileID: 653324828}
+  clip: {fileID: 8300000, guid: aa7e18111e3fc944882e000ff4e8c587, type: 3}
   door: {fileID: 8479541102517924676}
-  flashlight: {fileID: 9005362504384719306}
 --- !u!65 &653324827
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24906,8 +24907,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0ca5810840772ca4a9a90cf8ab1fcb0f, type: 3}
-  m_Resource: {fileID: 8300000, guid: 0ca5810840772ca4a9a90cf8ab1fcb0f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: aa7e18111e3fc944882e000ff4e8c587, type: 3}
+  m_Resource: {fileID: 8300000, guid: aa7e18111e3fc944882e000ff4e8c587, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.75
   m_Pitch: 1

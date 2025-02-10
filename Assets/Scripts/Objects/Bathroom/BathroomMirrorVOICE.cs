@@ -21,6 +21,7 @@ namespace VoiceSpace
         [SerializeField] private AudioSource source;
 
         public static event Action OnFlickering;
+        public static event Action OnStopMirror;
 
 
 
@@ -67,6 +68,8 @@ namespace VoiceSpace
 
             source.volume = 0;
             source.Stop();
+            Audio.Instance.FadeOut();
+            OnStopMirror?.Invoke();
             source.gameObject.SetActive(false);
 
         }

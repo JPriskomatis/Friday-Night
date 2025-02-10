@@ -5,31 +5,65 @@ using PlayerSpace;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
+using VoiceSpace;
 
 namespace TriggerSpace
 {
     public class BathroomTrigger : FloorTrigger
     {
-        [SerializeField] private AudioSource source;
+        [SerializeField] private AudioSource source, source2;
+        [SerializeField] private AudioClip clip;
 
         [SerializeField] private Door door;
-        [SerializeField] Flashlight flashlight;
 
+        private void OnEnable()
+        {
+            BathroomMirrorVOICE.OnStopMirror += DestroyObject;
+        }
+
+        private void OnDisable()
+        {
+            BathroomMirrorVOICE.OnStopMirror -= DestroyObject;
+        }
 
         protected override void InitiateAction()
         {
             //Slam the door;
             interactAgain = false;
+            FlickeringEffect();
             door.PublicCloseDoor();
             StartCoroutine(IncreaseAudio());
-            FlickeringEffect();
+            
 
+        }
+
+        private void DestroyObject()
+        {
+            source2.Stop();
+            Destroy(this.gameObject);
         }
 
         private void FlickeringEffect()
         {
-            flashlight.StartFlicker();
+            StartCoroutine(FadeInAudio(source2, 2f));
         }
+
+        private IEnumerator FadeInAudio(AudioSource audioSource, float duration)
+        {
+            audioSource.volume = 0f; // Start at volume 0
+            audioSource.Play();
+
+            float elapsedTime = 0f;
+            while (elapsedTime < duration)
+            {
+                audioSource.volume = Mathf.Lerp(0f, 0.25f, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            audioSource.volume = 0.25f; // Ensure volume reaches 1
+        }
+
 
         IEnumerator IncreaseAudio()
         {

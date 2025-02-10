@@ -17,6 +17,8 @@ namespace VoiceSpace
         public Vector3 positionYES;
         public Vector3 targetPosition2 = new Vector3(0f,0f,0.0719999969f);
 
+        private Vector3 angry = new Vector3(-0.282000005f, 0f, -0.186000004f);
+
         [Header("Characters Positions")]
         [SerializeField] private string[] characters;
         [SerializeField] private Vector3[] positions;
@@ -69,7 +71,35 @@ namespace VoiceSpace
             voiceActions.Add(speechWords[8], WhereAreYou);
             Debug.Log("Added: " + speechWords[8]);
 
+            //Who are you?
+            voiceActions.Add(speechWords[9], WhoAreYou);
+            Debug.Log("Added: " + speechWords[9]);
+            voiceActions.Add(speechWords[10], WhoAreYou);
+            Debug.Log("Added: " + speechWords[10]);
+
         }
+
+        private void WhoAreYou()
+        {
+            string answer = "BRO";
+            StartCoroutine(MoveArrowToWordWithCompletion(answer, () =>
+            {
+                StartCoroutine(MoveToAngryAndContinue());
+            }));
+        }
+
+        private IEnumerator MoveToAngryAndContinue()
+        {
+            yield return arrow.DOLocalMove(angry, 0.5f).SetEase(Ease.InOutQuad).WaitForCompletion();
+            yield return new WaitForSeconds(1f); // Stay in angry position for 1 second
+
+            string answer = "DEATH";
+            StartCoroutine(MoveArrowToWordWithCompletion(answer, () =>
+            {
+                PlayerThoughts.Instance.SetText("Death?");
+            }));
+        }
+
         private void WhereAreYou()
         {
             PlayAudio();

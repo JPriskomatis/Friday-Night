@@ -58253,11 +58253,27 @@ PrefabInstance:
       objectReference: {fileID: 1520587192}
     - target: {fileID: 283540403885314593, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
       propertyPath: speechWords.Array.size
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 283540403885314593, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
       propertyPath: 'speechWords.Array.data[8]'
       value: Where are you?
+      objectReference: {fileID: 0}
+    - target: {fileID: 283540403885314593, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+      propertyPath: 'speechWords.Array.data[9]'
+      value: Who are you?
+      objectReference: {fileID: 0}
+    - target: {fileID: 283540403885314593, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+      propertyPath: 'speechWords.Array.data[10]'
+      value: What is your name?
+      objectReference: {fileID: 0}
+    - target: {fileID: 570877379994688424, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 570877379994688424, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1248676616890376785, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
       propertyPath: m_Enabled
@@ -83156,7 +83172,7 @@ Transform:
   m_GameObject: {fileID: 5480920538975201794}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.68408304, z: -0, w: 0.72940415}
-  m_LocalPosition: {x: 276.808, y: 6.783, z: 261.006}
+  m_LocalPosition: {x: 274.178, y: 11.354, z: 264.988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

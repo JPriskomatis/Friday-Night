@@ -23,7 +23,7 @@ namespace ObjectSpace
         }
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKeyDown(GlobalConstants.ESCAPE_ACTION))
             {
                 ((MonoBehaviour)tvMessage).enabled = false;
                 PlayerController.Instance.ResetMovement();

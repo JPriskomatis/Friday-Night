@@ -102,7 +102,7 @@ namespace NoteSpace
         private IEnumerator WaitForGKey()
         {
             // Wait until the user presses "G"
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.X));
+            yield return new WaitUntil(() => GlobalConstants.ESCAPE_ACTION);
             currentNote.OnPickdown?.Invoke();
             //if (voiceNote)
             //{

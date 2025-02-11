@@ -31,7 +31,7 @@ namespace ObjectSpace
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKeyDown(GlobalConstants.ESCAPE_ACTION))
             {
                 ((MonoBehaviour)voiceRecScript).enabled = false;
                 PlayerController.Instance.ResetMovement();

@@ -23,13 +23,15 @@ namespace NoteSpace
         [Header("Instant Note UI")]
         [SerializeField] private GameObject instantNote;
         [SerializeField] private Image noteMat;
+        [SerializeField] private String readNoteHint = "Press J to Read Notes ";
 
         [SerializeField] PlayerController playerController;
 
         private bool firstNote;
         private Coroutine hideInstantNoteRoutine;
 
-        public UnityEvent NoteAction;
+        //We need a reference of the current note that was picked up
+        //in order to activate it OnPickUp or OnPickDown events;
         private Note currentNote;
         private bool voiceNote;
 
@@ -71,6 +73,7 @@ namespace NoteSpace
 
         private void ShowcaseNote(Note note)
         {
+            //we store a reference to the current note;
             currentNote = note;
 
             playerController.DisableCameraMovement();
@@ -101,13 +104,9 @@ namespace NoteSpace
         }
         private IEnumerator WaitForGKey()
         {
-            // Wait until the user presses "G"
+            //We wait until the player presses the escape button;
             yield return new WaitUntil(() => GlobalConstants.ESCAPE_ACTION);
             currentNote.OnPickdown?.Invoke();
-            //if (voiceNote)
-            //{
-            //    NoteAction?.Invoke();
-            //}
 
 
             instantNote.SetActive(false);
@@ -117,7 +116,7 @@ namespace NoteSpace
             if (firstNote)
             {
                 firstNote = false;
-                PlayerThoughts.Instance.SetText("Press J to Read Notes ");
+                PlayerThoughts.Instance.SetText(readNoteHint);
             }
         }
 

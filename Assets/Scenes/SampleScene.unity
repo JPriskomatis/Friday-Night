@@ -4605,6 +4605,7 @@ MonoBehaviour:
   textToHide: Fuck, I need to hide under the table
   door: {fileID: 78689498}
   player: {fileID: 0}
+  clip: {fileID: 8300000, guid: 1dcdbc89e9348cd4889e24f629f0df94, type: 3}
   monster: {fileID: 138326014}
   wayPoint: {fileID: 1295340411}
   speed: 3

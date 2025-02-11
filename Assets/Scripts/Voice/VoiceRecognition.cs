@@ -27,6 +27,9 @@ namespace VoiceSpace
         {
             AddDictionaryFunctions();
         }
+        //TODO:
+        //Create a function StartListening???
+        
         protected virtual void Start()
         {
             //When we want to stop it;

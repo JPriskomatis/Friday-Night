@@ -59,6 +59,9 @@ namespace VoiceSpace
             base.Start();
         }
 
+        //TODO:
+        //Call StopListening(); when the arrow moves, and StartListening(); once the arrow stops??
+
         public override void AddDictionaryFunctions()
         {
             //Are you here questions;

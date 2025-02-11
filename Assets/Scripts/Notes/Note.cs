@@ -1,4 +1,5 @@
 using System;
+using AudioSpace;
 using ObjectSpace;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,6 +12,7 @@ namespace NoteSpace
 
         public static event Action<Note> OnNoteTaken;
         [SerializeField] private bool hasEvent;
+        [SerializeField] private AudioClip clip;
         public UnityEvent OnPickup;
         public UnityEvent OnPickdown;
 
@@ -31,6 +33,7 @@ namespace NoteSpace
             if (hasEvent)
             {
                 OnPickup?.Invoke();
+                Audio.Instance.PlayAudio(clip);
             }
             
             Destroy(gameObject);

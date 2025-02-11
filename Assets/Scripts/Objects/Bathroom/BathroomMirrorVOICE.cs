@@ -26,9 +26,11 @@ namespace VoiceSpace
 
 
         private bool hasAppeared;
-        private void Awake()
+        protected override void Awake()
         {
             dissolveMat.SetFloat("_DissolveStrength", 1f);
+
+            base.Awake();
         }
 
         public override void AddDictionaryFunctions()

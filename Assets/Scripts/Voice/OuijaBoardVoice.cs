@@ -56,7 +56,7 @@ namespace VoiceSpace
             {
                 letterMap.Add(characters[i], positions[i]);
             }
-            base.Start();
+            base.Awake();
         }
 
         //TODO:

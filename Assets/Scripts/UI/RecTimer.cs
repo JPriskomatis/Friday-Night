@@ -39,7 +39,6 @@ namespace UISpace
                 if (totalSeconds == 60 || skipFirstObjective)
                 {
                     OnFirstObjective?.Invoke();
-                    yield break; // Stop the coroutine once the first objective is triggered
                 }
             }
         }

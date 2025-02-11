@@ -35,9 +35,11 @@ namespace VoiceSpace
         [SerializeField] private GameObject jack;
         private Camera camera;
 
-        protected override void Start()
+        protected override void Awake()
         {
             camera = Camera.main;
+
+            //This maps all the letters to their corresponding position in the ouija board;
             for (int i=0; i<characters.Length; i++)
             {
                 letterMap.Add(characters[i], positions[i]);

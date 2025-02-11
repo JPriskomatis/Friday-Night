@@ -22,9 +22,13 @@ namespace VoiceSpace
         {
             micronhponeCanvas.DOFade(0, 1f).OnComplete(() => micronhponeUI.SetActive(false));
         }
-        protected virtual void Start()
+
+        protected void Awake()
         {
             AddDictionaryFunctions();
+        }
+        protected virtual void Start()
+        {
             //When we want to stop it;
             //keywordRecognizer.Stop();
             keywordRecognizer = new KeywordRecognizer(voiceActions.Keys.ToArray());

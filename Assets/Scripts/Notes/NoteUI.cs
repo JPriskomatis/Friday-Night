@@ -105,7 +105,7 @@ namespace NoteSpace
         private IEnumerator WaitForGKey()
         {
             //We wait until the player presses the escape button;
-            yield return new WaitUntil(() => GlobalConstants.ESCAPE_ACTION);
+            yield return new WaitUntil(() => Input.GetKeyDown(GlobalConstants.ESCAPE_ACTION));
             currentNote.OnPickdown?.Invoke();
 
 

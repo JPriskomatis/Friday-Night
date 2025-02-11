@@ -34,7 +34,7 @@ namespace VoiceSpace
         [SerializeField] private string whoAreYouTxt;
 
         [Header("Ouija Answers")]
-        [SerializeField] private string HowDidYouDieAnswer ="STRANGLED";;
+        [SerializeField] private string HowDidYouDieAnswer ="STRANGLED";
         [SerializeField] private string WhereAreYouAnswer = "BEHIND YOU";
         [SerializeField] private string whoAreYouAnswer = "DEATH";
 

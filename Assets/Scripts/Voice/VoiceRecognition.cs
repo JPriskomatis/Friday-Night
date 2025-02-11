@@ -23,7 +23,7 @@ namespace VoiceSpace
             micronhponeCanvas.DOFade(0, 1f).OnComplete(() => micronhponeUI.SetActive(false));
         }
 
-        protected void Awake()
+        protected virtual void Awake()
         {
             AddDictionaryFunctions();
         }

@@ -1,4 +1,5 @@
 using EJETAGame;
+using GlobalSpace;
 using PlayerSpace;
 using System.Collections;
 using UISpace;

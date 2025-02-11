@@ -19,15 +19,15 @@ namespace TestSpace
 
             introToMansion.skipIntro = skipIntroToMansion;
         }
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha0))
-            {
-                //Enable firstObjective action;
+        //private void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Alpha0))
+        //    {
+        //        //Enable firstObjective action;
                 
-                recTimer.skipFirstObjective = true;
+        //        recTimer.skipFirstObjective = true;
 
-            }
-        }
+        //    }
+        //}
     }
 }

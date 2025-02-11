@@ -5589,7 +5589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32b6c6375f9b2c468ca5c3f3de71abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntroToMansion: 1
+  skipIntroToMansion: 0
 --- !u!1001 &149712614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58329,7 +58329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8875182573916579537, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8875182573916579537, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
       propertyPath: candleLight
@@ -82768,7 +82768,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.8
-  m_Radius: 0.3
+  m_Radius: 0.4
   m_SlopeLimit: 10
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -83172,7 +83172,7 @@ Transform:
   m_GameObject: {fileID: 5480920538975201794}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.68408304, z: -0, w: 0.72940415}
-  m_LocalPosition: {x: 274.178, y: 11.354, z: 264.988}
+  m_LocalPosition: {x: 275.579, y: 6.928, z: 261.333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

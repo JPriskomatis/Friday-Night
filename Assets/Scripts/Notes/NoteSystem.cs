@@ -22,17 +22,7 @@ namespace NoteSpace
             Note.OnNoteTaken -= AcquiredNote;
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                LeftButton();
-            }
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                RightButton();
-            }
-        }
+
 
         public void AcquiredNote(Note note)
         {

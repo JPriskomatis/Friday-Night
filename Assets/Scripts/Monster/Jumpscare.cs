@@ -37,14 +37,6 @@ namespace MonsterSpace
             mat.SetFloat("_GlitchStrength", 0);
             mat.SetFloat("_ScanLinesStrength", 1);
         }
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                InitiateJumpscare();
-            }
-            
-        }
         public void InitiateJumpscare()
         {
             StartCoroutine(StartGlitchEffect());

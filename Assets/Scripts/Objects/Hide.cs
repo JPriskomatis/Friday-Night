@@ -1,4 +1,5 @@
 using System.Collections;
+using GlobalSpace;
 using UISpace;
 using UnityEngine;
 
@@ -55,7 +56,7 @@ namespace ObjectSpace
 
         IEnumerator CheckForInput()
         {
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.X));
+            yield return new WaitUntil(() => Input.GetKeyDown(GlobalConstants.ESCAPE_ACTION));
             hintMessage.RemoveMessage();
             EndAnimation();
         }

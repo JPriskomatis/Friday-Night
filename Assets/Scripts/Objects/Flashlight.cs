@@ -29,13 +29,7 @@ namespace ObjectSpace
                 originalIntensity = flashlight.intensity;
             }
         }
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.V))
-            {
-                StartFlicker();
-            }
-        }
+
 
         public void StartFlicker()
         {

@@ -45,7 +45,7 @@ namespace TriggerSpace
 
         IEnumerator StartCountdown()
         {
-            int count = 3;
+            int count = 7;
             while (count > 0)
             {
                 Debug.Log(count);  // Logs the countdown number to the console

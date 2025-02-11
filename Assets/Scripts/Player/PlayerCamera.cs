@@ -12,14 +12,7 @@ namespace PlayerSpace
         [Header("Glitch Effects")]
         [SerializeField] private GameObject suddenGlitch;
 
-        //TESTING
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                StartCoroutine(GlitchEffect());
-            } 
-        }
+
 
         public void InitiateGlitchEffect()
         {

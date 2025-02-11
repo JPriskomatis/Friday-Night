@@ -1,4 +1,5 @@
 using DG.Tweening;
+using GlobalSpace;
 using UISpace;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ public class VoiceHintUI : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(GlobalConstants.ESCAPE_ACTION))
         {
             hint.RemoveMessage();
             voiceCanvasGroup.DOFade(0, 1f).OnComplete(() => voicePanel.SetActive(false));

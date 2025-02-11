@@ -42,6 +42,9 @@ namespace VoiceSpace
         [SerializeField] private GameObject behindPlayer;
         [SerializeField] private GameObject jack;
 
+        [Header("Extra Components")]
+        [SerializeField] GameObject key;
+
 
         private Camera camera;
         private bool firstClip;
@@ -152,7 +155,9 @@ namespace VoiceSpace
             jack.SetActive(false);
 
             OnOuijaJumpscare?.Invoke();
-            
+            key.SetActive(true);
+
+            this.GetComponent<SphereCollider>().enabled = false;
             Destroy(this);
 
         }

@@ -13,17 +13,11 @@ MonoBehaviour:
   m_Name: Newspaper
   m_EditorClassIdentifier: 
   title: Newspaper
-  description: "HORROR IN HILLSIDE: FAMILY SLAIN IN GRUESOME HOME INVASION \n\nPolice
-    Search for Answers in Grisly Murder-Suicide\n\nHILLSIDE, Sept. 18 \u2014 The
-    quiet community of Hillside is reeling after the brutal slaying of the Wingstone
-    family\u2014James, 42, Margaret, 39, and their two children, Emily, 12, and Todd,
-    9\u2014inside their home. Police say the suspect, Barkle Worren, a 47-year-old
-    transient, allegedly broke in and held them captive for four days before murdering
-    them and taking his own life. Authorities remain uncertain of his motive.\n\n\"We
-    are working around the clock to piece together what led to this tragedy,\" said
-    Police Chief Harold Grayson. \"This was a deliberate and deeply disturbing crime.\"
-    Neighbors describe the Wingstones as a kind and well-respected family, leaving
-    the community in shock.\n\nAuthorities urge anyone with information about Worren\u2019s
-    activities to come forward as investigators continue their probe into one of
-    the most horrifying crimes in Hillside\u2019s history."
+  description: "Maniac Homeless Person Kills Family\n\nThe Maxwell family endured
+    a nightmare beyond imagination when Barkle Worren, a deranged homeless man, broke
+    into their home and murdered them all. \n\nAuthorities reported that he spent
+    four agonizing days torturing the family before taking their lives and ultimately
+    ending his own.\n\nThe motive behind the brutal attack remains unclear, and the
+    police continue to investigate the chilling crime.\n\nOur condolences go out
+    to the grieving relatives."
   material: {fileID: 2100000, guid: e245243ab0198d5449155636880b13f0, type: 2}

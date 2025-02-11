@@ -17,23 +17,35 @@ namespace VoiceSpace
         public Vector3 positionYES;
         public Vector3 targetPosition2 = new Vector3(0f,0f,0.0719999969f);
 
-        private Vector3 angry = new Vector3(-0.282000005f, 0f, -0.186000004f);
+        
 
-        [Header("Characters Positions")]
+        [Header("Ouija Characters Positions")]
         [SerializeField] private string[] characters;
         [SerializeField] private Vector3[] positions;
 
         private Dictionary<string, Vector3> letterMap = new();
 
         [SerializeField] private AudioClip clip;
-        private bool firstClip;
+        
+
+        [Header("Player answer strings")]
         [SerializeField] private string HowYouDiedText;
         [SerializeField] private string BehindYouTxt;
+        [SerializeField] private string whoAreYouTxt;
+
+        [Header("Ouija Answers")]
+        [SerializeField] private string HowDidYouDieAnswer ="STRANGLED";;
+        [SerializeField] private string WhereAreYouAnswer = "BEHIND YOU";
+        [SerializeField] private string whoAreYouAnswer = "DEATH";
 
         [Header("Object Behind Player")]
         [SerializeField] private GameObject behindPlayer;
         [SerializeField] private GameObject jack;
+
+
         private Camera camera;
+        private bool firstClip;
+        private Vector3 angry = new Vector3(-0.282000005f, 0f, -0.186000004f);
 
         protected override void Awake()
         {
@@ -95,17 +107,17 @@ namespace VoiceSpace
             yield return arrow.DOLocalMove(angry, 0.5f).SetEase(Ease.InOutQuad).WaitForCompletion();
             yield return new WaitForSeconds(1f); // Stay in angry position for 1 second
 
-            string answer = "DEATH";
+            string answer = whoAreYouAnswer;
             StartCoroutine(MoveArrowToWordWithCompletion(answer, () =>
             {
-                PlayerThoughts.Instance.SetText("Death?");
+                PlayerThoughts.Instance.SetText(whoAreYouTxt);
             }));
         }
 
         private void WhereAreYou()
         {
             PlayAudio();
-            string answer = "BEHIND YOU";
+            string answer = WhereAreYouAnswer;
             Debug.Log("This actually works");
 
             StartCoroutine(MoveArrowToWordWithCompletion(answer, () =>
@@ -181,7 +193,7 @@ namespace VoiceSpace
         private void HowDidYouDie()
         {
             PlayAudio();
-            string answer = "STRANGLED";
+            string answer = HowDidYouDieAnswer;
             Debug.Log("This actually works");
 
             // Call MoveArrowToWord and pass a callback for completion

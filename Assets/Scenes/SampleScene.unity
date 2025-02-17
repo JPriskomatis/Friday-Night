@@ -58870,7 +58870,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Jan.01 1970
+  m_text: Sep. 7 2005
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5c09594cc168aaf43a075e8eef59d745, type: 2}
   m_sharedMaterial: {fileID: -2635290872017618382, guid: 5c09594cc168aaf43a075e8eef59d745, type: 2}

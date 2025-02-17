@@ -1,6 +1,5 @@
 using GlobalSpace;
 using ObjectiveSpace;
-using System;
 using System.Collections;
 using TMPro;
 using UISpace;
@@ -23,52 +22,94 @@ public class IntroToMansion : MonoBehaviour
     [SerializeField] private GameObject blackScreen;
     [HideInInspector] public bool skipIntro;
     [SerializeField] private RecTimer recTimer;
-    IEnumerator Start()
+
+    [Header("Typewriter Effect")]
+    [SerializeField] private float typingSpeed = 0.05f;
+    private bool isTyping = false;
+    private bool sentenceCompleted = false;
+
+    private void Update()
     {
-        
-        if (!skipIntro)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            blackScreen.SetActive(true);
-            vhsAudio.SetActive(false);
-
-
-            yield return new WaitForSeconds(3f);
-
-            for (int i = 0; i < introText.Length; i++)
+            if (isTyping)
             {
-                introTextUI.text = introText[i];
+                //if still typing, instantly complete sentence;
+                isTyping = false;
+            }
+            else if (sentenceCompleted)
+            {
+                //if sentence is completed, move to the next immediately;
+                sentenceCompleted = false;
+            }
+        }
+    }
 
-                yield return new WaitForSeconds(showTextDuration);
+    private IEnumerator TypeText(string text)
+    {
+        introTextUI.text = "";
+        isTyping = true;
+        sentenceCompleted = false;
 
+        foreach (char c in text)
+        {
+            if (!isTyping)
+            {
+                //we instantly complete the sentence;
+                introTextUI.text = text;
+                break;
             }
 
-            introTextUI.gameObject.SetActive(false);
-            EntranceDoorAudio();
-            yield return new WaitForSeconds(5f);
-
-            //Once the monologue ends, we showcase the objective to the player;
-            ObjectiveManager.Instance.ShowObjective(objectiveText);
-
-
-            //Turning the camera on audio;
-            audioSource.clip = cameraAudio;
-            audioSource.Play();
-
-            yield return new WaitForSeconds(0.5f);
-
-            //Our camera is on so we enable the ambient audio;
-            vhsAudio.SetActive(true);
-            blackScreen.GetComponent<CanvasGroup>().alpha = 0;
-            recTimer.StartTimer();
-
-
+            introTextUI.text += c;
+            yield return new WaitForSeconds(typingSpeed);
         }
-        else
+
+        isTyping = false;
+        sentenceCompleted = true;
+    }
+
+    private IEnumerator Start()
+    {
+        if (skipIntro)
         {
             blackScreen.GetComponent<CanvasGroup>().alpha = 0;
+            yield break;
         }
-        
-        
+
+        blackScreen.SetActive(true);
+        vhsAudio.SetActive(false);
+
+        yield return new WaitForSeconds(3f);
+
+        for (int i = 0; i < introText.Length; i++)
+        {
+            yield return StartCoroutine(TypeText(introText[i]));
+
+            float elapsed = 0f;
+            while (elapsed < showTextDuration)
+            {
+                //move to the next sentence;
+                if (!sentenceCompleted) break;
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+        }
+
+        introTextUI.gameObject.SetActive(false);
+        EntranceDoorAudio();
+        yield return new WaitForSeconds(5f);
+
+        //Display objective after monologue;
+        ObjectiveManager.Instance.ShowObjective(objectiveText);
+
+        audioSource.clip = cameraAudio;
+        audioSource.Play();
+
+        yield return new WaitForSeconds(0.5f);
+
+        vhsAudio.SetActive(true);
+        blackScreen.GetComponent<CanvasGroup>().alpha = 0;
+        recTimer.StartTimer();
     }
 
     private void EntranceDoorAudio()

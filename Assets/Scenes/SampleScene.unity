@@ -5872,7 +5872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32b6c6375f9b2c468ca5c3f3de71abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntroToMansion: 1
+  skipIntroToMansion: 0
 --- !u!1001 &149712614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68625,6 +68625,7 @@ MonoBehaviour:
   blackScreen: {fileID: 12406589}
   skipIntro: 0
   recTimer: {fileID: 1995553552}
+  typingSpeed: 0.1
 --- !u!114 &1835460693
 MonoBehaviour:
   m_ObjectHideFlags: 0

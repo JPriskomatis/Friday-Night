@@ -1,5 +1,6 @@
 using EJETAGame;
 using GlobalSpace;
+using UISpace;
 using UnityEngine;
 
 namespace ObjectSpace
@@ -9,6 +10,7 @@ namespace ObjectSpace
         [Header("Interaction Settings")]
         [SerializeField] protected bool canInteractWith;
         [SerializeField] protected string interactionText;
+        private static bool firstInteract = true;
 
         private void Start()
         {
@@ -25,6 +27,11 @@ namespace ObjectSpace
 
         public void OnInteractEnter()
         {
+            if (firstInteract)
+            {
+                PlayerThoughts.Instance.SetText("Press " + GlobalConstants.INTERACTION + " to interact");
+                firstInteract = false;
+            }
             if (canInteractWith)
             {
                 InteractionText.instance.SetText(interactionText);

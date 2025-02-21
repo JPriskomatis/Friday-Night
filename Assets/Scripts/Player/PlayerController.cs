@@ -206,6 +206,7 @@ public class PlayerController : Singleton<PlayerController>
     }
     public void ResetCameraPos()
     {
+        Debug.Log("sdc");
         cameraTransform.localPosition = savedCameraPosition; // Restore position
         cameraTransform.localRotation = savedCameraRotation;
         virtualCamera.gameObject.transform.localPosition = savedCameraPosition;

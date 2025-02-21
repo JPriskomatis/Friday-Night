@@ -1,6 +1,9 @@
 using System.Collections;
+using AudioSpace;
+using EJETAGame;
 using GlobalSpace;
 using TMPro;
+using UISpace;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +19,8 @@ namespace ObjectSpace
         [Header("Extra components")]
         [SerializeField] private GameObject inputFieldUI;
         [SerializeField] private Animator anim;
+        [SerializeField] private AudioClip clip, clip2;
+        [SerializeField] private string hintMsg;
         private TMP_InputField inputField;
 
         private bool pressedX;
@@ -25,7 +30,11 @@ namespace ObjectSpace
         }
         protected override void BeginInteraction()
         {
+            InteractionText.instance.SetText("");
             pressedX = false;
+
+            HintMessage.Instance.SetMessage(hintMsg);
+
             //Pause the game
             PlayerController.Instance.DisableCameraMovement();
             PlayerController.Instance.StopMovement();
@@ -36,6 +45,15 @@ namespace ObjectSpace
             //            inputField.SetActive(true);
 
             StartCoroutine(CheckForButton());
+        }
+
+        public void PlayAudio()
+        {
+            Audio.Instance.PlayAudio(clip);
+        }
+        public void PlayAudio2()
+        {
+            Audio.Instance.PlayAudio(clip2);
         }
 
         IEnumerator CheckForButton()
@@ -82,9 +100,13 @@ namespace ObjectSpace
 
         IEnumerator DelayForInputs()
         {
+            HintMessage.Instance.RemoveMessage();
             yield return new WaitForSeconds(6f);
             PlayerController.Instance.EnableCaneraMovement();
             PlayerController.Instance.ResetMovement();
+
+            anim.SetTrigger("reveal");
+            this.GetComponent<SphereCollider>().enabled = false;
 
         }
         //ClearInput;
@@ -104,6 +126,7 @@ namespace ObjectSpace
 
         private void EscapeItem()
         {
+            HintMessage.Instance.RemoveMessage();
             PlayerController.Instance.EnableCaneraMovement();
             PlayerController.Instance.ResetMovement();
 

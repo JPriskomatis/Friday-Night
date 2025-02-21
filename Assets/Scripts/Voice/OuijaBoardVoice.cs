@@ -86,17 +86,18 @@ namespace VoiceSpace
             Debug.Log("Added: " + speechWords[6]);
             voiceActions.Add(speechWords[7], HowDidYouDie);
             Debug.Log("Added: " + speechWords[7]);
-
-            //Where are you
-            voiceActions.Add(speechWords[8], WhereAreYou);
+            voiceActions.Add(speechWords[8], WhoAreYou);
             Debug.Log("Added: " + speechWords[8]);
+
 
             //Who are you?
             voiceActions.Add(speechWords[9], WhoAreYou);
             Debug.Log("Added: " + speechWords[9]);
-            voiceActions.Add(speechWords[10], WhoAreYou);
-            Debug.Log("Added: " + speechWords[10]);
 
+
+            //Where are you
+            voiceActions.Add(speechWords[10], WhereAreYou);
+            Debug.Log("Added: " + speechWords[10]);
         }
 
         private void WhoAreYou()

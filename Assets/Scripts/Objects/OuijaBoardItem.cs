@@ -22,7 +22,7 @@ namespace ObjectSpace
         [SerializeField] Transform targetTransform;
         [SerializeField] float speed;
 
-        private bool hasLighter;
+        [SerializeField] private bool hasLighter;
 
         private void OnEnable()
         {

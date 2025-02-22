@@ -2,6 +2,7 @@ using EJETAGame;
 using GlobalSpace;
 using UISpace;
 using UnityEngine;
+using UnityEngine.Video;
 
 namespace ObjectSpace
 {
@@ -12,6 +13,7 @@ namespace ObjectSpace
         [SerializeField] private string messageHint;
         [Header("Extra Components")]
         [SerializeField] private Component tvMessage;
+        [SerializeField] private VideoPlayer VideoPlayer;
         protected override void BeginInteraction()
         {
             PlayerController.Instance.MoveToPosition(targetPos, speed);
@@ -21,6 +23,8 @@ namespace ObjectSpace
 
             //Show the UI Indications;
             HintMessage.Instance.SetMessage(messageHint);
+
+            VideoPlayer.Play();
         }
         private void Update()
         {

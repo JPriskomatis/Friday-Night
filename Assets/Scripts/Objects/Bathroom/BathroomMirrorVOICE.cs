@@ -13,7 +13,6 @@ namespace VoiceSpace
     {
         [SerializeField] private Material dissolveMat;
         [SerializeField] private float duration;
-        [SerializeField] private Component bloodAppear;
         [SerializeField] private AudioClip clip;
 
         [Header("Extra Components")]
@@ -72,7 +71,7 @@ namespace VoiceSpace
             source.Stop();
             Audio.Instance.FadeOut();
             OnStopMirror?.Invoke();
-            source.gameObject.SetActive(false);
+            //source.gameObject.SetActive(false);
 
         }
 

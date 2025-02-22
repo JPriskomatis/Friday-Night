@@ -1,5 +1,6 @@
 using System.Collections;
 using AudioSpace;
+using DG.Tweening;
 using EJETAGame;
 using GlobalSpace;
 using TMPro;
@@ -21,6 +22,7 @@ namespace ObjectSpace
         [SerializeField] private Animator anim;
         [SerializeField] private AudioClip clip, clip2;
         [SerializeField] private string hintMsg;
+        [SerializeField] CanvasGroup keyboardUI;
         private TMP_InputField inputField;
 
         private bool pressedX;
@@ -44,7 +46,9 @@ namespace ObjectSpace
             inputField.ActivateInputField();
             //            inputField.SetActive(true);
 
+            keyboardUI.DOFade(1, 1f);
             StartCoroutine(CheckForButton());
+
         }
 
         public void PlayAudio()
@@ -92,6 +96,8 @@ namespace ObjectSpace
         }
         private void Correct()
         {
+            keyboardUI.DOFade(0, 1f);
+
             canInteractWith = false;
             inputFieldUI.SetActive(false);
             anim.SetTrigger("type");
@@ -126,6 +132,7 @@ namespace ObjectSpace
 
         private void EscapeItem()
         {
+            keyboardUI.DOFade(0, 1f);
             HintMessage.Instance.RemoveMessage();
             PlayerController.Instance.EnableCaneraMovement();
             PlayerController.Instance.ResetMovement();

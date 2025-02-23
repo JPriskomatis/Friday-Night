@@ -14,6 +14,7 @@ namespace ObjectSpace
         [Header("Extra Components")]
         [SerializeField] private Component tvMessage;
         [SerializeField] private VideoPlayer videoPlayer;
+
         protected override void BeginInteraction()
         {
             PlayerController.Instance.MoveToPosition(targetPos, speed);

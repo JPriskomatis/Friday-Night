@@ -17,7 +17,7 @@ namespace VoiceSpace
         
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip clip;
-
+        [SerializeField] private GameObject suddenGlitch;
         public static event Action OnOpenBookcase;
 
         public override void AddDictionaryFunctions()
@@ -27,7 +27,10 @@ namespace VoiceSpace
         private void WhatDoYouWant()
         {
             Debug.Log("I tell you what I want");
+            StartCoroutine(StartGlitchEffect());
+
             videoPlayer.clip = videoClip;
+            videoPlayer.Play();
 
             OnAnimationBegin?.Invoke();
             this.GetComponent<SphereCollider>().enabled = false;
@@ -39,6 +42,12 @@ namespace VoiceSpace
             HintMessage.Instance.RemoveMessage();
 
             StartCoroutine(DelayForBookscase());
+        }
+        IEnumerator StartGlitchEffect()
+        {
+            suddenGlitch.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            suddenGlitch.SetActive(false);
         }
 
         IEnumerator DelayForBookscase()

@@ -535,7 +535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &12406590
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6309,7 +6309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32b6c6375f9b2c468ca5c3f3de71abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntroToMansion: 1
+  skipIntroToMansion: 0
 --- !u!1001 &149712614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6730,7 +6730,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 01
   m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 1
   m_WaitForFirstFrame: 1
@@ -52485,7 +52485,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_TargetDisplay: 0
 --- !u!1001 &1332689950
 PrefabInstance:
@@ -72546,6 +72546,7 @@ MonoBehaviour:
   blackScreen: {fileID: 12406589}
   skipIntro: 0
   recTimer: {fileID: 1995553552}
+  hintMsg: (Press Space to Skip)
   typingSpeed: 0.1
 --- !u!114 &1835460693
 MonoBehaviour:
@@ -79968,7 +79969,7 @@ MonoBehaviour:
   speed: 3
   messageHint: Press X to Escape
   tvMessage: {fileID: 2014521198}
-  VideoPlayer: {fileID: 162435026}
+  videoPlayer: {fileID: 162435026}
 --- !u!114 &2014521198
 MonoBehaviour:
   m_ObjectHideFlags: 0

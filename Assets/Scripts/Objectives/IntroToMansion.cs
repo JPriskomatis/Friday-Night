@@ -22,12 +22,15 @@ public class IntroToMansion : MonoBehaviour
     [SerializeField] private GameObject blackScreen;
     [HideInInspector] public bool skipIntro;
     [SerializeField] private RecTimer recTimer;
+    [SerializeField] private string hintMsg;
 
     [Header("Typewriter Effect")]
     [SerializeField] private float typingSpeed = 0.05f;
     private bool isTyping = false;
     private bool sentenceCompleted = false;
 
+
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -81,6 +84,8 @@ public class IntroToMansion : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
+        HintMessage.Instance.SetMessage(hintMsg);
+
         for (int i = 0; i < introText.Length; i++)
         {
             yield return StartCoroutine(TypeText(introText[i]));
@@ -96,6 +101,7 @@ public class IntroToMansion : MonoBehaviour
         }
 
         introTextUI.gameObject.SetActive(false);
+        HintMessage.Instance.RemoveMessage();
         EntranceDoorAudio();
         yield return new WaitForSeconds(5f);
 

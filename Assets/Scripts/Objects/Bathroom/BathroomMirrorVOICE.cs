@@ -73,6 +73,7 @@ namespace VoiceSpace
             source.Stop();
             Audio.Instance.FadeOut();
             OnStopMirror?.Invoke();
+            ExitVoiceAction();
             //source.gameObject.SetActive(false);
 
         }

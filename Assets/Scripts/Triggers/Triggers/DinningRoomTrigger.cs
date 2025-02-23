@@ -15,6 +15,7 @@ namespace TriggerSpace
         [SerializeField] private GameObject door;
         [SerializeField] private Transform player;
         [SerializeField] private AudioClip clip;
+        [SerializeField] private AudioSource source2;
         private Animator anim;
 
         [Header("Monster Settings")]
@@ -37,6 +38,7 @@ namespace TriggerSpace
             //Start Timer left to hide;
             StartCoroutine(StartCountdown());
 
+            source2.Play();
             Audio.Instance.PlayAudio(clip);
             
         }

@@ -97,6 +97,12 @@ namespace VoiceSpace
 
         }
 
+        protected void ExitVoiceAction()
+        {
+            HintMessage.Instance.RemoveMessage();
+            PlayerController.Instance.ResetMovement();
+            this.GetComponent<SphereCollider>().enabled = false;
+        }
         protected void RemoveButtons()
         {
             OnExitVoice?.Invoke();

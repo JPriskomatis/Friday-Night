@@ -1,3 +1,4 @@
+using DG.Tweening;
 using GlobalSpace;
 using ObjectiveSpace;
 using System.Collections;
@@ -114,7 +115,9 @@ public class IntroToMansion : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         vhsAudio.SetActive(true);
-        blackScreen.GetComponent<CanvasGroup>().alpha = 0;
+        blackScreen.GetComponent<CanvasGroup>().DOFade(0,1f).OnComplete(
+            ()=>blackScreen.SetActive(false)
+        );
         recTimer.StartTimer();
     }
 

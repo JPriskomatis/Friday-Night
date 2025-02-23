@@ -41,6 +41,7 @@ public class PlayerController : Singleton<PlayerController>
     private Quaternion savedCameraRotation;
 
 
+    public bool canMove;
 
     protected override void Awake()
     {
@@ -62,11 +63,13 @@ public class PlayerController : Singleton<PlayerController>
         RedirectDirection.onChangeDirection -= DisableCameraMovement;
         RedirectDirection.onAllowMovement -= EnableCaneraMovement;
 
+        VoiceButtonsSetting.OnPause -= PauseGame;
         VoiceButtonsSetting.OnResume -= ResumeGame;
     }
 
     private void Start()
     {
+        canMove = true;
         Cursor.lockState = CursorLockMode.Locked;
         canLook = true;
         UpdateMovementVectors();
@@ -76,18 +79,27 @@ public class PlayerController : Singleton<PlayerController>
 
     private void PauseGame()
     {
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        //DisableCameraMovement();
         StopMovement();
-        DisableCameraMovement();
+        canMove = false;
+
+        Time.timeScale = 0;
+
     }
 
     private void ResumeGame()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        //EnableCaneraMovement();
         ResetMovement();
-        EnableCaneraMovement();
+        canMove = true;
+
+        Time.timeScale = 1;
 
     }
     private void UpdateMovementVectors()
@@ -122,6 +134,15 @@ public class PlayerController : Singleton<PlayerController>
     }
     private void Update()
     {
+        if (characterController.isGrounded)
+        {
+            Debug.Log("grounded");
+        }
+        else
+        {
+            Debug.Log("Not grounded");
+
+        }
         if (canLook)
         {
             Look();
@@ -146,18 +167,21 @@ public class PlayerController : Singleton<PlayerController>
         }
         if (characterController.isGrounded)
         {
-            velocity.y = 0f;
+            velocity.y = -0.1f; // Slight downward force to keep grounded
         }
         else
         {
             velocity.y += gravity * Time.deltaTime;
         }
 
+
         Vector3 movement = direction * speed;
-        if (characterController.enabled)
+        if (characterController.enabled || canMove)
         {
             characterController.Move((movement + velocity) * Time.deltaTime);
         }
+
+
 
 
     }

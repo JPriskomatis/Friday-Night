@@ -52,12 +52,17 @@ public class PlayerController : Singleton<PlayerController>
     {
         RedirectDirection.onChangeDirection += DisableCameraMovement;
         RedirectDirection.onAllowMovement += EnableCaneraMovement;
+
+        VoiceButtonsSetting.OnPause += PauseGame;
+        VoiceButtonsSetting.OnResume += ResumeGame;
     }
 
     private void OnDisable()
     {
         RedirectDirection.onChangeDirection -= DisableCameraMovement;
         RedirectDirection.onAllowMovement -= EnableCaneraMovement;
+
+        VoiceButtonsSetting.OnResume -= ResumeGame;
     }
 
     private void Start()
@@ -69,6 +74,21 @@ public class PlayerController : Singleton<PlayerController>
 
     }
 
+    private void PauseGame()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        StopMovement();
+        DisableCameraMovement();
+    }
+
+    private void ResumeGame()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        EnableCaneraMovement();
+        ResetMovement();
+    }
     private void UpdateMovementVectors()
     {
         forward = cameraTransform.forward;

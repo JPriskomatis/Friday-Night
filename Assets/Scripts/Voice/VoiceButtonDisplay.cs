@@ -9,6 +9,7 @@ namespace VoiceSpace
 {
     public class VoiceButtonDisplay : MonoBehaviour
     {
+        private bool showBtns;
         [SerializeField] GameObject UIPanel;
         [SerializeField] CanvasGroup UICanvas;
 
@@ -38,11 +39,14 @@ namespace VoiceSpace
 
         private void EnableButtonUI()
         {
+            showBtns = true;
             UIPanel.SetActive(true);
+            Debug.Log("Yesdfsdfs");
         }
 
         private void DisableButtonUI()
         {
+            showBtns = false;
             UIPanel.SetActive(false);
         }
 

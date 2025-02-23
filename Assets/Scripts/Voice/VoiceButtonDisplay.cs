@@ -21,22 +21,41 @@ namespace VoiceSpace
             VoiceRecognition.OnVoiceStart += DisplayButtons;
             VoiceRecognition.OnExitVoice += HideDisplayButtons;
 
+            VoiceButtonsSetting.OnEnableButtons += EnableButtonUI;
+            VoiceButtonsSetting.OnDisableButtons += DisableButtonUI;
+
         }
 
         private void OnDisable()
         {
             VoiceRecognition.OnVoiceStart -= DisplayButtons;
             VoiceRecognition.OnExitVoice -= HideDisplayButtons;
+
+            VoiceButtonsSetting.OnEnableButtons -= EnableButtonUI;
+            VoiceButtonsSetting.OnDisableButtons -= DisableButtonUI;
         }
+
+
+        private void EnableButtonUI()
+        {
+            UIPanel.SetActive(true);
+        }
+
+        private void DisableButtonUI()
+        {
+            UIPanel.SetActive(false);
+        }
+
 
         private void HideDisplayButtons()
         {
-            UICanvas.DOFade(0, 1f).OnComplete(() => UIPanel.SetActive(false));
+            Debug.Log("second");
+            UICanvas.DOFade(0, 1f);
+            
         }
 
         private void DisplayButtons(Dictionary<string, Action> voiceCommands)
         {
-            UIPanel.SetActive(true);
             UICanvas.DOFade(1, 1f);
 
             SetButtonTexts(voiceCommands);

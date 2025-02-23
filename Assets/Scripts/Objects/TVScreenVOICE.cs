@@ -23,6 +23,8 @@ namespace VoiceSpace
         public override void AddDictionaryFunctions()
         {
             voiceActions.Add(speechWords[0], WhatDoYouWant);
+            //voiceActions.Add(speechWords[1], WhatDoYouWant);
+            //voiceActions.Add(speechWords[2], WhatDoYouWant);
         }
         private void WhatDoYouWant()
         {

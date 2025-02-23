@@ -24,21 +24,42 @@ namespace VoiceSpace
         public static event Action OnExitVoice;
 
         [SerializeField] protected int commandsButtonCount;
+        private bool useButtons;
 
-        private void OnDisable()
-        {
-            micronhponeCanvas.DOFade(0, 1f).OnComplete(() => micronhponeUI.SetActive(false));
-        }
 
         protected virtual void Awake()
         {
-            AddDictionaryFunctions();
+            //AddDictionaryFunctions();
         }
         //TODO:
         //Create a function StartListening???
-        
+
+
+        private void OnEnable()
+        {
+            VoiceButtonsSetting.OnEnableButtons += EnableButtons;
+            VoiceButtonsSetting.OnDisableButtons+= DisableButtons;
+        }
+        private void OnDisable()
+        {
+            VoiceButtonsSetting.OnEnableButtons -= EnableButtons;
+            VoiceButtonsSetting.OnDisableButtons -= DisableButtons;
+
+
+        }
+
+        private void EnableButtons()
+        {
+            useButtons = true;
+        }
+        private void DisableButtons()
+        {
+            useButtons = false;
+        }
         protected virtual void Start()
         {
+            AddDictionaryFunctions();
+
             //When we want to stop it;
             //keywordRecognizer.Stop();
             keywordRecognizer = new KeywordRecognizer(voiceActions.Keys.ToArray());
@@ -46,13 +67,15 @@ namespace VoiceSpace
 
             keywordRecognizer.Start();
 
-            micronhponeUI.SetActive(true);
+            //micronhponeUI.SetActive(true);
             micronhponeCanvas.DOFade(1, 1f);
 
             OnVoiceStart?.Invoke(voiceActions);
 
+
             StartCoroutine(CheckVoiceActionIndexes());
         }
+
         protected void StopListening()
         {
             keywordRecognizer.Stop();
@@ -65,48 +88,50 @@ namespace VoiceSpace
         { 
             while (true)
             {
-                if (Input.GetKeyDown(KeyCode.Alpha1))
+                if (useButtons)
                 {
-                    if (voiceActions.Count > 0)
+                    if (Input.GetKeyDown(KeyCode.Alpha1))
                     {
-                        voiceActions.ElementAt(0).Value.Invoke();
-                        Debug.Log("Invoked action for first element.");
+                        if (voiceActions.Count > 0)
+                        {
+                            voiceActions.ElementAt(0).Value.Invoke();
+                            Debug.Log("Invoked action for first element.");
+                        }
+                        if (commandsButtonCount == 1)
+                        {
+                            Debug.Log("Last");
+                            OnExitVoice?.Invoke();
+                        }
                     }
-                    if (commandsButtonCount == 1)
+                    else if (Input.GetKeyDown(KeyCode.Alpha2))
                     {
-                        Debug.Log("Last");
-                        OnExitVoice?.Invoke();
+                        if (voiceActions.Count > 1)
+                        {
+                            int middleIndex = voiceActions.Count / 2;
+                            voiceActions.ElementAt(middleIndex).Value.Invoke();
+                            Debug.Log("Invoked action for middle element.");
+                        }
+                        if (commandsButtonCount == 2)
+                        {
+                            Debug.Log("Last");
+                            OnExitVoice?.Invoke();
+                        }
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha3))
+                    {
+                        if (voiceActions.Count > 0)
+                        {
+                            voiceActions.ElementAt(voiceActions.Count - 1).Value.Invoke();
+                            Debug.Log("Invoked action for last element.");
+                        }
+                        if (commandsButtonCount == 3)
+                        {
+                            Debug.Log("Last");
+                            OnExitVoice?.Invoke();
+                        }
                     }
                 }
-                else if (Input.GetKeyDown(KeyCode.Alpha2))
-                {
-                    if (voiceActions.Count > 1)
-                    {
-                        int middleIndex = voiceActions.Count / 2;
-                        voiceActions.ElementAt(middleIndex).Value.Invoke();
-                        Debug.Log("Invoked action for middle element.");
-                    }
-                    if (commandsButtonCount == 2)
-                    {
-                        Debug.Log("Last");
-                        OnExitVoice?.Invoke();
-                    }
-                }
-                else if (Input.GetKeyDown(KeyCode.Alpha3))
-                {
-                    if (voiceActions.Count > 0)
-                    {
-                        voiceActions.ElementAt(voiceActions.Count - 1).Value.Invoke();
-                        Debug.Log("Invoked action for last element.");
-                    }
-                    if (commandsButtonCount == 3)
-                    {
-                        Debug.Log("Last");
-                        OnExitVoice?.Invoke();
-                    }
-                    
-
-                }
+                
 
                 yield return null;
             }
@@ -122,11 +147,5 @@ namespace VoiceSpace
             Debug.Log(speech.text);
             voiceActions[speech.text].Invoke();
         }
-
-        private void ForwardFun()
-        {
-            Debug.Log("This is forward function");
-        }
-
     }
 }

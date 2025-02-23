@@ -86,8 +86,9 @@ public class PlayerController : Singleton<PlayerController>
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        EnableCaneraMovement();
         ResetMovement();
+        EnableCaneraMovement();
+
     }
     private void UpdateMovementVectors()
     {

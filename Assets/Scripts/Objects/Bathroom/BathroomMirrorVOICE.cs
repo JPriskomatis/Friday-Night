@@ -50,6 +50,8 @@ namespace VoiceSpace
             UnityEngine.Debug.Log("I will appear now");
             door.canOpen = true;
             StartCoroutine(StopEffects());
+            //Remove Buttons UI
+            RemoveButtons();
 
         }
 

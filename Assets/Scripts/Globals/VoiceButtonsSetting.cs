@@ -16,9 +16,11 @@ public class VoiceButtonsSetting : MonoBehaviour
         if (GameSettings.VOICE_REC)
         {
             Debug.Log("voice is active");
+            checkmark.SetActive(true);
             OnEnableButtons?.Invoke();
         } else
         {
+            checkmark.SetActive(false);
             Debug.Log("voice is Not Active");
             OnDisableButtons?.Invoke();
         }
@@ -28,7 +30,7 @@ public class VoiceButtonsSetting : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             uiPanel.SetActive(!uiPanel.activeSelf);
-            if(uiPanel.activeSelf )
+            if (uiPanel.activeSelf)
             {
                 OnPause?.Invoke();
             }

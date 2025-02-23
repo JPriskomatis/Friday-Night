@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine.Windows.Speech;
 using DG.Tweening;
 using System.Collections;
+using UISpace;
 
 namespace VoiceSpace
 {
@@ -39,6 +40,18 @@ namespace VoiceSpace
         {
             VoiceButtonsSetting.OnEnableButtons += EnableButtons;
             VoiceButtonsSetting.OnDisableButtons+= DisableButtons;
+
+
+            //Check if we listen for buttons;
+            if (GameSettings.VOICE_REC)
+            {
+                useButtons = true;
+            } else
+            {
+                useButtons = false;
+            }
+
+
         }
         private void OnDisable()
         {
@@ -84,6 +97,12 @@ namespace VoiceSpace
 
         }
 
+        protected void RemoveButtons()
+        {
+            OnExitVoice?.Invoke();
+            HintMessage.Instance.RemoveMessage();
+        }
+
         private IEnumerator CheckVoiceActionIndexes()
         { 
             while (true)
@@ -97,7 +116,7 @@ namespace VoiceSpace
                             voiceActions.ElementAt(0).Value.Invoke();
                             Debug.Log("Invoked action for first element.");
                         }
-                        if (commandsButtonCount == 1)
+                        if (commandsButtonCount == 0)
                         {
                             Debug.Log("Last");
                             OnExitVoice?.Invoke();
@@ -111,7 +130,7 @@ namespace VoiceSpace
                             voiceActions.ElementAt(middleIndex).Value.Invoke();
                             Debug.Log("Invoked action for middle element.");
                         }
-                        if (commandsButtonCount == 2)
+                        if (commandsButtonCount == 1)
                         {
                             Debug.Log("Last");
                             OnExitVoice?.Invoke();
@@ -119,12 +138,12 @@ namespace VoiceSpace
                     }
                     else if (Input.GetKeyDown(KeyCode.Alpha3))
                     {
-                        if (voiceActions.Count > 0)
+                        if (voiceActions.Count > 2)
                         {
                             voiceActions.ElementAt(voiceActions.Count - 1).Value.Invoke();
                             Debug.Log("Invoked action for last element.");
                         }
-                        if (commandsButtonCount == 3)
+                        if (commandsButtonCount == 2)
                         {
                             Debug.Log("Last");
                             OnExitVoice?.Invoke();

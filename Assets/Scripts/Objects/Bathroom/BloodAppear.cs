@@ -4,6 +4,7 @@ using PlayerSpace;
 using System.Collections;
 using UISpace;
 using UnityEngine;
+using VoiceSpace;
 
 namespace ObjectSpace
 {

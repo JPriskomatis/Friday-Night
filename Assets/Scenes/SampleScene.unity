@@ -50399,10 +50399,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 12406590}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_SizeDelta: {x: 1106.925, y: 253.2805}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1269611827
 MonoBehaviour:
@@ -50459,7 +50459,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -72547,7 +72547,7 @@ MonoBehaviour:
   skipIntro: 0
   recTimer: {fileID: 1995553552}
   hintMsg: (Press Space to Skip)
-  typingSpeed: 0.1
+  typingSpeed: 0.075
 --- !u!114 &1835460693
 MonoBehaviour:
   m_ObjectHideFlags: 0

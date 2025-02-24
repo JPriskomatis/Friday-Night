@@ -26,22 +26,17 @@ namespace ObjectSpace
 
         private void OnEnable()
         {
-            LighterDesk.OnGrabLighter += HasLighter;
             OuijaBoardVoice.OnOuijaJumpscare += EscapeOuija;
         }
 
         private void OnDisable()
         {
-            LighterDesk.OnGrabLighter -= HasLighter;
             OuijaBoardVoice.OnOuijaJumpscare -= EscapeOuija;
         }
-        private void HasLighter()
-        {
-            hasLighter = true;
-        }
+
         protected override void BeginInteraction()
         {
-            if (hasLighter)
+            if (LighterDesk.lighterAcquired)
             {
                 //MovePlayer;
                 PlayerController.Instance.MoveToPosition(targetTransform, speed);

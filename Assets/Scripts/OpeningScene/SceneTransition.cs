@@ -29,7 +29,6 @@ namespace OpeningScene
 
             while (!asyncOpe.isDone)
             {
-                Debug.Log(asyncOpe.progress);
                 if (asyncOpe.progress >= 0.9f)
                 {
                     canTransition = true;

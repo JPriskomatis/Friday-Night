@@ -6,6 +6,7 @@ using UnityEngine.Windows.Speech;
 using DG.Tweening;
 using System.Collections;
 using UISpace;
+using GlobalSpace;
 
 namespace VoiceSpace
 {
@@ -21,54 +22,20 @@ namespace VoiceSpace
         [SerializeField] private CanvasGroup micronhponeCanvas;
 
         //fire event to VoiceButtonDisplay UI;
-        public static event Action<Dictionary<string, Action>> OnVoiceStart;
-        public static event Action OnExitVoice;
 
-        [SerializeField] protected int commandsButtonCount;
-        private bool useButtons;
 
 
         protected virtual void Awake()
         {
             //AddDictionaryFunctions();
+
         }
         //TODO:
         //Create a function StartListening???
 
 
-        private void OnEnable()
-        {
-            VoiceButtonsSetting.OnEnableButtons += EnableButtons;
-            VoiceButtonsSetting.OnDisableButtons+= DisableButtons;
 
 
-            //Check if we listen for buttons;
-            if (GameSettings.VOICE_REC)
-            {
-                useButtons = true;
-            } else
-            {
-                useButtons = false;
-            }
-
-
-        }
-        private void OnDisable()
-        {
-            VoiceButtonsSetting.OnEnableButtons -= EnableButtons;
-            VoiceButtonsSetting.OnDisableButtons -= DisableButtons;
-
-
-        }
-
-        private void EnableButtons()
-        {
-            useButtons = true;
-        }
-        private void DisableButtons()
-        {
-            useButtons = false;
-        }
         protected virtual void Start()
         {
             AddDictionaryFunctions();
@@ -83,18 +50,13 @@ namespace VoiceSpace
             //micronhponeUI.SetActive(true);
             micronhponeCanvas.DOFade(1, 1f);
 
-            OnVoiceStart?.Invoke(voiceActions);
-
-
-            StartCoroutine(CheckVoiceActionIndexes());
         }
+
+
 
         protected void StopListening()
         {
             keywordRecognizer.Stop();
-            OnExitVoice?.Invoke();
-
-
         }
 
         protected void ExitVoiceAction()
@@ -102,64 +64,6 @@ namespace VoiceSpace
             HintMessage.Instance.RemoveMessage();
             PlayerController.Instance.ResetMovement();
             this.GetComponent<SphereCollider>().enabled = false;
-        }
-        protected void RemoveButtons()
-        {
-            OnExitVoice?.Invoke();
-            HintMessage.Instance.RemoveMessage();
-        }
-
-        private IEnumerator CheckVoiceActionIndexes()
-        { 
-            while (true)
-            {
-                if (useButtons)
-                {
-                    if (Input.GetKeyDown(KeyCode.Alpha1))
-                    {
-                        if (voiceActions.Count > 0)
-                        {
-                            voiceActions.ElementAt(0).Value.Invoke();
-                            Debug.Log("Invoked action for first element.");
-                        }
-                        if (commandsButtonCount == 0)
-                        {
-                            Debug.Log("Last");
-                            OnExitVoice?.Invoke();
-                        }
-                    }
-                    else if (Input.GetKeyDown(KeyCode.Alpha2))
-                    {
-                        if (voiceActions.Count > 1)
-                        {
-                            int middleIndex = voiceActions.Count / 2;
-                            voiceActions.ElementAt(middleIndex).Value.Invoke();
-                            Debug.Log("Invoked action for middle element.");
-                        }
-                        if (commandsButtonCount == 1)
-                        {
-                            Debug.Log("Last");
-                            OnExitVoice?.Invoke();
-                        }
-                    }
-                    else if (Input.GetKeyDown(KeyCode.Alpha3))
-                    {
-                        if (voiceActions.Count > 2)
-                        {
-                            voiceActions.ElementAt(voiceActions.Count - 1).Value.Invoke();
-                            Debug.Log("Invoked action for last element.");
-                        }
-                        if (commandsButtonCount == 2)
-                        {
-                            Debug.Log("Last");
-                            OnExitVoice?.Invoke();
-                        }
-                    }
-                }
-                
-
-                yield return null;
-            }
         }
 
 

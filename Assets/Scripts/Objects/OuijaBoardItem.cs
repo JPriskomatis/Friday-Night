@@ -36,7 +36,7 @@ namespace ObjectSpace
 
         protected override void BeginInteraction()
         {
-            if (LighterDesk.lighterAcquired)
+            if (LighterDesk.lighterAcquired || hasLighter)
             {
                 //MovePlayer;
                 PlayerController.Instance.MoveToPosition(targetTransform, speed);

@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,7 +12,8 @@ namespace OpeningScene
         [SerializeField] private GameObject startGamePanel;
         private Animator anim;
         private CanvasGroup blackPanel;
-        [SerializeField] private GameObject checkmark;
+
+
 
 
         private void Start()
@@ -31,19 +33,7 @@ namespace OpeningScene
             blackPanel.DOFade(1, 0.5f);
         }
 
-        public void VoiceCheckmark()
-        {
-            checkmark.SetActive(!checkmark.activeSelf);
-            if (checkmark.activeSelf)
-            {
-                GameSettings.VOICE_REC = true;
-            }
-            else
-            {
-
-                GameSettings.VOICE_REC = false;
-            }
-        }
+        
 
     }
 

@@ -54,17 +54,12 @@ public class PlayerController : Singleton<PlayerController>
         RedirectDirection.onChangeDirection += DisableCameraMovement;
         RedirectDirection.onAllowMovement += EnableCaneraMovement;
 
-        VoiceButtonsSetting.OnPause += PauseGame;
-        VoiceButtonsSetting.OnResume += ResumeGame;
     }
 
     private void OnDisable()
     {
         RedirectDirection.onChangeDirection -= DisableCameraMovement;
         RedirectDirection.onAllowMovement -= EnableCaneraMovement;
-
-        VoiceButtonsSetting.OnPause -= PauseGame;
-        VoiceButtonsSetting.OnResume -= ResumeGame;
     }
 
     private void Start()
@@ -134,15 +129,6 @@ public class PlayerController : Singleton<PlayerController>
     }
     private void Update()
     {
-        if (characterController.isGrounded)
-        {
-            Debug.Log("grounded");
-        }
-        else
-        {
-            Debug.Log("Not grounded");
-
-        }
         if (canLook)
         {
             Look();

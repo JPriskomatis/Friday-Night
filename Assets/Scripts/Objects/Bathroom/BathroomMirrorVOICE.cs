@@ -24,6 +24,7 @@ namespace VoiceSpace
 
 
 
+
         private bool hasAppeared;
         protected override void Awake()
         {
@@ -32,6 +33,7 @@ namespace VoiceSpace
             base.Awake();
         }
 
+        
         public override void AddDictionaryFunctions()
         {
             voiceActions.Add(speechWords[0], AreYouHere);
@@ -50,8 +52,6 @@ namespace VoiceSpace
             UnityEngine.Debug.Log("I will appear now");
             door.canOpen = true;
             StartCoroutine(StopEffects());
-            //Remove Buttons UI
-            RemoveButtons();
 
         }
 

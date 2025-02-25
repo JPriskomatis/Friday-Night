@@ -6276,7 +6276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32b6c6375f9b2c468ca5c3f3de71abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntroToMansion: 1
+  skipIntroToMansion: 0
 --- !u!1001 &149712614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61669,8 +61669,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fe0a63649592604cb2159c0fa7b6e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  voiceRec: 0
-  linsteningToVoice: 0
 --- !u!4 &1609499295
 Transform:
   m_ObjectHideFlags: 0
@@ -72295,6 +72293,8 @@ GameObject:
   - component: {fileID: 1835460691}
   - component: {fileID: 1835460693}
   - component: {fileID: 1835460692}
+  - component: {fileID: 1835460694}
+  - component: {fileID: 1835460695}
   m_Layer: 0
   m_Name: FistObjective
   m_TagString: Untagged
@@ -72344,8 +72344,11 @@ MonoBehaviour:
   introTextUI: {fileID: 1269611827}
   showTextDuration: 5
   audioSource: {fileID: 2103834331}
+  thunderSource: {fileID: 1835460694}
+  footstepsSource: {fileID: 1835460695}
   entranceAudio: {fileID: 8300000, guid: 91eb98be6c15ca54aad8f49c193d1e66, type: 3}
   cameraAudio: {fileID: 8300000, guid: 5bdcadc13a7112f46817712a94165976, type: 3}
+  rainAudio: {fileID: 8300000, guid: cba43d26c33da0d4eb53582df2d03066, type: 3}
   vhsAudio: {fileID: 927242012}
   blackScreen: {fileID: 12406589}
   skipIntro: 0
@@ -72364,6 +72367,200 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f9a02a77b04f814e9f3a2c6d5617968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1835460694
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835460690}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b14449a054f950a4281cad9a2c41c069, type: 3}
+  m_Resource: {fileID: 8300000, guid: b14449a054f950a4281cad9a2c41c069, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.122
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 107
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1835460695
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835460690}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 65302f45b55d0704a93957c493e5d782, type: 3}
+  m_Resource: {fileID: 8300000, guid: 65302f45b55d0704a93957c493e5d782, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1838188343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76790,8 +76987,6 @@ MonoBehaviour:
   - 'Why are you here? '
   micronhponeUI: {fileID: 1520587190}
   micronhponeCanvas: {fileID: 1520587192}
-  commandsButtonCount: 2
-  finalVoice: 5
   dissolveMat: {fileID: 2100000, guid: be9655e7a6b13134fb60774eaf39ba30, type: 2}
   duration: 3
   clip: {fileID: 8300000, guid: b9dcb6af2ba767b4388104893ee2da1e, type: 3}
@@ -79630,8 +79825,6 @@ MonoBehaviour:
   - night
   micronhponeUI: {fileID: 1520587190}
   micronhponeCanvas: {fileID: 1520587192}
-  commandsButtonCount: 3
-  finalVoice: 0
   videoPlayer: {fileID: 162435026}
   videoClip: {fileID: 32900000, guid: 9fa2a027800250a418bbf8a84098f87f, type: 3}
   OnAnimationBegin:

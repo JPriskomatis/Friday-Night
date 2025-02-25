@@ -1,3 +1,4 @@
+using AudioSpace;
 using DG.Tweening;
 using GlobalSpace;
 using ObjectiveSpace;
@@ -15,8 +16,8 @@ public class IntroToMansion : MonoBehaviour
     [SerializeField] private float showTextDuration;
 
     [Header("Audio Settings")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip entranceAudio, cameraAudio;
+    [SerializeField] private AudioSource audioSource, thunderSource, footstepsSource;
+    [SerializeField] private AudioClip entranceAudio, cameraAudio, rainAudio;
     [SerializeField] private GameObject vhsAudio;
 
     [Header("Extra Components")]
@@ -74,14 +75,18 @@ public class IntroToMansion : MonoBehaviour
 
     private IEnumerator Start()
     {
+        footstepsSource.Play();
         if (skipIntro)
         {
             blackScreen.GetComponent<CanvasGroup>().alpha = 0;
             yield break;
         }
+        StartCoroutine(ThunderAudio());
 
         blackScreen.SetActive(true);
         vhsAudio.SetActive(false);
+
+        Audio.Instance.PlayAudioFadeIn(rainAudio, 0.01f, true);
 
         yield return new WaitForSeconds(3f);
 
@@ -90,7 +95,11 @@ public class IntroToMansion : MonoBehaviour
         for (int i = 0; i < introText.Length; i++)
         {
             yield return StartCoroutine(TypeText(introText[i]));
-
+            if(i == introText.Length-1)
+            {
+                Debug.Log("last text");
+                footstepsSource.Stop();
+            }
             float elapsed = 0f;
             while (elapsed < showTextDuration)
             {
@@ -100,7 +109,7 @@ public class IntroToMansion : MonoBehaviour
                 yield return null;
             }
         }
-
+        
         introTextUI.gameObject.SetActive(false);
         HintMessage.Instance.RemoveMessage();
         EntranceDoorAudio();
@@ -120,6 +129,16 @@ public class IntroToMansion : MonoBehaviour
         );
         recTimer.StartTimer();
     }
+
+    private IEnumerator ThunderAudio()
+    {
+        while (this.gameObject.activeSelf) // Infinite loop to keep playing the sound
+        {
+            thunderSource.Play();
+            yield return new WaitForSeconds(12f);
+        }
+    }
+
 
     private void EntranceDoorAudio()
     {

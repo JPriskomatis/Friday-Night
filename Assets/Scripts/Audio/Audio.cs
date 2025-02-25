@@ -7,7 +7,7 @@ namespace AudioSpace
     public class Audio : Singleton<Audio>
     {
         public AudioSource audioSource;
-        [SerializeField] private float duration = 10f;
+        [SerializeField] private float duration = 5f;
 
         public void PlayAudio(AudioClip clip)
         {
@@ -15,9 +15,17 @@ namespace AudioSpace
             audioSource.Play();
         }
 
-        public void PlayAudioFadeIn(AudioClip clip, float? maxIntensity = null)
+        public void PlayAudioFadeIn(AudioClip clip, float? maxIntensity = null, bool? loop = null)
         {
             StartCoroutine(FadeInAudio(clip, duration, maxIntensity));
+            if (loop!=null)
+            {
+                audioSource.loop = true;
+            }
+            else
+            {
+                audioSource.loop = false;
+            }
         }
 
         private IEnumerator FadeInAudio(AudioClip clip, float duration, float? maxIntensity = null)

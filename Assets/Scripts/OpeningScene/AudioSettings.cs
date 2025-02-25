@@ -27,4 +27,27 @@ public class AudioSettings : MonoBehaviour
         }
         audioSource.volume = 1f; // Ensure it's fully set
     }
+
+    public void AudioFadeOut()
+    {
+        StartCoroutine(FadeOutAudio());
+    }
+    IEnumerator FadeOutAudio()
+    {
+        float elapsedTime = 0f;
+        float startVolume = audioSource.volume;
+
+        while (elapsedTime < 3f)
+        {
+            audioSource.volume = Mathf.Lerp(startVolume, 0f, elapsedTime / 3f);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        audioSource.volume = 0f; // Ensure it's fully silent
+
+    }
+
+
+
 }

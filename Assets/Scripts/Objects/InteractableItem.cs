@@ -9,6 +9,7 @@ namespace ObjectSpace
     {
         [Header("Interaction Settings")]
         [SerializeField] protected bool canInteractWith;
+        [SerializeField] protected bool canInteractAgain = false;
         [SerializeField] protected string interactionText;
         private static bool firstInteract = true;
 
@@ -20,7 +21,15 @@ namespace ObjectSpace
         {
             if(Input.GetKeyDown(GlobalConstants.INTERACTION) && canInteractWith)
             {
-                canInteractWith = false;
+                if (!canInteractAgain)
+                {
+                    canInteractWith = false;
+                }
+                else
+                {
+                    canInteractWith = true;
+                }
+                InteractionText.instance.SetText("");
                 BeginInteraction();
             }
         }

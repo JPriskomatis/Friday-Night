@@ -54,22 +54,37 @@ public class PlayerController : Singleton<PlayerController>
         RedirectDirection.onChangeDirection += DisableCameraMovement;
         RedirectDirection.onAllowMovement += EnableCaneraMovement;
 
+        IntroToMansion.OnIntroFinish += ResetControls;
+
     }
 
     private void OnDisable()
     {
         RedirectDirection.onChangeDirection -= DisableCameraMovement;
         RedirectDirection.onAllowMovement -= EnableCaneraMovement;
+
+        IntroToMansion.OnIntroFinish -= ResetControls;
     }
 
     private void Start()
     {
+        //Disable movement until intro is done; 
+        StopMovement();
+        DisableCameraMovement();
+
+
         canMove = true;
         Cursor.lockState = CursorLockMode.Locked;
         canLook = true;
         UpdateMovementVectors();
         noise = virtualCamera.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
 
+    }
+
+    private void ResetControls()
+    {
+        EnableCaneraMovement();
+        ResetMovement();
     }
 
     private void PauseGame()

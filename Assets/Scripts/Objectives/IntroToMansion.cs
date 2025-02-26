@@ -2,6 +2,7 @@ using AudioSpace;
 using DG.Tweening;
 using GlobalSpace;
 using ObjectiveSpace;
+using System;
 using System.Collections;
 using TMPro;
 using UISpace;
@@ -30,6 +31,8 @@ public class IntroToMansion : MonoBehaviour
     [SerializeField] private float typingSpeed = 0.05f;
     private bool isTyping = false;
     private bool sentenceCompleted = false;
+
+    public static Action OnIntroFinish;
 
 
     
@@ -75,12 +78,18 @@ public class IntroToMansion : MonoBehaviour
 
     private IEnumerator Start()
     {
+
+
         footstepsSource.Play();
         if (skipIntro)
         {
             blackScreen.GetComponent<CanvasGroup>().alpha = 0;
+            yield return new WaitForSeconds(2f);
+            OnIntroFinish?.Invoke();
             yield break;
         }
+        
+
         StartCoroutine(ThunderAudio());
 
         blackScreen.SetActive(true);
@@ -128,6 +137,8 @@ public class IntroToMansion : MonoBehaviour
             ()=>blackScreen.SetActive(false)
         );
         recTimer.StartTimer();
+
+        OnIntroFinish?.Invoke();
     }
 
     private IEnumerator ThunderAudio()

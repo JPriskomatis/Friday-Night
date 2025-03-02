@@ -51,7 +51,7 @@ namespace ObjectSpace
             //Enable hint message;
             hintMessage.SetMessage(hintMessageTxt);
 
-            //StartCoroutine(CheckForInput());
+            StartCoroutine(CheckForInput());
         }
 
         IEnumerator CheckForInput()

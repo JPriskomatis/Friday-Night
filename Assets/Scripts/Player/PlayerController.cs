@@ -51,8 +51,6 @@ public class PlayerController : Singleton<PlayerController>
 
     private void OnEnable()
     {
-        RedirectDirection.onChangeDirection += DisableCameraMovement;
-        RedirectDirection.onAllowMovement += EnableCaneraMovement;
 
         IntroToMansion.OnIntroFinish += ResetControls;
 
@@ -60,8 +58,6 @@ public class PlayerController : Singleton<PlayerController>
 
     private void OnDisable()
     {
-        RedirectDirection.onChangeDirection -= DisableCameraMovement;
-        RedirectDirection.onAllowMovement -= EnableCaneraMovement;
 
         IntroToMansion.OnIntroFinish -= ResetControls;
     }

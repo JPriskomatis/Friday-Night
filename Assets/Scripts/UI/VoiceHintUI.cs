@@ -1,3 +1,4 @@
+using System.Collections;
 using DG.Tweening;
 using GlobalSpace;
 using UISpace;
@@ -7,20 +8,36 @@ public class VoiceHintUI : MonoBehaviour
 {
     [SerializeField] private GameObject voicePanel;
     [SerializeField] private CanvasGroup voiceCanvasGroup;
-    [SerializeField] private HintMessage hint;
-    [SerializeField] private string hintTxt;
+
 
     private void Start()
     {
-        hint.SetMessage(hintTxt);
+        StartCoroutine(ActivateVoiceHint());
+        StartCoroutine(CheckForXKey());
     }
-    private void Update()
+
+    IEnumerator ActivateVoiceHint()
     {
-        if (Input.GetKeyDown(GlobalConstants.ESCAPE_ACTION))
+
+        yield return new WaitForSeconds(20f);
+        voiceCanvasGroup.DOFade(0, 1f).OnComplete(() => voicePanel.SetActive(false));
+        Destroy(gameObject, 2f);
+
+
+
+    }
+    private IEnumerator CheckForXKey()
+    {
+        yield return new WaitForSeconds(1f);
+        while (true)
         {
-            hint.RemoveMessage();
-            voiceCanvasGroup.DOFade(0, 1f).OnComplete(() => voicePanel.SetActive(false));
-            Destroy(gameObject, 2f);
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                voiceCanvasGroup.DOFade(0, 1f).OnComplete(() => voicePanel.SetActive(false));
+                Destroy(gameObject, 2f);
+            }
+            yield return null;
         }
     }
+
 }

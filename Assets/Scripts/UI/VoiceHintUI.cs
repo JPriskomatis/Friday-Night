@@ -18,7 +18,7 @@ public class VoiceHintUI : MonoBehaviour
 
     IEnumerator ActivateVoiceHint()
     {
-
+        voiceCanvasGroup.DOFade(1, 1f);
         yield return new WaitForSeconds(20f);
         voiceCanvasGroup.DOFade(0, 1f).OnComplete(() => voicePanel.SetActive(false));
         Destroy(gameObject, 2f);

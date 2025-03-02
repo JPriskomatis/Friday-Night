@@ -67,14 +67,17 @@ public class PlayerController : Singleton<PlayerController>
         //Disable movement until intro is done; 
         StopMovement();
         DisableCameraMovement();
-
-
         canMove = true;
         Cursor.lockState = CursorLockMode.Locked;
-        canLook = true;
+
         UpdateMovementVectors();
         noise = virtualCamera.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
 
+    }
+
+    public void ActivateCanLook()
+    {
+        canLook = true;
     }
 
     private void ResetControls()

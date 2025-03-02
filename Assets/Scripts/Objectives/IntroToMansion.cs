@@ -7,6 +7,7 @@ using System.Collections;
 using TMPro;
 using UISpace;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class IntroToMansion : MonoBehaviour
 {
@@ -35,7 +36,9 @@ public class IntroToMansion : MonoBehaviour
     public static Action OnIntroFinish;
 
 
-    
+    public UnityEvent EnablePlayerCamera;
+
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -141,6 +144,7 @@ public class IntroToMansion : MonoBehaviour
         Audio.Instance.FadeOut();
 
         OnIntroFinish?.Invoke();
+        //EnablePlayerCamera?.Invoke();
     }
 
     private IEnumerator ThunderAudio()

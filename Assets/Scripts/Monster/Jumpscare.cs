@@ -79,6 +79,7 @@ namespace MonsterSpace
 
         IEnumerator ShowcaseBlackScreen()
         {
+            blackScreen.alpha = 1f;
             yield return new WaitForSeconds(0.5f);
 
             blackScreen.DOFade(1, 0f).OnComplete(() =>

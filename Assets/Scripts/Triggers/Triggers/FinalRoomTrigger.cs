@@ -27,7 +27,9 @@ public class FinalRoomTrigger : FloorTrigger
     }
     protected override void InitiateAction()
     {
+        
         SpawnManager.Instance.SpawnMonster(monsterSpawnPoint);
+        Debug.Log("Here: player enter");
 
         StartCoroutine(CheckPlayerLookingAt());
 

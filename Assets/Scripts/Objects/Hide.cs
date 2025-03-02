@@ -42,8 +42,8 @@ namespace ObjectSpace
             anim.SetTrigger(enterAnimationName);
 
             //Enable Mic Detection;
-            micVolume.SetActive(true);
-            micVolumeUI.SetActive(true);
+            //micVolume.SetActive(true);
+            //micVolumeUI.SetActive(true);
 
             sphere.enabled = false;
             anim.applyRootMotion = false;
@@ -51,7 +51,7 @@ namespace ObjectSpace
             //Enable hint message;
             hintMessage.SetMessage(hintMessageTxt);
 
-            StartCoroutine(CheckForInput());
+            //StartCoroutine(CheckForInput());
         }
 
         IEnumerator CheckForInput()

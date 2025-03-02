@@ -6,6 +6,7 @@ using GlobalSpace;
 using TMPro;
 using UISpace;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 
@@ -23,7 +24,9 @@ namespace ObjectSpace
         [SerializeField] private AudioClip clip, clip2;
         [SerializeField] private string hintMsg;
         [SerializeField] CanvasGroup keyboardUI;
+        [SerializeField] Transform typewriterPlacement;
         private TMP_InputField inputField;
+        public UnityEvent TypewriterComplete;
 
         private bool pressedX;
         private void Awake()
@@ -37,9 +40,11 @@ namespace ObjectSpace
 
             HintMessage.Instance.SetMessage(hintMsg);
 
+            //PlayerController.Instance.StopMovement();
+            PlayerController.Instance.MoveToPosition(typewriterPlacement, 2f);
             //Pause the game
-            PlayerController.Instance.DisableCameraMovement();
-            PlayerController.Instance.StopMovement();
+            //PlayerController.Instance.DisableCameraMovement();
+            
 
             //Enable UI;
             inputFieldUI.SetActive(true);
@@ -113,6 +118,7 @@ namespace ObjectSpace
 
             anim.SetTrigger("reveal");
             this.GetComponent<SphereCollider>().enabled = false;
+            TypewriterComplete?.Invoke();
 
         }
         //ClearInput;

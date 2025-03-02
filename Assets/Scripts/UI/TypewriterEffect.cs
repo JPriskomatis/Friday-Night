@@ -60,8 +60,12 @@ namespace UISpace
             isTyping = true;
             sentenceCompleted = false;
 
-            foreach (char c in text)
+            bool insideTag = false; // Track if we're inside a tag
+
+            for (int i = 0; i < text.Length; i++)
             {
+                char c = text[i];
+
                 if (!isTyping)
                 {
                     // Instantly complete the sentence
@@ -69,8 +73,24 @@ namespace UISpace
                     break;
                 }
 
+                if (c == '<')
+                {
+                    insideTag = true; // Start skipping characters
+                }
+
+                // Append character even if it's part of a tag
                 introTextUI.text += c;
-                yield return new WaitForSeconds(typingSpeed);
+
+                if (c == '>')
+                {
+                    insideTag = false; // Stop skipping once '>' is found
+                    continue; // Move to next character instantly
+                }
+
+                if (!insideTag)
+                {
+                    yield return new WaitForSeconds(typingSpeed);
+                }
             }
 
             isTyping = false;

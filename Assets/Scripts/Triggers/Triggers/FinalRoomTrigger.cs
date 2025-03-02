@@ -20,6 +20,11 @@ public class FinalRoomTrigger : FloorTrigger
     {
         camera = Camera.main;
     }
+
+    private void OnDisable()
+    {
+        ActivateDemoScene();
+    }
     protected override void InitiateAction()
     {
         SpawnManager.Instance.SpawnMonster(monsterSpawnPoint);
@@ -52,11 +57,15 @@ public class FinalRoomTrigger : FloorTrigger
 
     private void ActivateDemoScene()
     {
+
         demoUI.SetActive(true);
     }
 
     IEnumerator DelayMethod()
     {
+        //Lock movement
+        PlayerController.Instance.StopMovement();
+
         yield return new WaitForSeconds(0f);
         jumpscare.InitiateJumpscare();
         //Jumpscare Audio;
@@ -65,7 +74,11 @@ public class FinalRoomTrigger : FloorTrigger
         //PlayerCamera.Instance.InitiateGlitchEffect();
         Destroy(spawnedMonster.gameObject, 0.5f);
 
+        
+        
         Debug.Log("END GAME");
+
+
         Destroy(this);
     }
 

@@ -18,6 +18,8 @@ public class EndDemo : MonoBehaviour
         HintMessage.Instance.SetMessage(hintMsg);
         yield return new WaitForSeconds(2f);
         textToAppear.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        Application.Quit();
     }
 
 }

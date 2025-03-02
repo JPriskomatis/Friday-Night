@@ -138,6 +138,8 @@ public class IntroToMansion : MonoBehaviour
         );
         recTimer.StartTimer();
 
+        Audio.Instance.FadeOut();
+
         OnIntroFinish?.Invoke();
     }
 

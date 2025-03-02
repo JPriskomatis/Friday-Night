@@ -1,4 +1,5 @@
 using AudioSpace;
+using DG.Tweening.Core.Easing;
 using MonsterSpace;
 using ObjectSpace;
 using PlayerSpace;
@@ -13,6 +14,7 @@ namespace TriggerSpace
     {
         [SerializeField] private AudioSource source, source2;
         [SerializeField] private AudioClip clip;
+        [SerializeField] private Flashlight flash;
 
         [SerializeField] private Door door;
 
@@ -45,6 +47,7 @@ namespace TriggerSpace
 
         private void FlickeringEffect()
         {
+            flash.StartPulsing();
             StartCoroutine(FadeInAudio(source2, 2f));
         }
 

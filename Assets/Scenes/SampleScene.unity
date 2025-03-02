@@ -28001,6 +28001,7 @@ MonoBehaviour:
   source: {fileID: 1943018970}
   source2: {fileID: 653324828}
   clip: {fileID: 8300000, guid: aa7e18111e3fc944882e000ff4e8c587, type: 3}
+  flash: {fileID: 9005362504384719306}
   door: {fileID: 8479541102517924676}
 --- !u!65 &653324827
 BoxCollider:
@@ -88634,7 +88635,7 @@ Transform:
   m_GameObject: {fileID: 5480920538975201794}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.65864444, z: -0, w: -0.7524544}
-  m_LocalPosition: {x: 271.361, y: 11.161, z: 250.889}
+  m_LocalPosition: {x: 278.11, y: 7.33, z: 261.226}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -89584,6 +89585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashlight: {fileID: 2945124147603691150}
+  isPulsingStopped: 0
 --- !u!1 &9074598296121985280
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ namespace VoiceSpace
 
         public static event Action OnFlickering;
         public static event Action OnStopMirror;
-
+        public static event Action OnStopFlashlightPulse;
 
 
 
@@ -44,6 +44,7 @@ namespace VoiceSpace
 
         private void AreYouHere()
         {
+            OnStopFlashlightPulse?.Invoke();
             if (!hasAppeared)
             {
                 StartCoroutine(Dissolve(1f, 0.25f, duration));

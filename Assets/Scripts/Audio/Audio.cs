@@ -11,12 +11,15 @@ namespace AudioSpace
 
         public void PlayAudio(AudioClip clip)
         {
+            audioSource.loop = false;
+            audioSource.volume = 0.8f;
             audioSource.clip = clip;
             audioSource.Play();
         }
 
         public void PlayAudioFadeIn(AudioClip clip, float? maxIntensity = null, bool? loop = null)
         {
+            audioSource.loop = false;
             StartCoroutine(FadeInAudio(clip, duration, maxIntensity));
             if (loop!=null)
             {

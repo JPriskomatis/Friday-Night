@@ -13,6 +13,9 @@ public class FinalRoomTrigger : FloorTrigger
     private GameObject spawnedMonster;
     private Camera camera;
 
+    [Header("Demo UI")]
+    [SerializeField] private GameObject demoUI;
+
     private void Start()
     {
         camera = Camera.main;
@@ -45,6 +48,11 @@ public class FinalRoomTrigger : FloorTrigger
 
             yield return null; // Wait for the next frame
         }
+    }
+
+    private void ActivateDemoScene()
+    {
+        demoUI.SetActive(true);
     }
 
     IEnumerator DelayMethod()

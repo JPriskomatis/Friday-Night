@@ -57,6 +57,14 @@ namespace NoteSpace
             if (Input.GetKeyDown(GlobalConstants.NOTE))
             {
                 noteCanva.SetActive(!noteCanva.activeSelf);
+                if (noteCanva.activeSelf)
+                {
+                    PlayerController.Instance.StopMovement();
+                }
+                else
+                {
+                    PlayerController.Instance.ResetMovement();
+                }
             }
 
         }

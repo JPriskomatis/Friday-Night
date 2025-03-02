@@ -152,7 +152,7 @@ public class PlayerController : Singleton<PlayerController>
         if (direction.magnitude > 0.1f) // Moving on the ground
         {
             footstepTimer -= Time.deltaTime;
-            if (footstepTimer <= 0f)
+            if (footstepTimer <= 0f && characterController.enabled)
             {
                 PlayFootstepSound();
                 footstepTimer = footstepInterval; // Reset timer

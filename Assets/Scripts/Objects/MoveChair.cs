@@ -8,11 +8,11 @@ namespace ObjectSpace
         [SerializeField] private AudioSource audioSource;
         private void OnEnable()
         {
-            ExaminePainting.OnExamine += StartMoveChair;
+            ExamineObject.OnExamine += StartMoveChair;
         }
         private void OnDisable()
         {
-            ExaminePainting.OnExamine -= StartMoveChair;
+            ExamineObject.OnExamine -= StartMoveChair;
         }
 
         public void StartMoveChair()

@@ -1,5 +1,6 @@
 using GlobalSpace;
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 
 namespace PlayerSpace
@@ -11,7 +12,6 @@ namespace PlayerSpace
 
         [Header("Glitch Effects")]
         [SerializeField] private GameObject suddenGlitch;
-
 
 
         public void InitiateGlitchEffect()

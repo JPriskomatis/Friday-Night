@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ExaminePainting : InteractableItem
+public class ExamineObject : InteractableItem
 {
     public static event Action OnExamine;
     [SerializeField] private string textToDisplay;
@@ -16,6 +16,7 @@ public class ExaminePainting : InteractableItem
         if (hasEvent)
         {
             eventAction?.Invoke();
+            Debug.Log("evoked");
         }
     }
 }

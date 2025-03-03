@@ -53,7 +53,7 @@ namespace NoteSpace
 
             
         }
-        //When we pick up a note we want to lock the camera and unlock it when we put the note down;
+        //When we pick up a note we want to lock the camera and unlock it when we put the note down ;
         public void StopCameraRotate()
         {
             PlayerController.Instance.DisableCameraMovement();

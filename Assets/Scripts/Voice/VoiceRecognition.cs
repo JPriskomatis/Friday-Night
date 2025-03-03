@@ -33,7 +33,17 @@ namespace VoiceSpace
         //TODO:
         //Create a function StartListening???
 
+        private void OnEnable()
+        {
+            micronhponeUI.SetActive(true);
+            micronhponeCanvas.DOFade(1, 1f);
+        }
 
+        private void OnDisable()
+        {
+            micronhponeCanvas.DOFade(0, 1f).OnComplete(
+                () => micronhponeUI.SetActive(false));
+        }
 
 
         protected virtual void Start()
@@ -47,7 +57,7 @@ namespace VoiceSpace
 
             keywordRecognizer.Start();
 
-            //micronhponeUI.SetActive(true);
+            micronhponeUI.SetActive(true);
             micronhponeCanvas.DOFade(1, 1f);
 
         }
@@ -61,6 +71,7 @@ namespace VoiceSpace
 
         protected void ExitVoiceAction()
         {
+
             HintMessage.Instance.RemoveMessage();
             PlayerController.Instance.ResetMovement();
             this.GetComponent<SphereCollider>().enabled = false;

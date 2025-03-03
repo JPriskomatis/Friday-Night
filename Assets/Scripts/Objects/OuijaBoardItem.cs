@@ -25,6 +25,7 @@ namespace ObjectSpace
         [SerializeField] float speed;
 
         [SerializeField] private bool hasLighter;
+        private bool candleLit;
 
         private void OnEnable()
         {
@@ -49,9 +50,14 @@ namespace ObjectSpace
                 HintMessage.Instance.SetMessage(hintMessage);
 
                 //Light candle;
-                StartCoroutine(LightCandle());
+                if (!candleLit)
+                {
+                    StartCoroutine(LightCandle());
+                    candleLit = true;
+                }
 
                 OnUseOuija?.Invoke();
+                OnUseOuija = null;
             }
             else
             {

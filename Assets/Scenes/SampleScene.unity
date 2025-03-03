@@ -6600,7 +6600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32b6c6375f9b2c468ca5c3f3de71abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntroToMansion: 0
+  skipIntroToMansion: 1
 --- !u!1001 &149712614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25958,6 +25958,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: dd56b1fbc7b6de148b25a5e7b13bb23e, type: 2}
+    - target: {fileID: 3971044355596694726, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4346021339515678332, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -25965,7 +25969,7 @@ PrefabInstance:
     - target: {fileID: 6465370785612092364, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 14118f1b32f6cff4d8d8e9fb3ea56ed6, type: 2}
+      objectReference: {fileID: 2100000, guid: d786e68cbab05f640a693003d08269d5, type: 2}
     - target: {fileID: 6930394985048472702, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
       propertyPath: newImage
       value: 
@@ -31678,6 +31682,10 @@ PrefabInstance:
       propertyPath: newImage
       value: 
       objectReference: {fileID: 2100000, guid: 4fb4266f9c6bcb3458699e524f7b75ed, type: 2}
+    - target: {fileID: 6930394985048472702, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8606042230655068291, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -31685,6 +31693,10 @@ PrefabInstance:
     - target: {fileID: 9074598295464411094, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
       propertyPath: m_Name
       value: Painting (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074598295464411094, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -49113,12 +49125,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222836400}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -266.20474, y: -7.266314, z: -267.10916}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1835460691}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1224417081
 PrefabInstance:
@@ -61053,7 +61065,7 @@ PrefabInstance:
     - target: {fileID: 6465370785612092364, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6149a50ced365d2419a1f737becd2fcd, type: 2}
+      objectReference: {fileID: 2100000, guid: 3822a6b7574006042b68cbf1bfe238c1, type: 2}
     - target: {fileID: 6930394985048472702, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
       propertyPath: newImage
       value: 
@@ -73102,7 +73114,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1222836403}
   m_Father: {fileID: 187563462}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1835460692
@@ -73118,16 +73131,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introText:
-  - "My name is Michael Maxwell. I\u2019m a detective\u2014and the sole survivor
-    of my family."
-  - A few weeks ago, they were murdered in their home by a homeless maniac
-  - The police claim it was a random act, an alcoholic who broke in and slaughtered
-    them
-  - Case closed. No further details. No real investigation. And no media coverage.
-  - "It\u2019s like the town wants to erase it\u2014pretend it never happened. "
-  - "But I won\u2019t let that happen. "
+  - "My name is Michael Maxwell. I\u2019m a detective, and the last remainder of
+    my family. "
+  - 'A few weeks ago, they were murdered in their own home by a homeless maniac '
+  - 'The police claimed the individual who broke in was highly intoxicated and tried
+    to bury all the details about it. '
+  - 'No real investigation was performed and the case closed. No further details
+    and no media coverage. '
+  - "It\u2019s like the town wants to erase this incident, pretend it never happened. "
+  - "But I won\u2019t let that happen.  "
   - "I\u2019m going back. Back to my childhood home. Back to uncover the truth\u2026
-    no matter what I find lurking in the dark. "
+    no matter what I find lurking in the dark.  "
   objectiveText: Find Clues from what happend
   introTextUI: {fileID: 1269611827}
   showTextDuration: 5
@@ -84163,6 +84177,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Painting (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 9074598295464411094, guid: 239625aa1a7cf4d42b583aea0286f9d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -89113,7 +89131,7 @@ Transform:
   m_GameObject: {fileID: 5480920538975201794}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.75435084, z: -0, w: 0.6564715}
-  m_LocalPosition: {x: 277.462, y: 6.973, z: 261.059}
+  m_LocalPosition: {x: 267.78, y: 6.973, z: 251.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -90121,7 +90139,6 @@ MeshCollider:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1222836403}
   - {fileID: 428574457}
   - {fileID: 1916970497}
   - {fileID: 71258533}

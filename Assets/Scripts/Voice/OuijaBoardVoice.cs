@@ -6,6 +6,7 @@ using DG.Tweening;
 using GlobalSpace;
 using PlayerSpace;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Events;
 
 namespace VoiceSpace
@@ -45,6 +46,7 @@ namespace VoiceSpace
 
         [Header("Extra Components")]
         [SerializeField] GameObject key;
+        [SerializeField] private AudioSource audioSource;
 
         public UnityEvent OnAppearNote;
 
@@ -149,7 +151,7 @@ namespace VoiceSpace
                 StartCoroutine(CheckPlayerLookingAt(jack, () =>
                 {
                     Debug.Log("Looked at Jack");
-
+                    audioSource.Stop();
                     StartCoroutine(DelayForGlitch());
 
                 }));
@@ -225,10 +227,49 @@ namespace VoiceSpace
         {
             if (!firstClip)
             {
-                Audio.Instance.PlayAudioFadeIn(clip, 0.3f);
+                PlayAudioFadeIn(clip, 0.3f);
                 firstClip = true;
             }
         }
+
+
+
+        public void PlayAudioFadeIn(AudioClip clip, float? maxIntensity = null, bool? loop = null)
+        {
+            audioSource.loop = false;
+            StartCoroutine(FadeInAudio(clip, 5f, maxIntensity));
+            if (loop != null)
+            {
+                audioSource.loop = true;
+            }
+            else
+            {
+                audioSource.loop = false;
+            }
+        }
+
+
+        private IEnumerator FadeInAudio(AudioClip clip, float duration, float? maxIntensity = null)
+        {
+            audioSource.clip = clip;
+            audioSource.volume = 0;
+            audioSource.Play();
+
+            float targetVolume = maxIntensity ?? 1.0f;
+            float elapsedTime = 0f;
+
+            while (elapsedTime < duration)
+            {
+                audioSource.volume = Mathf.Lerp(0, targetVolume, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            audioSource.volume = targetVolume;
+        }
+
+
+
         private IEnumerator MoveArrowToWordWithCompletion(string word, Action onComplete)
         {
             // Call the existing MoveArrowToWord coroutine

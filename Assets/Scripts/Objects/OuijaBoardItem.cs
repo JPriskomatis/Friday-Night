@@ -5,6 +5,7 @@ using PlayerSpace;
 using System.Collections;
 using UISpace;
 using UnityEngine;
+using UnityEngine.Events;
 using VoiceSpace;
 
 namespace ObjectSpace
@@ -17,6 +18,7 @@ namespace ObjectSpace
         [SerializeField] private string findLighterTxt;
         [SerializeField] private GameObject candleLight;
         [SerializeField] private AudioClip lighterClip;
+        public UnityEvent OnUseOuija;
 
         [Header("Move to Position Settings")]
         [SerializeField] Transform targetTransform;
@@ -48,6 +50,8 @@ namespace ObjectSpace
 
                 //Light candle;
                 StartCoroutine(LightCandle());
+
+                OnUseOuija?.Invoke();
             }
             else
             {

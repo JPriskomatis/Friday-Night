@@ -6,6 +6,7 @@ using DG.Tweening;
 using GlobalSpace;
 using PlayerSpace;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace VoiceSpace
 {
@@ -44,6 +45,8 @@ namespace VoiceSpace
 
         [Header("Extra Components")]
         [SerializeField] GameObject key;
+
+        public UnityEvent OnAppearNote;
 
 
         private Camera camera;
@@ -97,6 +100,7 @@ namespace VoiceSpace
 
             //Where are you
             voiceActions.Add(speechWords[10], WhereAreYou);
+            voiceActions.Add(speechWords[11], WhereAreYou);
             Debug.Log("Added: " + speechWords[10]);
         }
 
@@ -124,6 +128,9 @@ namespace VoiceSpace
         private void WhereAreYou()
         {
             PlayAudio();
+
+            OnAppearNote?.Invoke();
+
             string answer = WhereAreYouAnswer;
             Debug.Log("This actually works");
 

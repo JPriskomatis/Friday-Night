@@ -39,7 +39,7 @@ namespace TriggerSpace
             StartCoroutine(StartCountdown());
 
             source2.Play();
-            Audio.Instance.PlayAudio(clip);
+            Audio.Instance.PlayAudio(clip, true);
             
         }
 

@@ -16,6 +16,7 @@ namespace ObjectSpace
     {
         [Header("Word to guess")]
         [SerializeField] private string correctWord;
+        [SerializeField] private string correctWord2;
         private string guessWord;
 
         [Header("Extra components")]
@@ -87,7 +88,7 @@ namespace ObjectSpace
         //Check input;
         public void CheckWord()
         {
-            if (guessWord.Equals(correctWord))
+            if (guessWord.Equals(correctWord) || guessWord.Equals(correctWord2))
             {
                 Debug.Log("Correct word");
                 Correct();

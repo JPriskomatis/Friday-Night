@@ -136,9 +136,7 @@ public class IntroToMansion : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         vhsAudio.SetActive(true);
-        blackScreen.GetComponent<CanvasGroup>().DOFade(0,1f).OnComplete(
-            ()=>blackScreen.SetActive(false)
-        );
+        blackScreen.GetComponent<CanvasGroup>().DOFade(0,1f);
         recTimer.StartTimer();
 
         Audio.Instance.FadeOut();

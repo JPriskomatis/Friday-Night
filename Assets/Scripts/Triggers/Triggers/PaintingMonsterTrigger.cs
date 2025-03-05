@@ -70,7 +70,7 @@ namespace TriggerSpace
 
         IEnumerator DelayMethod()
         {
-            yield return new WaitForSeconds(0f);
+            yield return new WaitForSeconds(0.25f);
             jumpscare.InitiateJumpscare();
             //Jumpscare Audio;
             Audio.Instance.PlayAudio(jumpscareClip);

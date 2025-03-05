@@ -65,6 +65,7 @@ namespace MonsterSpace
                 mat.SetFloat("_ScanLinesStrength", currentScanlinesStrength);
             }, scanlinesStrength, 1f);
 
+            PlayerController.Instance.StopMovement();
             yield return new WaitForSeconds(0.5f);
             StopController();
         }
@@ -72,7 +73,7 @@ namespace MonsterSpace
 
         public void StopController()
         {
-            PlayerController.Instance.StopMovement();
+   
             PlayerController.Instance.DisableCameraMovement();
             cinemaCam.SetActive(false);
         }

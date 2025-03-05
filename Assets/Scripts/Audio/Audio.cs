@@ -9,9 +9,18 @@ namespace AudioSpace
         public AudioSource audioSource;
         [SerializeField] private float duration = 5f;
 
-        public void PlayAudio(AudioClip clip)
+        public void PlayAudio(AudioClip clip, bool? loop = null)
         {
             audioSource.loop = false;
+            if(loop != null)
+            {
+                audioSource.loop = true;
+            }
+            else
+            {
+                audioSource.loop = false;
+            }
+
             audioSource.volume = 0.8f;
             audioSource.clip = clip;
             audioSource.Play();

@@ -3611,6 +3611,104 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 116766353}
+  audioSource2: {fileID: 78689525}
+--- !u!82 &78689525
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78689498}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f3fa2b0751e5a214987b6c2e0d7cdd33, type: 3}
+  m_Resource: {fileID: 8300000, guid: f3fa2b0751e5a214987b6c2e0d7cdd33, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &81786586
 GameObject:
   m_ObjectHideFlags: 0
@@ -6531,7 +6629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32b6c6375f9b2c468ca5c3f3de71abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntroToMansion: 1
+  skipIntroToMansion: 0
 --- !u!1001 &149712614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26769,6 +26867,7 @@ MonoBehaviour:
   canInteractAgain: 0
   interactionText: Use Typewriter
   correctWord: friday
+  correctWord2: 
   inputFieldUI: {fileID: 1026697645}
   anim: {fileID: 642857191}
   clip: {fileID: 8300000, guid: b0919795e776bfa4d9250ae6b75e3132, type: 3}
@@ -77735,7 +77834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canInteractWith: 1
-  canInteractAgain: 0
+  canInteractAgain: 1
   interactionText: Check Mirror
   targetPos: {fileID: 134128480}
   speed: 2
@@ -85398,6 +85497,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2391347323180012580, guid: b8b3c610511b47c478e4a20189000576, type: 3}
       insertIndex: -1
       addedObject: {fileID: 78689519}
+    - targetCorrespondingSourceObject: {fileID: 2391347323180012580, guid: b8b3c610511b47c478e4a20189000576, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 78689525}
   m_SourcePrefab: {fileID: 100100000, guid: b8b3c610511b47c478e4a20189000576, type: 3}
 --- !u!4 &2120261453 stripped
 Transform:
@@ -92237,7 +92339,7 @@ Transform:
   m_GameObject: {fileID: 5480920538975201794}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.75435084, z: -0, w: 0.6564715}
-  m_LocalPosition: {x: 268.705, y: 6.76, z: 265.377}
+  m_LocalPosition: {x: 278.112, y: 6.76, z: 261.113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

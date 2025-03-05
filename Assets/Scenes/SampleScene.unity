@@ -20764,7 +20764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5892789578242562698, guid: 67db1456f14baf7439c3bc40194ca889, type: 3}
       propertyPath: m_Size.y
-      value: 0.51486206
+      value: 1.3209252
       objectReference: {fileID: 0}
     - target: {fileID: 5892789578242562698, guid: 67db1456f14baf7439c3bc40194ca889, type: 3}
       propertyPath: m_Center.x
@@ -20772,11 +20772,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5892789578242562698, guid: 67db1456f14baf7439c3bc40194ca889, type: 3}
       propertyPath: m_Center.y
-      value: 0.25743103
+      value: 0.6604626
       objectReference: {fileID: 0}
     - target: {fileID: 5892789578242562698, guid: 67db1456f14baf7439c3bc40194ca889, type: 3}
       propertyPath: m_Center.z
       value: 0.023432136
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892789578242562698, guid: 67db1456f14baf7439c3bc40194ca889, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -62167,7 +62171,7 @@ MonoBehaviour:
   canInteractWith: 1
   canInteractAgain: 0
   interactionText: Read Note
-  noteSO: {fileID: 11400000, guid: 81f615442fd5c6d40a515e5f17039305, type: 2}
+  noteSO: {fileID: 11400000, guid: de6a12fe64f3ad4489e0107f24f12e18, type: 2}
   hasEvent: 1
   clip: {fileID: 8300000, guid: 4c58d28a4ecc0c54daf6206340a8dcae, type: 3}
   OnPickup:
@@ -62235,7 +62239,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fabc648132ede5649b22dc64e9dc640e, type: 2}
+  - {fileID: 2100000, guid: f8b3efa4540fc4947a893e77bda689fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

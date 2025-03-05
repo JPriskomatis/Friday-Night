@@ -71,6 +71,8 @@ namespace VoiceSpace
 
         protected void ExitVoiceAction()
         {
+            micronhponeCanvas.DOFade(0, 1f).OnComplete(
+                () => micronhponeUI.SetActive(false));
 
             HintMessage.Instance.RemoveMessage();
             PlayerController.Instance.ResetMovement();

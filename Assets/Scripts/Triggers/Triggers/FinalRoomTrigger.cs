@@ -68,7 +68,7 @@ public class FinalRoomTrigger : FloorTrigger
         //Lock movement
         PlayerController.Instance.StopMovement();
 
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(0.5f);
         jumpscare.InitiateJumpscare();
         //Jumpscare Audio;
         //Audio.Instance.PlayAudio(jumpscareClip);

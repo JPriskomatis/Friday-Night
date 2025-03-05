@@ -12824,9 +12824,8 @@ GameObject:
   - component: {fileID: 311367714}
   - component: {fileID: 311367713}
   - component: {fileID: 311367712}
-  - component: {fileID: 311367711}
   m_Layer: 0
-  m_Name: BrotherNote (1)
+  m_Name: TVNote
   m_TagString: Voice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12847,19 +12846,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 290611532}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!114 &311367711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 311367709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a8b5908c74f094da3a0d49f19d2967, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bloodAppears: {fileID: 1943018957}
 --- !u!135 &311367712
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -25839,8 +25825,7 @@ Transform:
   m_LocalPosition: {x: 271.74878, y: 4.245617, z: 267.45193}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2089048272}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &629571192
@@ -62194,7 +62179,6 @@ GameObject:
   - component: {fileID: 1612108083}
   - component: {fileID: 1612108082}
   - component: {fileID: 1612108081}
-  - component: {fileID: 1612108080}
   m_Layer: 0
   m_Name: NoteOuijaRoom
   m_TagString: Voice
@@ -62217,19 +62201,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 290611532}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1612108080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1612108078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a8b5908c74f094da3a0d49f19d2967, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bloodAppears: {fileID: 1943018957}
 --- !u!135 &1612108081
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -62266,7 +62237,7 @@ MonoBehaviour:
   canInteractWith: 1
   canInteractAgain: 0
   interactionText: Read Note
-  noteSO: {fileID: 11400000, guid: 81f615442fd5c6d40a515e5f17039305, type: 2}
+  noteSO: {fileID: 11400000, guid: de6a12fe64f3ad4489e0107f24f12e18, type: 2}
   hasEvent: 1
   clip: {fileID: 8300000, guid: 4c58d28a4ecc0c54daf6206340a8dcae, type: 3}
   OnPickup:
@@ -62298,19 +62269,7 @@ MonoBehaviour:
         m_CallState: 2
   OnPickdown:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2014521199}
-        m_TargetAssemblyTypeName: UnityEngine.Collider, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!23 &1612108083
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -62334,7 +62293,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fabc648132ede5649b22dc64e9dc640e, type: 2}
+  - {fileID: 2100000, guid: 802a3df996a38ba4a8075df02f3fb9e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83888,11 +83847,11 @@ Transform:
   m_GameObject: {fileID: 2089048271}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.26, y: 5.786, z: -16.293}
+  m_LocalPosition: {x: 271.48877, y: 10.031616, z: 251.15894}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 629571191}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2089584609
 GameObject:
@@ -92339,7 +92298,7 @@ Transform:
   m_GameObject: {fileID: 5480920538975201794}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.75435084, z: -0, w: 0.6564715}
-  m_LocalPosition: {x: 278.112, y: 6.76, z: 261.113}
+  m_LocalPosition: {x: 277.285, y: 6.966, z: 261.108}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -94007,6 +93966,7 @@ SceneRoots:
   - {fileID: 71258533}
   - {fileID: 1148378604}
   - {fileID: 148680711}
+  - {fileID: 2089048272}
   - {fileID: 187563462}
   - {fileID: 629571191}
   - {fileID: 1238727346}

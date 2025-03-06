@@ -21,6 +21,10 @@ namespace VoiceSpace
         [SerializeField] private GameObject micronhponeUI;
         [SerializeField] private CanvasGroup micronhponeCanvas;
 
+        [SerializeField] private MicrophoneSelect microphoneSelect;
+        private string selectedMic;
+
+
         //fire event to VoiceButtonDisplay UI;
 
 
@@ -48,6 +52,18 @@ namespace VoiceSpace
 
         protected virtual void Start()
         {
+
+            selectedMic = microphoneSelect.microphone; // Get the selected microphone from the ScriptableObject
+
+            if (string.IsNullOrEmpty(selectedMic) || !Microphone.devices.Contains(selectedMic))
+            {
+                selectedMic = Microphone.devices.Length > 0 ? Microphone.devices[0] : null;
+            }
+
+            Debug.Log($"Using Microphone: {selectedMic}");
+
+
+
             AddDictionaryFunctions();
 
             //When we want to stop it;

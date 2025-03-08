@@ -38,6 +38,9 @@ public class IntroToMansion : MonoBehaviour
 
     public UnityEvent EnablePlayerCamera;
 
+    public GameEvent TypingAudio;
+    public GameEvent StopTypingAudio;
+
 
     private void Update()
     {
@@ -62,6 +65,7 @@ public class IntroToMansion : MonoBehaviour
         isTyping = true;
         sentenceCompleted = false;
 
+        TypingAudio.Raise();
         foreach (char c in text)
         {
             if (!isTyping)
@@ -77,6 +81,7 @@ public class IntroToMansion : MonoBehaviour
 
         isTyping = false;
         sentenceCompleted = true;
+        StopTypingAudio.Raise();
     }
 
     private IEnumerator Start()
@@ -141,7 +146,7 @@ public class IntroToMansion : MonoBehaviour
 
         Audio.Instance.FadeOut();
 
-        OnIntroFinish?.Invoke();
+        StopTypingAudio.Raise();
         //EnablePlayerCamera?.Invoke();
     }
 

@@ -147,6 +147,7 @@ public class IntroToMansion : MonoBehaviour
         Audio.Instance.FadeOut();
 
         StopTypingAudio.Raise();
+        OnIntroFinish?.Invoke();
         //EnablePlayerCamera?.Invoke();
     }
 

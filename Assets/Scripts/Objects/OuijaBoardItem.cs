@@ -5,6 +5,7 @@ using PlayerSpace;
 using System.Collections;
 using UISpace;
 using UnityEngine;
+using UnityEngine.Events;
 using VoiceSpace;
 
 namespace ObjectSpace
@@ -17,31 +18,28 @@ namespace ObjectSpace
         [SerializeField] private string findLighterTxt;
         [SerializeField] private GameObject candleLight;
         [SerializeField] private AudioClip lighterClip;
+        public UnityEvent OnUseOuija;
 
         [Header("Move to Position Settings")]
         [SerializeField] Transform targetTransform;
         [SerializeField] float speed;
 
-        private bool hasLighter;
+        [SerializeField] private bool hasLighter;
+        private bool candleLit;
 
         private void OnEnable()
         {
-            LighterDesk.OnGrabLighter += HasLighter;
             OuijaBoardVoice.OnOuijaJumpscare += EscapeOuija;
         }
 
         private void OnDisable()
         {
-            LighterDesk.OnGrabLighter -= HasLighter;
             OuijaBoardVoice.OnOuijaJumpscare -= EscapeOuija;
         }
-        private void HasLighter()
-        {
-            hasLighter = true;
-        }
+
         protected override void BeginInteraction()
         {
-            if (hasLighter)
+            if (LighterDesk.lighterAcquired || hasLighter)
             {
                 //MovePlayer;
                 PlayerController.Instance.MoveToPosition(targetTransform, speed);
@@ -52,7 +50,14 @@ namespace ObjectSpace
                 HintMessage.Instance.SetMessage(hintMessage);
 
                 //Light candle;
-                StartCoroutine(LightCandle());
+                if (!candleLit)
+                {
+                    StartCoroutine(LightCandle());
+                    candleLit = true;
+                }
+
+                OnUseOuija?.Invoke();
+                OnUseOuija = null;
             }
             else
             {
@@ -73,7 +78,7 @@ namespace ObjectSpace
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKeyDown(GlobalConstants.ESCAPE_ACTION))
             {
 
                 //TESTING

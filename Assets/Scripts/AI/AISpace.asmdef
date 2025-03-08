@@ -2,7 +2,9 @@
     "name": "AISpace",
     "rootNamespace": "",
     "references": [
-        "GUID:3b4f1931c59a08d4087781d9d8bb9718"
+        "GUID:3b4f1931c59a08d4087781d9d8bb9718",
+        "GUID:63e4ac5ddd9bb9941a71e29903778d70",
+        "GUID:06fad9224f16e9247817160957f45f79"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

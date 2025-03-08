@@ -37,14 +37,6 @@ namespace MonsterSpace
             mat.SetFloat("_GlitchStrength", 0);
             mat.SetFloat("_ScanLinesStrength", 1);
         }
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                InitiateJumpscare();
-            }
-            
-        }
         public void InitiateJumpscare()
         {
             StartCoroutine(StartGlitchEffect());
@@ -73,6 +65,7 @@ namespace MonsterSpace
                 mat.SetFloat("_ScanLinesStrength", currentScanlinesStrength);
             }, scanlinesStrength, 1f);
 
+            PlayerController.Instance.StopMovement();
             yield return new WaitForSeconds(0.5f);
             StopController();
         }
@@ -80,13 +73,14 @@ namespace MonsterSpace
 
         public void StopController()
         {
-            PlayerController.Instance.StopMovement();
+   
             PlayerController.Instance.DisableCameraMovement();
             cinemaCam.SetActive(false);
         }
 
         IEnumerator ShowcaseBlackScreen()
         {
+            blackScreen.alpha = 1f;
             yield return new WaitForSeconds(0.5f);
 
             blackScreen.DOFade(1, 0f).OnComplete(() =>

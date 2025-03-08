@@ -9,4 +9,6 @@ public class NoteMirror : MonoBehaviour
     {
         bloodAppears.SetActive(true);
     }
+
+
 }

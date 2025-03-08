@@ -1,3 +1,4 @@
+using AudioSpace;
 using ObjectSpace;
 using System;
 using System.Collections;
@@ -126,7 +127,11 @@ namespace AISpace
 
             //If we've reached the last waypoint, lthe mosnter disappears;
             if (waypointIndex >= waypoint.Length)
+            {
                 Destroy(gameObject);
+                Audio.Instance.FadeOut();
+            }
+
 
             moveCoroutine = null;
             StartMovement();

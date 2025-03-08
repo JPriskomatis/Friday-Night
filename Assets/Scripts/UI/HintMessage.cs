@@ -17,12 +17,16 @@ namespace UISpace
         }
         public void SetMessage(string message)
         {
+            messageCanvasGroup.DOKill();
             hintMessage.text = message;
-            messageCanvasGroup.DOFade(1f, 2);
+            messageCanvasGroup.DOFade(1f, 2).OnComplete(
+                ()=>messageCanvasGroup.alpha =1);
         }
         public void RemoveMessage()
         {
-            messageCanvasGroup.DOFade(0f, 1);
+            messageCanvasGroup.DOKill();
+            messageCanvasGroup.DOFade(0f, 1).OnComplete(
+                () => messageCanvasGroup.alpha = 0);
         }
     }
 

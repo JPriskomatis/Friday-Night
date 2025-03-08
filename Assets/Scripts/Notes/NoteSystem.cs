@@ -34,6 +34,7 @@ namespace NoteSpace
             }
         }
 
+
         public void AcquiredNote(Note note)
         {
             notes.Add(note);

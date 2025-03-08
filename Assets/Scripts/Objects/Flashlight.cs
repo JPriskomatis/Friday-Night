@@ -9,31 +9,28 @@ namespace ObjectSpace
         [SerializeField] private Light flashlight;
         private float originalIntensity;
         private float flickerDuration = 4f;
+        public bool isPulsingStopped = false;
 
         private void OnEnable()
         {
+            BathroomMirrorVOICE.OnStopFlashlightPulse += StopPulsing;
             BathroomMirrorVOICE.OnFlickering += StartFlicker;
             FinalPainting.OnFlicker += StartFlicker;
         }
 
         private void OnDisable()
         {
+            BathroomMirrorVOICE.OnStopFlashlightPulse -= StopPulsing;
             BathroomMirrorVOICE.OnFlickering -= StartFlicker;
             FinalPainting.OnFlicker -= StartFlicker;
         }
+
         void Start()
         {
             flashlight = GetComponent<Light>();
             if (flashlight != null)
             {
                 originalIntensity = flashlight.intensity;
-            }
-        }
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.V))
-            {
-                StartFlicker();
             }
         }
 
@@ -59,6 +56,30 @@ namespace ObjectSpace
                 flashlight.intensity = originalIntensity;
             });
         }
-    }
 
+        public void StartPulsing()
+        {
+            if (flashlight == null) return;
+            isPulsingStopped = false;
+            float currentIntensity = flashlight.intensity;
+
+            void Pulse()
+            {
+                if (isPulsingStopped) return;
+
+                flashlight.DOIntensity(2f, 0.7f).OnComplete(() =>
+                {
+                    if (isPulsingStopped) return;
+                    flashlight.DOIntensity(currentIntensity, 0.7f).OnComplete(Pulse);
+                });
+            }
+
+            Pulse();
+        }
+
+        public void StopPulsing()
+        {
+            isPulsingStopped = true;
+        }
+    }
 }

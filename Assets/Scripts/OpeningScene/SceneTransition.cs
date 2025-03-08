@@ -22,6 +22,7 @@ namespace OpeningScene
         }
         IEnumerator LoadScene()
         {
+
             yield return null;
 
             AsyncOperation asyncOpe = SceneManager.LoadSceneAsync(GlobalConstants.GAME_SCENE);
@@ -29,7 +30,6 @@ namespace OpeningScene
 
             while (!asyncOpe.isDone)
             {
-                Debug.Log(asyncOpe.progress);
                 if (asyncOpe.progress >= 0.9f)
                 {
                     canTransition = true;
@@ -43,7 +43,7 @@ namespace OpeningScene
         {
             if (canTransition)
             {
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(3f);
                 SceneManager.LoadScene(GlobalConstants.GAME_SCENE);
             }
         }

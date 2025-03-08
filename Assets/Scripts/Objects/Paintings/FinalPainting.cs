@@ -3,6 +3,7 @@ using System.Collections;
 using EJETAGame;
 using GlobalSpace;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ObjectSpace
 {
@@ -10,6 +11,8 @@ namespace ObjectSpace
     {
         public static event Action<Transform> OnChangeImages;
         public static event Action OnFlicker;
+
+        public UnityEvent OnCloseDoor;
         [Header("Components")]
         [SerializeField] private AudioSource source;
         [SerializeField] private Animator anim;
@@ -33,6 +36,7 @@ namespace ObjectSpace
             source.Play();
             OnChangeImages?.Invoke(paintingTransform);
             OnFlicker?.Invoke();
+            OnCloseDoor?.Invoke();
 
         }
 

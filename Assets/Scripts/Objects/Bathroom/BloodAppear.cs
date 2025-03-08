@@ -1,8 +1,10 @@
 using EJETAGame;
+using GlobalSpace;
 using PlayerSpace;
 using System.Collections;
 using UISpace;
 using UnityEngine;
+using VoiceSpace;
 
 namespace ObjectSpace
 {
@@ -31,7 +33,7 @@ namespace ObjectSpace
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKeyDown(GlobalConstants.ESCAPE_ACTION))
             {
                 ((MonoBehaviour)voiceRecScript).enabled = false;
                 PlayerController.Instance.ResetMovement();

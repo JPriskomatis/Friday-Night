@@ -5,6 +5,7 @@ using GlobalSpace;
 using TMPro;
 using UISpace;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace NoteSpace
@@ -22,11 +23,17 @@ namespace NoteSpace
         [Header("Instant Note UI")]
         [SerializeField] private GameObject instantNote;
         [SerializeField] private Image noteMat;
+        [SerializeField] private String readNoteHint = "Press J to Read Notes ";
 
         [SerializeField] PlayerController playerController;
 
         private bool firstNote;
         private Coroutine hideInstantNoteRoutine;
+
+        //We need a reference of the current note that was picked up
+        //in order to activate it OnPickUp or OnPickDown events;
+        private Note currentNote;
+        private bool voiceNote;
 
         //We listen for events from out NoteSystem class about new page added to the journal;
         private void OnEnable()
@@ -50,6 +57,14 @@ namespace NoteSpace
             if (Input.GetKeyDown(GlobalConstants.NOTE))
             {
                 noteCanva.SetActive(!noteCanva.activeSelf);
+                if (noteCanva.activeSelf)
+                {
+                    PlayerController.Instance.StopMovement();
+                }
+                else
+                {
+                    PlayerController.Instance.ResetMovement();
+                }
             }
 
         }
@@ -66,6 +81,9 @@ namespace NoteSpace
 
         private void ShowcaseNote(Note note)
         {
+            //we store a reference to the current note;
+            currentNote = note;
+
             playerController.DisableCameraMovement();
 
             instantNote.SetActive(true);
@@ -77,6 +95,14 @@ namespace NoteSpace
             {
                 StopCoroutine(hideInstantNoteRoutine);
             }
+            //if (note.CompareTag("Voice"))
+            //{
+            //    voiceNote = true;
+            //}
+            //else
+            //{
+            //    voiceNote = false;
+            //}
             hideInstantNoteRoutine = StartCoroutine(WaitForGKey());
         }
 
@@ -86,8 +112,10 @@ namespace NoteSpace
         }
         private IEnumerator WaitForGKey()
         {
-            // Wait until the user presses "G"
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.X));
+            //We wait until the player presses the escape button;
+            yield return new WaitUntil(() => Input.GetKeyDown(GlobalConstants.ESCAPE_ACTION));
+            currentNote.OnPickdown?.Invoke();
+
 
             instantNote.SetActive(false);
             HintMessage.Instance.RemoveMessage();
@@ -96,7 +124,7 @@ namespace NoteSpace
             if (firstNote)
             {
                 firstNote = false;
-                PlayerThoughts.Instance.SetText("Press J to Read Notes ");
+                PlayerThoughts.Instance.SetText(readNoteHint);
             }
         }
 

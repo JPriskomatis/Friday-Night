@@ -1,8 +1,8 @@
 using EJETAGame;
-using PlayerSpace;
+using GlobalSpace;
 using UISpace;
-using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.Video;
 
 namespace ObjectSpace
 {
@@ -13,6 +13,8 @@ namespace ObjectSpace
         [SerializeField] private string messageHint;
         [Header("Extra Components")]
         [SerializeField] private Component tvMessage;
+        [SerializeField] private VideoPlayer videoPlayer;
+
         protected override void BeginInteraction()
         {
             PlayerController.Instance.MoveToPosition(targetPos, speed);
@@ -22,10 +24,13 @@ namespace ObjectSpace
 
             //Show the UI Indications;
             HintMessage.Instance.SetMessage(messageHint);
+
+            //videoPlayer.gameObject.SetActive(true);
+            videoPlayer.Play();
         }
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKeyDown(GlobalConstants.ESCAPE_ACTION))
             {
                 ((MonoBehaviour)tvMessage).enabled = false;
                 PlayerController.Instance.ResetMovement();

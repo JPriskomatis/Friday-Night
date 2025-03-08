@@ -41,6 +41,7 @@ public class PlayerController : Singleton<PlayerController>
     private Quaternion savedCameraRotation;
 
 
+    public bool canMove;
 
     protected override void Awake()
     {
@@ -50,25 +51,66 @@ public class PlayerController : Singleton<PlayerController>
 
     private void OnEnable()
     {
-        RedirectDirection.onChangeDirection += DisableCameraMovement;
-        RedirectDirection.onAllowMovement += EnableCaneraMovement;
+
+        IntroToMansion.OnIntroFinish += ResetControls;
+
     }
 
     private void OnDisable()
     {
-        RedirectDirection.onChangeDirection -= DisableCameraMovement;
-        RedirectDirection.onAllowMovement -= EnableCaneraMovement;
+
+        IntroToMansion.OnIntroFinish -= ResetControls;
     }
 
     private void Start()
     {
+        //Disable movement until intro is done; 
+        StopMovement();
+        DisableCameraMovement();
+        canMove = true;
         Cursor.lockState = CursorLockMode.Locked;
-        canLook = true;
+
         UpdateMovementVectors();
         noise = virtualCamera.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
 
     }
 
+    public void ActivateCanLook()
+    {
+        canLook = true;
+    }
+
+    private void ResetControls()
+    {
+        EnableCaneraMovement();
+        ResetMovement();
+    }
+
+    private void PauseGame()
+    {
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        //DisableCameraMovement();
+        StopMovement();
+        canMove = false;
+
+        Time.timeScale = 0;
+
+    }
+
+    private void ResumeGame()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        //EnableCaneraMovement();
+        ResetMovement();
+        canMove = true;
+
+        Time.timeScale = 1;
+
+    }
     private void UpdateMovementVectors()
     {
         forward = cameraTransform.forward;
@@ -113,7 +155,7 @@ public class PlayerController : Singleton<PlayerController>
         if (direction.magnitude > 0.1f) // Moving on the ground
         {
             footstepTimer -= Time.deltaTime;
-            if (footstepTimer <= 0f)
+            if (footstepTimer <= 0f && characterController.enabled)
             {
                 PlayFootstepSound();
                 footstepTimer = footstepInterval; // Reset timer
@@ -125,18 +167,21 @@ public class PlayerController : Singleton<PlayerController>
         }
         if (characterController.isGrounded)
         {
-            velocity.y = 0f;
+            velocity.y = -0.1f; // Slight downward force to keep grounded
         }
         else
         {
             velocity.y += gravity * Time.deltaTime;
         }
 
+
         Vector3 movement = direction * speed;
-        if (characterController.enabled)
+        if (characterController.enabled || canMove)
         {
             characterController.Move((movement + velocity) * Time.deltaTime);
         }
+
+
 
 
     }
@@ -206,6 +251,7 @@ public class PlayerController : Singleton<PlayerController>
     }
     public void ResetCameraPos()
     {
+        Debug.Log("sdc");
         cameraTransform.localPosition = savedCameraPosition; // Restore position
         cameraTransform.localRotation = savedCameraRotation;
         virtualCamera.gameObject.transform.localPosition = savedCameraPosition;

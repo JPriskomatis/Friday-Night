@@ -15,8 +15,14 @@ namespace PlayerSpace
 
         private void Start()
         {
+            foreach (var device in Microphone.devices)
+            {
+                Debug.Log("Available Mic: " + device);
+            }
+
             source = GetComponent<AudioSource>();
-            source.clip = Microphone.Start("", true, 20, 44100);
+            source.clip = Microphone.Start(Microphone.devices[0], true, 20, 44100);
+
             source.loop = true;
             source.volume = 0;
             source.Play();

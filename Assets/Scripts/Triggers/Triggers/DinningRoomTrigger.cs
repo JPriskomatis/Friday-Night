@@ -1,3 +1,4 @@
+using AudioSpace;
 using GlobalSpace;
 using System.Collections;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace TriggerSpace
         [Header("Extra Components")]
         [SerializeField] private GameObject door;
         [SerializeField] private Transform player;
+        [SerializeField] private AudioClip clip;
+        [SerializeField] private AudioSource source2;
         private Animator anim;
 
         [Header("Monster Settings")]
@@ -34,6 +37,9 @@ namespace TriggerSpace
             StartCoroutine(ShowText());
             //Start Timer left to hide;
             StartCoroutine(StartCountdown());
+
+            source2.Play();
+            Audio.Instance.PlayAudio(clip, true);
             
         }
 
@@ -45,7 +51,7 @@ namespace TriggerSpace
 
         IEnumerator StartCountdown()
         {
-            int count = 3;
+            int count = 7;
             while (count > 0)
             {
                 Debug.Log(count);  // Logs the countdown number to the console

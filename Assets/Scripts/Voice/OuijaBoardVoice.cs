@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AudioSpace;
-using Codice.Client.Common.GameUI;
 using DG.Tweening;
 using GlobalSpace;
 using PlayerSpace;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.Events;
 
 namespace VoiceSpace
 {
@@ -18,31 +19,56 @@ namespace VoiceSpace
         public Vector3 positionYES;
         public Vector3 targetPosition2 = new Vector3(0f,0f,0.0719999969f);
 
-        [Header("Characters Positions")]
+        
+
+        [Header("Ouija Characters Positions")]
         [SerializeField] private string[] characters;
         [SerializeField] private Vector3[] positions;
 
         private Dictionary<string, Vector3> letterMap = new();
 
         [SerializeField] private AudioClip clip;
-        private bool firstClip;
+        
+
+        [Header("Player answer strings")]
         [SerializeField] private string HowYouDiedText;
         [SerializeField] private string BehindYouTxt;
+        [SerializeField] private string whoAreYouTxt;
+
+        [Header("Ouija Answers")]
+        [SerializeField] private string HowDidYouDieAnswer ="STRANGLED";
+        [SerializeField] private string WhereAreYouAnswer = "BEHIND YOU";
+        [SerializeField] private string whoAreYouAnswer = "DEATH";
 
         [Header("Object Behind Player")]
         [SerializeField] private GameObject behindPlayer;
         [SerializeField] private GameObject jack;
-        private Camera camera;
 
-        protected override void Start()
+        [Header("Extra Components")]
+        [SerializeField] GameObject key;
+        [SerializeField] private AudioSource audioSource;
+
+        public UnityEvent OnAppearNote;
+
+
+        private Camera camera;
+        private bool firstClip;
+        private Vector3 angry = new Vector3(-0.282000005f, 0f, -0.186000004f);
+
+        protected override void Awake()
         {
             camera = Camera.main;
+
+            //This maps all the letters to their corresponding position in the ouija board;
             for (int i=0; i<characters.Length; i++)
             {
                 letterMap.Add(characters[i], positions[i]);
             }
-            base.Start();
+            base.Awake();
         }
+
+        //TODO:
+        //Call StopListening(); when the arrow moves, and StartListening(); once the arrow stops??
 
         public override void AddDictionaryFunctions()
         {
@@ -65,16 +91,49 @@ namespace VoiceSpace
             Debug.Log("Added: " + speechWords[6]);
             voiceActions.Add(speechWords[7], HowDidYouDie);
             Debug.Log("Added: " + speechWords[7]);
-
-            //Where are you
-            voiceActions.Add(speechWords[8], WhereAreYou);
+            voiceActions.Add(speechWords[8], WhoAreYou);
             Debug.Log("Added: " + speechWords[8]);
 
+
+            //Who are you?
+            voiceActions.Add(speechWords[9], WhoAreYou);
+            Debug.Log("Added: " + speechWords[9]);
+
+
+            //Where are you
+            voiceActions.Add(speechWords[10], WhereAreYou);
+            voiceActions.Add(speechWords[11], WhereAreYou);
+            Debug.Log("Added: " + speechWords[10]);
         }
+
+        private void WhoAreYou()
+        {
+            string answer = "BRO";
+            StartCoroutine(MoveArrowToWordWithCompletion(answer, () =>
+            {
+                StartCoroutine(MoveToAngryAndContinue());
+            }));
+        }
+
+        private IEnumerator MoveToAngryAndContinue()
+        {
+            yield return arrow.DOLocalMove(angry, 0.5f).SetEase(Ease.InOutQuad).WaitForCompletion();
+            yield return new WaitForSeconds(1f); // Stay in angry position for 1 second
+
+            string answer = whoAreYouAnswer;
+            StartCoroutine(MoveArrowToWordWithCompletion(answer, () =>
+            {
+                PlayerThoughts.Instance.SetText(whoAreYouTxt);
+            }));
+        }
+
         private void WhereAreYou()
         {
             PlayAudio();
-            string answer = "BEHIND YOU";
+
+            OnAppearNote?.Invoke();
+
+            string answer = WhereAreYouAnswer;
             Debug.Log("This actually works");
 
             StartCoroutine(MoveArrowToWordWithCompletion(answer, () =>
@@ -92,7 +151,7 @@ namespace VoiceSpace
                 StartCoroutine(CheckPlayerLookingAt(jack, () =>
                 {
                     Debug.Log("Looked at Jack");
-
+                    audioSource.Stop();
                     StartCoroutine(DelayForGlitch());
 
                 }));
@@ -106,7 +165,9 @@ namespace VoiceSpace
             jack.SetActive(false);
 
             OnOuijaJumpscare?.Invoke();
-            
+            key.SetActive(true);
+
+            this.GetComponent<SphereCollider>().enabled = false;
             Destroy(this);
 
         }
@@ -150,7 +211,7 @@ namespace VoiceSpace
         private void HowDidYouDie()
         {
             PlayAudio();
-            string answer = "STRANGLED";
+            string answer = HowDidYouDieAnswer;
             Debug.Log("This actually works");
 
             // Call MoveArrowToWord and pass a callback for completion
@@ -166,10 +227,49 @@ namespace VoiceSpace
         {
             if (!firstClip)
             {
-                Audio.Instance.PlayAudioFadeIn(clip, 0.3f);
+                PlayAudioFadeIn(clip, 0.3f);
                 firstClip = true;
             }
         }
+
+
+
+        public void PlayAudioFadeIn(AudioClip clip, float? maxIntensity = null, bool? loop = null)
+        {
+            audioSource.loop = false;
+            StartCoroutine(FadeInAudio(clip, 5f, maxIntensity));
+            if (loop != null)
+            {
+                audioSource.loop = true;
+            }
+            else
+            {
+                audioSource.loop = false;
+            }
+        }
+
+
+        private IEnumerator FadeInAudio(AudioClip clip, float duration, float? maxIntensity = null)
+        {
+            audioSource.clip = clip;
+            audioSource.volume = 0;
+            audioSource.Play();
+
+            float targetVolume = maxIntensity ?? 1.0f;
+            float elapsedTime = 0f;
+
+            while (elapsedTime < duration)
+            {
+                audioSource.volume = Mathf.Lerp(0, targetVolume, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            audioSource.volume = targetVolume;
+        }
+
+
+
         private IEnumerator MoveArrowToWordWithCompletion(string word, Action onComplete)
         {
             // Call the existing MoveArrowToWord coroutine

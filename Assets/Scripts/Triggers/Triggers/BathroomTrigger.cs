@@ -1,82 +1,94 @@
 using AudioSpace;
+using DG.Tweening.Core.Easing;
 using MonsterSpace;
+using ObjectSpace;
 using PlayerSpace;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
+using VoiceSpace;
 
 namespace TriggerSpace
 {
     public class BathroomTrigger : FloorTrigger
     {
-        [SerializeField] private GameObject monsterSpawnPoint;
-        [SerializeField] private Camera camera;
-        [SerializeField] private AudioSource source;
-        [SerializeField] private AudioClip jumpscare;
+        [SerializeField] private AudioSource source, source2;
+        [SerializeField] private AudioClip clip;
+        [SerializeField] private Flashlight flash;
 
-        private GameObject spawnedMonster;
+        [SerializeField] private Door door;
+
+        private void OnEnable()
+        {
+            BathroomMirrorVOICE.OnStopMirror += DestroyObject;
+        }
+
+        private void OnDisable()
+        {
+            BathroomMirrorVOICE.OnStopMirror -= DestroyObject;
+        }
 
         protected override void InitiateAction()
         {
-            //Spawn monster in the correct position;
-            SpawnManager.Instance.SpawnMonster(monsterSpawnPoint);
-
-            //Play Audio;
-            source.Play();
-
-            StartCoroutine(CheckPlayerLookingAt());
+            //Slam the door;
+            interactAgain = false;
+            FlickeringEffect();
+            door.PublicCloseDoor();
+            StartCoroutine(IncreaseAudio());
+            
 
         }
 
-        private IEnumerator CheckPlayerLookingAt()
+        private void DestroyObject()
         {
-            spawnedMonster = SpawnManager.Instance.GetMonster();
+            source2.Stop();
+            Destroy(this.gameObject);
+        }
 
-            float checkDuration = 10f; // Check for 10 seconds
+        private void FlickeringEffect()
+        {
+            flash.StartPulsing();
+            StartCoroutine(FadeInAudio(source2, 2f));
+        }
+
+        private IEnumerator FadeInAudio(AudioSource audioSource, float duration)
+        {
+            audioSource.volume = 0f; // Start at volume 0
+            audioSource.Play();
+
             float elapsedTime = 0f;
-            while (elapsedTime < checkDuration)
+            while (elapsedTime < duration)
             {
-                if (IsPlayerLookingAt(spawnedMonster))
-                {
-
-                    StartCoroutine(DelayMethod());
-                }
-                else
-                {
-                }
-
-                yield return null; // Wait for the next frame
+                audioSource.volume = Mathf.Lerp(0f, 0.25f, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
             }
+
+            audioSource.volume = 0.25f; // Ensure volume reaches 1
         }
 
-        private bool IsPlayerLookingAt(GameObject target)
+
+        IEnumerator IncreaseAudio()
         {
-            RaycastHit hit;
-            if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit))
-            {
-                if (hit.collider.gameObject.layer == 7)
-                {
+            float targetVolume = 1.0f; // Full volume
+            float startVolume = source.volume;
+            float timeElapsed = 0f;
+            float duration = 3f; // 3 seconds
 
-                    return true;
-                }
-            }
-            else
+            source.Play(); // Ensure the audio starts playing
+
+            while (timeElapsed < duration)
             {
-                Debug.Log("Target not found.");
+                source.volume = Mathf.Lerp(startVolume, targetVolume, timeElapsed / duration);
+                timeElapsed += Time.deltaTime;
+                yield return null;
             }
-            return false;
+
+            source.volume = targetVolume; 
         }
 
-        IEnumerator DelayMethod()
-        {
-            yield return new WaitForSeconds(0.5f);
 
-            //Jumpscare Audio;
-            Audio.Instance.PlayAudio(jumpscare);
 
-            PlayerCamera.Instance.InitiateGlitchEffect();
-            Destroy(spawnedMonster.gameObject);
-            Destroy(this);
-        }
     }
 
 }

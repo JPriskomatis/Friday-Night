@@ -1,5 +1,6 @@
 using EJETAGame;
 using GlobalSpace;
+using UISpace;
 using UnityEngine;
 
 namespace ObjectSpace
@@ -8,7 +9,9 @@ namespace ObjectSpace
     {
         [Header("Interaction Settings")]
         [SerializeField] protected bool canInteractWith;
+        [SerializeField] protected bool canInteractAgain = false;
         [SerializeField] protected string interactionText;
+        private static bool firstInteract = true;
 
         private void Start()
         {
@@ -18,22 +21,39 @@ namespace ObjectSpace
         {
             if(Input.GetKeyDown(GlobalConstants.INTERACTION) && canInteractWith)
             {
-                canInteractWith = false;
+                if (!canInteractAgain)
+                {
+                    canInteractWith = false;
+                }
+                else
+                {
+                    canInteractWith = true;
+                }
+                InteractionText.instance.SetText("");
                 BeginInteraction();
             }
         }
 
         public void OnInteractEnter()
         {
+            if (firstInteract)
+            {
+                PlayerThoughts.Instance.SetText("Press " + GlobalConstants.INTERACTION + " to interact");
+                firstInteract = false;
+            }
             if (canInteractWith)
             {
                 InteractionText.instance.SetText(interactionText);
+            }
+            else
+            {
+                InteractionText.instance.SetText("");
             }
         }
 
         public void OnInteractExit()
         {
-            
+            InteractionText.instance.SetText("");
         }
 
         //This is the actual interaction that each item script should create the action that we want

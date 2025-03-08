@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Monster
   - PlayerHead
+  - Voice
   layers:
   - Default
   - TransparentFX

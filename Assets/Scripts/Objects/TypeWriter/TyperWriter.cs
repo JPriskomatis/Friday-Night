@@ -53,6 +53,7 @@ namespace ObjectSpace
             //            inputField.SetActive(true);
 
             keyboardUI.DOFade(1, 1f);
+
             StartCoroutine(CheckForButton());
 
         }

@@ -80,11 +80,6 @@ namespace ObjectSpace
         {
             if (Input.GetKeyDown(GlobalConstants.ESCAPE_ACTION))
             {
-
-                //TESTING
-                hasLighter = true;
-                //END
-                EscapeOuija();
                 EscapeOuijaTemporary();
             } 
         }

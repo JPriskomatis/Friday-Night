@@ -19158,43 +19158,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8328634479533263271, guid: 25c4f59370cc1ae47aca07e2927e6f5f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 275.5604
+      value: 275.7034
       objectReference: {fileID: 0}
     - target: {fileID: 8328634479533263271, guid: 25c4f59370cc1ae47aca07e2927e6f5f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.765933
+      value: 11.294
       objectReference: {fileID: 0}
     - target: {fileID: 8328634479533263271, guid: 25c4f59370cc1ae47aca07e2927e6f5f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 265.55118
+      value: 265.135
       objectReference: {fileID: 0}
     - target: {fileID: 8328634479533263271, guid: 25c4f59370cc1ae47aca07e2927e6f5f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.49342516
+      value: 0.5501259
       objectReference: {fileID: 0}
     - target: {fileID: 8328634479533263271, guid: 25c4f59370cc1ae47aca07e2927e6f5f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.41090545
+      value: -0.0054239156
       objectReference: {fileID: 0}
     - target: {fileID: 8328634479533263271, guid: 25c4f59370cc1ae47aca07e2927e6f5f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.28487855
+      value: -0.020441905
       objectReference: {fileID: 0}
     - target: {fileID: 8328634479533263271, guid: 25c4f59370cc1ae47aca07e2927e6f5f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.71171105
+      value: -0.83481395
       objectReference: {fileID: 0}
     - target: {fileID: 8328634479533263271, guid: 25c4f59370cc1ae47aca07e2927e6f5f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 54.194
+      value: -2.298
       objectReference: {fileID: 0}
     - target: {fileID: 8328634479533263271, guid: 25c4f59370cc1ae47aca07e2927e6f5f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -31.279
+      value: -0.77
       objectReference: {fileID: 0}
     - target: {fileID: 8328634479533263271, guid: 25c4f59370cc1ae47aca07e2927e6f5f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -126.837
+      value: -113.216
       objectReference: {fileID: 0}
     - target: {fileID: 8709557343497933597, guid: 25c4f59370cc1ae47aca07e2927e6f5f, type: 3}
       propertyPath: m_Name
@@ -29030,7 +29030,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.75
+  m_fontSize: 27.25
   m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -32974,10 +32974,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 196281517}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 765397130}
+        m_TargetAssemblyTypeName: NoteMirror, NoteSpace
+        m_MethodName: RaiseObjectiveNote
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -33088,6 +33088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodAppears: {fileID: 1943018957}
+  ObjectiveNote: {fileID: 11400000, guid: edfeb6a120628a04ab5046044d1c093a, type: 2}
 --- !u!1001 &773878507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50969,6 +50970,7 @@ GameObject:
   - component: {fileID: 1272711483}
   - component: {fileID: 1272711482}
   - component: {fileID: 1272711481}
+  - component: {fileID: 1272711485}
   m_Layer: 0
   m_Name: Objective
   m_TagString: Untagged
@@ -51073,6 +51075,35 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1272711485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272711479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c326252565183149b4d3c8bae751d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EventResponses:
+  - Event: {fileID: 11400000, guid: edfeb6a120628a04ab5046044d1c093a, type: 2}
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1272711481}
+          m_TargetAssemblyTypeName: ObjectiveSpace.ObjectiveManager, ObjectiveSpace
+          m_MethodName: ShowObjective
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Talk to the Bathroom Mirror
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &1273635076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8862898901899604984, guid: ad108545b7f007142abfb88e4baa75c6, type: 3}
@@ -62506,9 +62537,17 @@ PrefabInstance:
       value: I think there's a lighter somewhere in here to light this candle
       objectReference: {fileID: 0}
     - target: {fileID: 8875182573916579537, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+      propertyPath: interactionText
+      value: Use Ouija Board
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875182573916579537, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
       propertyPath: targetTransform
       value: 
       objectReference: {fileID: 340771852}
+    - target: {fileID: 8875182573916579537, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
+      propertyPath: canInteractAgain
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8875182573916579537, guid: 0943056fec1f50a4aa35b9261fa4a6c8, type: 3}
       propertyPath: OnUseOuija.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -73323,7 +73362,6 @@ GameObject:
   - component: {fileID: 1835460694}
   - component: {fileID: 1835460695}
   - component: {fileID: 1835460696}
-  - component: {fileID: 1835460697}
   - component: {fileID: 1835460698}
   m_Layer: 0
   m_Name: FistObjective
@@ -73707,34 +73745,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1835460697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1835460690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c326252565183149b4d3c8bae751d57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 75990f78d308e3a4fa76bcd40f7b5db6, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1835460696}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1835460698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73747,22 +73757,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c326252565183149b4d3c8bae751d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: a4088fcfe863246488de0890e8f61753, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1835460696}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Stop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  EventResponses:
+  - Event: {fileID: 11400000, guid: 75990f78d308e3a4fa76bcd40f7b5db6, type: 2}
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1835460696}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Event: {fileID: 11400000, guid: a4088fcfe863246488de0890e8f61753, type: 2}
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1835460696}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Pause
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1838188343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74663,7 +74690,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 522.88477, y: 221.64282}
+  m_AnchoredPosition: {x: 522.88477, y: 37}
   m_SizeDelta: {x: -1269.246, y: -743.2856}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1859747618
@@ -80917,7 +80944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canInteractWith: 1
-  canInteractAgain: 0
+  canInteractAgain: 1
   interactionText: Examine TV
   targetPos: {fileID: 1126434198}
   speed: 3
@@ -86034,7 +86061,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -250}
-  m_SizeDelta: {x: 400, y: 50}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!225 &2130154755
 CanvasGroup:
@@ -92464,7 +92491,7 @@ Transform:
   m_GameObject: {fileID: 5480920538975201794}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.75435084, z: -0, w: 0.6564715}
-  m_LocalPosition: {x: 277.31, y: 6.893, z: 261.414}
+  m_LocalPosition: {x: 277.719, y: 6.811, z: 261.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

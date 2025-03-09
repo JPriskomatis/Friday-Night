@@ -49,7 +49,7 @@ namespace NoteSpace
                 Audio.Instance.PlayAudio(clip);
             }
             
-            Destroy(gameObject);
+            //Destroy(gameObject);
 
             
         }

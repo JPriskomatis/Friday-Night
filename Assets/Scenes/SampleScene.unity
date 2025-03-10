@@ -6627,10 +6627,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 148680710}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a32b6c6375f9b2c468ca5c3f3de71abf, type: 3}
+  m_Script: {fileID: 11500000, guid: e632e3dfff5156741bbefa1e9e4cbc75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntroToMansion: 0
+  SkipIntro: {fileID: 11400000, guid: 3982237a106f7b7418fd64559f3a41a1, type: 2}
+  skipIntroBool: 1
 --- !u!1001 &149712614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34627,9 +34628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2078219463fb4d44963862441ff055a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationDegrees: -90
-  duration: 4
-  audioSource: {fileID: 7936508192296632634}
 --- !u!1001 &812902272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73781,6 +73779,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1835460696}
           m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
           m_MethodName: Pause
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Event: {fileID: 11400000, guid: 3982237a106f7b7418fd64559f3a41a1, type: 2}
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1835460692}
+          m_TargetAssemblyTypeName: IntroToMansion, ObjectiveSpace
+          m_MethodName: SkipIntro
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

@@ -24,7 +24,7 @@ public class IntroToMansion : MonoBehaviour
 
     [Header("Extra Components")]
     [SerializeField] private GameObject blackScreen;
-    [HideInInspector] public bool skipIntro;
+    public bool skipIntro;
     [SerializeField] private RecTimer recTimer;
     [SerializeField] private string hintMsg;
 
@@ -84,6 +84,12 @@ public class IntroToMansion : MonoBehaviour
         StopTypingAudio.Raise();
     }
 
+    public void SkipIntro()
+    {
+        Debug.Log("sdfsdf");
+
+        skipIntro = true;
+    }
     private IEnumerator Start()
     {
 

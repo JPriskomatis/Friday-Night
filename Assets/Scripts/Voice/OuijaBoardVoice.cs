@@ -166,7 +166,7 @@ namespace VoiceSpace
 
             OnOuijaJumpscare?.Invoke();
             key.SetActive(true);
-
+            ExitVoiceAction();
             this.GetComponent<SphereCollider>().enabled = false;
             Destroy(this);
 

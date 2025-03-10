@@ -10,9 +10,12 @@ namespace PlayerSpace
         public static event Action onAllowMovement;
 
         [Header("Components Settings")]
-        [SerializeField] private Transform testCase;
+        [SerializeField] private Transform targetToLook;
         [SerializeField] private GameObject glitchEffectGO;
         [SerializeField] private GameObject mainCamera;
+
+
+        [SerializeField] private TargetToFollow targetGameObject;
 
         //private void Update()
         //{
@@ -22,25 +25,33 @@ namespace PlayerSpace
         //    }
         //}
 
-        IEnumerator ChangePlayerDirection()
+        public void GetTargetToFollow()
         {
+            if (targetGameObject.GetTarget() != null)
+            {
+                StartCoroutine(ChangePlayerDirection(targetGameObject.GetTarget().transform));
+            }
+        }
+        IEnumerator ChangePlayerDirection(Transform target)
+        {
+            PlayerController.Instance.StopMovement();
             // Announce to our movement script that we no longer can control the camera
             onChangeDirection?.Invoke();
 
             // Enable the CameraGlitchEffect
-            glitchEffectGO.SetActive(true);
+            //glitchEffectGO.SetActive(true);
 
             // Rotate the Player horizontally
             Quaternion startPlayerRotation = transform.rotation;
-            Vector3 targetDirection = testCase.position - transform.position;
+            Vector3 targetDirection = target.position - transform.position;
             targetDirection.y = 0; // Keep only the horizontal direction
             Quaternion targetPlayerRotation = Quaternion.LookRotation(targetDirection);
 
             float elapsedTime = 0f;
-            while (elapsedTime < 2f)
+            while (elapsedTime < 0.5f)
             {
                 elapsedTime += Time.deltaTime;
-                float t = elapsedTime / 2f;
+                float t = elapsedTime / 0.5f;
 
                 transform.rotation = Quaternion.Slerp(startPlayerRotation, targetPlayerRotation, t);
 
@@ -50,14 +61,14 @@ namespace PlayerSpace
 
             // Rotate the Camera vertically to look at the target
             Quaternion startCameraRotation = mainCamera.transform.rotation;
-            Vector3 cameraToTarget = testCase.position - mainCamera.transform.position;
+            Vector3 cameraToTarget = target.position - mainCamera.transform.position;
             Quaternion targetCameraRotation = Quaternion.LookRotation(cameraToTarget);
 
             elapsedTime = 0f;
-            while (elapsedTime < 1f) // Adjust camera rotation duration as needed
+            while (elapsedTime < 0.5f) // Adjust camera rotation duration as needed
             {
                 elapsedTime += Time.deltaTime;
-                float t = elapsedTime / 1f;
+                float t = elapsedTime / 0.5f;
 
                 mainCamera.transform.rotation = Quaternion.Slerp(startCameraRotation, targetCameraRotation, t);
 
@@ -67,8 +78,8 @@ namespace PlayerSpace
 
             // Restablish movement of the camera
             onAllowMovement?.Invoke();
-            // Remove the CameraGlitchEffect
-            glitchEffectGO.SetActive(false);
+            PlayerController.Instance.ResetMovement();
+
         }
     }
 }

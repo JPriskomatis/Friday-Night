@@ -8414,10 +8414,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -33916,10 +33916,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -36061,6 +36061,7 @@ MonoBehaviour:
   interactAgain: 0
   interactable: 0
   monsterSpawnPoint: {fileID: 1486270852}
+  monsterToSpawn: {fileID: 8135285542611331981, guid: 136547741c657d647b72808c85ac368a, type: 3}
   camera: {fileID: 7874697746756088101}
   jumpscareClip: {fileID: 8300000, guid: 3bc7fd2209e757b428afe5d4f66c5105, type: 3}
   jumpscare: {fileID: 236404962}
@@ -36711,8 +36712,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 0.84377146, z: 2.185519}
-  m_Center: {x: 2, y: 0.32188487, z: -2.0788293}
+  m_Size: {x: 4, y: 0.84377146, z: 1.3106157}
+  m_Center: {x: 2, y: 0.32188487, z: -2.5162818}
 --- !u!114 &874268063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36728,6 +36729,7 @@ MonoBehaviour:
   interactAgain: 0
   interactable: 1
   monsterSpawnPoint: {fileID: 2089048271}
+  monsterToSpawn: {fileID: 8135285542611331981, guid: 46f783280c6945f4ca9d748852e39763, type: 3}
   jumpscare: {fileID: 236404962}
   jumpscareClip: {fileID: 8300000, guid: 9f754881130bbe84b851a7104f841baa, type: 3}
   demoUI: {fileID: 557826088}
@@ -88254,6 +88256,7 @@ MonoBehaviour:
   targetToLook: {fileID: 0}
   glitchEffectGO: {fileID: 5188977807941407205}
   mainCamera: {fileID: 1894648103703328991}
+  jumpscareAudio: {fileID: 8746515957568093857}
   targetGameObject: {fileID: 11400000, guid: 88b59fd3eea68464d82b07f42dab3638, type: 2}
 --- !u!1 &2013000831395490318
 GameObject:
@@ -91037,6 +91040,7 @@ GameObject:
   - component: {fileID: 8746515957568093854}
   - component: {fileID: 8746515957568093855}
   - component: {fileID: 8746515957568093856}
+  - component: {fileID: 8746515957568093857}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -92507,7 +92511,7 @@ Transform:
   m_GameObject: {fileID: 5480920538975201794}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.75435084, z: -0, w: 0.6564715}
-  m_LocalPosition: {x: 268.496, y: 6.811, z: 251.52}
+  m_LocalPosition: {x: 267.764, y: 6.707, z: 251.958}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -93787,6 +93791,115 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 8746515957568093857}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!82 &8746515957568093857
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480920538975201794}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c739498bb4320064eb43430157c51a68, type: 3}
+  m_Resource: {fileID: 8300000, guid: c739498bb4320064eb43430157c51a68, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &8772695545639363954
 Transform:
   m_ObjectHideFlags: 0

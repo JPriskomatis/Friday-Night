@@ -9,12 +9,15 @@ namespace TriggerSpace
     public class PaintingMonsterTrigger : FloorTrigger
     {
         [SerializeField] private GameObject monsterSpawnPoint;
+        [SerializeField] private GameObject monsterToSpawn;
+
         [SerializeField] private Camera camera;
         [SerializeField] private AudioClip jumpscareClip;
 
         [SerializeField] private Jumpscare jumpscare;
 
         private GameObject spawnedMonster;
+        private bool hasListenedToAudio;
 
         private void Start()
         {
@@ -39,7 +42,7 @@ namespace TriggerSpace
         {
             Debug.Log("yes");
             //We spawn the monster;
-            SpawnManager.Instance.SpawnMonster(monsterSpawnPoint);
+            SpawnManager.Instance.SpawnMonster(monsterSpawnPoint, monsterToSpawn);
 
             
             StartCoroutine(CheckPlayerLookingAt());
@@ -68,12 +71,20 @@ namespace TriggerSpace
             }
         }
 
+        public void ListenedToAudio()
+        {
+            hasListenedToAudio = true;
+        }
         IEnumerator DelayMethod()
         {
             yield return new WaitForSeconds(0.25f);
             jumpscare.InitiateJumpscare();
             //Jumpscare Audio;
-            Audio.Instance.PlayAudio(jumpscareClip);
+            //if (!hasListenedToAudio)
+            //{
+            //    Audio.Instance.PlayAudio(jumpscareClip);
+
+            //}
 
             //PlayerCamera.Instance.InitiateGlitchEffect();
             Destroy(spawnedMonster.gameObject,0.5f);

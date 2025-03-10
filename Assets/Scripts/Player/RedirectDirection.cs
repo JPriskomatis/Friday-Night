@@ -13,6 +13,7 @@ namespace PlayerSpace
         [SerializeField] private Transform targetToLook;
         [SerializeField] private GameObject glitchEffectGO;
         [SerializeField] private GameObject mainCamera;
+        [SerializeField] private AudioSource jumpscareAudio;
 
 
         [SerializeField] private TargetToFollow targetGameObject;
@@ -29,11 +30,13 @@ namespace PlayerSpace
         {
             if (targetGameObject.GetTarget() != null)
             {
+
                 StartCoroutine(ChangePlayerDirection(targetGameObject.GetTarget().transform));
             }
         }
         IEnumerator ChangePlayerDirection(Transform target)
         {
+
             PlayerController.Instance.StopMovement();
             // Announce to our movement script that we no longer can control the camera
             onChangeDirection?.Invoke();
@@ -47,11 +50,13 @@ namespace PlayerSpace
             targetDirection.y = 0; // Keep only the horizontal direction
             Quaternion targetPlayerRotation = Quaternion.LookRotation(targetDirection);
 
+            
+            Debug.Log("time");
             float elapsedTime = 0f;
-            while (elapsedTime < 0.5f)
+            while (elapsedTime < 0.3f)
             {
                 elapsedTime += Time.deltaTime;
-                float t = elapsedTime / 0.5f;
+                float t = elapsedTime / 0.3f;
 
                 transform.rotation = Quaternion.Slerp(startPlayerRotation, targetPlayerRotation, t);
 
@@ -65,10 +70,11 @@ namespace PlayerSpace
             Quaternion targetCameraRotation = Quaternion.LookRotation(cameraToTarget);
 
             elapsedTime = 0f;
-            while (elapsedTime < 0.5f) // Adjust camera rotation duration as needed
+            yield return new WaitForSeconds(0.5f);
+            while (elapsedTime < 0.15f) // Adjust camera rotation duration as needed
             {
                 elapsedTime += Time.deltaTime;
-                float t = elapsedTime / 0.5f;
+                float t = elapsedTime / 0.15f;
 
                 mainCamera.transform.rotation = Quaternion.Slerp(startCameraRotation, targetCameraRotation, t);
 

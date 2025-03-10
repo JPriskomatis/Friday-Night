@@ -7,8 +7,10 @@ using UnityEngine;
 public class FinalRoomTrigger : FloorTrigger
 {
     [SerializeField] private GameObject monsterSpawnPoint;
+    [SerializeField] private GameObject monsterToSpawn;
     [SerializeField] private Jumpscare jumpscare;
     [SerializeField] private AudioClip jumpscareClip;
+    private bool hasListenedToAudio;
 
     private GameObject spawnedMonster;
     private Camera camera;
@@ -28,7 +30,7 @@ public class FinalRoomTrigger : FloorTrigger
     protected override void InitiateAction()
     {
         
-        SpawnManager.Instance.SpawnMonster(monsterSpawnPoint);
+        SpawnManager.Instance.SpawnMonster(monsterSpawnPoint, monsterToSpawn);
         Debug.Log("Here: player enter");
 
         StartCoroutine(CheckPlayerLookingAt());

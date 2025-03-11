@@ -35,12 +35,25 @@ namespace VoiceSpace
 
         private void OnEnable()
         {
+            if (dictationRecognizer == null)
+            {
+                dictationRecognizer = new DictationRecognizer();
+
+                // Reattach event listeners
+                dictationRecognizer.DictationResult += RecognizedSpeech;
+                dictationRecognizer.DictationComplete += DictationComplete;
+                dictationRecognizer.DictationError += DictationError;
+            }
+
+            dictationRecognizer.Start();
             micronhponeUI.SetActive(true);
             micronhponeCanvas.DOFade(1, 1f);
         }
 
+
         private void OnDisable()
         {
+            dictationRecognizer.Stop();
             micronhponeCanvas.DOFade(0, 1f).OnComplete(
                 () => micronhponeUI.SetActive(false));
         }
@@ -58,19 +71,7 @@ namespace VoiceSpace
 
             AddDictionaryFunctions();
 
-            // Initialize the DictationRecognizer
-            dictationRecognizer = new DictationRecognizer();
-
-            // Event listener for recognized dictation speech
-            dictationRecognizer.DictationResult += RecognizedSpeech;
-            dictationRecognizer.DictationComplete += DictationComplete;
-            dictationRecognizer.DictationError += DictationError;
-
-            // Start listening for dictation
-            dictationRecognizer.Start();
-
-            micronhponeUI.SetActive(true);
-            micronhponeCanvas.DOFade(1, 1f);
+            
         }
 
         protected void StopListening()
@@ -93,6 +94,7 @@ namespace VoiceSpace
         // This method gets the speech and returns its key pair
         private void RecognizedSpeech(string speech, ConfidenceLevel confidence)
         {
+            speech = speech.ToLower().Replace("?", "");
             Debug.Log(speech);
             if (voiceActions.ContainsKey(speech))
             {

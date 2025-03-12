@@ -14,9 +14,9 @@ namespace MonsterSpace
             return instantiatedMonster;
         }
 
-        public void SpawnMonster(GameObject spawnPoint)
+        public void SpawnMonster(GameObject spawnPoint, GameObject monsterToSpawn)
         {
-            instantiatedMonster = Instantiate(monster, spawnPoint.transform);
+            instantiatedMonster = Instantiate(monsterToSpawn, spawnPoint.transform);
         }
 
 

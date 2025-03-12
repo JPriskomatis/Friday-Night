@@ -7,12 +7,13 @@ using DG.Tweening;
 using System.Collections;
 using UISpace;
 using GlobalSpace;
+using UnityEngine.Audio;
 
 namespace VoiceSpace
 {
     public abstract class VoiceRecognition : MonoBehaviour
     {
-        private KeywordRecognizer keywordRecognizer;
+        private DictationRecognizer dictationRecognizer;
 
         protected Dictionary<string, Action> voiceActions = new Dictionary<string, Action>();
 
@@ -27,15 +28,10 @@ namespace VoiceSpace
 
         //fire event to VoiceButtonDisplay UI;
 
-
-
         protected virtual void Awake()
         {
-            //AddDictionaryFunctions();
-
+            // AddDictionaryFunctions();
         }
-        //TODO:
-        //Create a function StartListening???
 
         private void OnEnable()
         {
@@ -49,10 +45,8 @@ namespace VoiceSpace
                 () => micronhponeUI.SetActive(false));
         }
 
-
         protected virtual void Start()
         {
-
             selectedMic = microphoneSelect.microphone; // Get the selected microphone from the ScriptableObject
 
             if (string.IsNullOrEmpty(selectedMic) || !Microphone.devices.Contains(selectedMic))
@@ -62,27 +56,26 @@ namespace VoiceSpace
 
             Debug.Log($"Using Microphone: {selectedMic}");
 
-
-
             AddDictionaryFunctions();
 
-            //When we want to stop it;
-            //keywordRecognizer.Stop();
-            keywordRecognizer = new KeywordRecognizer(voiceActions.Keys.ToArray());
-            keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
+            // Initialize the DictationRecognizer
+            dictationRecognizer = new DictationRecognizer();
 
-            keywordRecognizer.Start();
+            // Event listener for recognized dictation speech
+            dictationRecognizer.DictationResult += RecognizedSpeech;
+            dictationRecognizer.DictationComplete += DictationComplete;
+            dictationRecognizer.DictationError += DictationError;
+
+            // Start listening for dictation
+            dictationRecognizer.Start();
 
             micronhponeUI.SetActive(true);
             micronhponeCanvas.DOFade(1, 1f);
-
         }
-
-
 
         protected void StopListening()
         {
-            keywordRecognizer.Stop();
+            dictationRecognizer.Stop();
         }
 
         protected void ExitVoiceAction()
@@ -95,15 +88,30 @@ namespace VoiceSpace
             this.GetComponent<SphereCollider>().enabled = false;
         }
 
-
         public abstract void AddDictionaryFunctions();
 
-        //This method gets the speech and return its key pair (for example if the speech is forward then it returns the function we have
-        //linked the word "forward" with;
-        private void RecognizedSpeech(PhraseRecognizedEventArgs speech)
+        // This method gets the speech and returns its key pair
+        private void RecognizedSpeech(string speech, ConfidenceLevel confidence)
         {
-            Debug.Log(speech.text);
-            voiceActions[speech.text].Invoke();
+            Debug.Log(speech);
+            if (voiceActions.ContainsKey(speech))
+            {
+                voiceActions[speech].Invoke();
+            }
+        }
+
+        // Called when dictation is complete (user stops talking)
+        private void DictationComplete(DictationCompletionCause cause)
+        {
+            Debug.Log("Dictation complete: " + cause);
+            // Optionally handle completion events here
+        }
+
+        // Called when dictation encounters an error
+        private void DictationError(string error, int hresult)
+        {
+            Debug.LogError($"Dictation error: {error}, hresult: {hresult}");
+            // Optionally handle error events here
         }
     }
 }

@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4038573858104174842}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.663, z: 0.128}
+  m_LocalPosition: {x: 0, y: 1.621, z: 0.474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -52,8 +52,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2.123397, z: 1.7127213}
-  m_Center: {x: 0, y: -0.20761442, z: 0.3563608}
+  m_Size: {x: 1, y: 2.123397, z: 0.8518405}
+  m_Center: {x: 0, y: -0.20761442, z: -0.07407962}
 --- !u!114 &3307696213562281567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8250322045588479423, guid: 1a5985d618b74624880ded9e358488c7, type: 3}
       propertyPath: m_Name
-      value: JumpscarJack
+      value: FRoomJumpscarJack 1
       objectReference: {fileID: 0}
     - target: {fileID: 8733843744644679429, guid: 1a5985d618b74624880ded9e358488c7, type: 3}
       propertyPath: m_LocalPosition.x

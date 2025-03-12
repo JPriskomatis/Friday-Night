@@ -103,7 +103,10 @@ namespace VoiceSpace
             //Where are you
             voiceActions.Add(speechWords[10], WhereAreYou);
             voiceActions.Add(speechWords[11], WhereAreYou);
-            Debug.Log("Added: " + speechWords[10]);
+            voiceActions.Add(speechWords[12], WhereAreYou);
+            voiceActions.Add(speechWords[13], WhereAreYou);
+            voiceActions.Add(speechWords[14], WhereAreYou);
+            voiceActions.Add(speechWords[15], WhereAreYou);
         }
 
         private void WhoAreYou()
@@ -166,7 +169,7 @@ namespace VoiceSpace
 
             OnOuijaJumpscare?.Invoke();
             key.SetActive(true);
-
+            ExitVoiceAction();
             this.GetComponent<SphereCollider>().enabled = false;
             Destroy(this);
 

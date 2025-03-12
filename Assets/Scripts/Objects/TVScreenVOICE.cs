@@ -18,7 +18,7 @@ namespace VoiceSpace
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip clip;
         [SerializeField] private GameObject suddenGlitch;
-        public static event Action OnOpenBookcase;
+        public GameEvent OpenBookcase;
 
         public override void AddDictionaryFunctions()
         {
@@ -29,6 +29,7 @@ namespace VoiceSpace
         }
         private void WhatDoYouWant()
         {
+
             Debug.Log("I tell you what I want");
             StartCoroutine(StartGlitchEffect());
 
@@ -40,9 +41,6 @@ namespace VoiceSpace
 
             audioSource.Play();
             Audio.Instance.PlayAudioFadeIn(clip);
-
-            PlayerController.Instance.ResetMovement();
-            HintMessage.Instance.RemoveMessage();
 
             StartCoroutine(DelayForBookscase());
         }
@@ -56,7 +54,10 @@ namespace VoiceSpace
         IEnumerator DelayForBookscase()
         {
             yield return new WaitForSeconds(2.5f);
-            OnOpenBookcase?.Invoke();
+            OpenBookcase.Raise();
+            yield return new WaitForSeconds(2.5f);
+            ExitVoiceAction();
+
             this.enabled = false;
         }
 

@@ -46,16 +46,37 @@ namespace VoiceSpace
             }
 
             dictationRecognizer.Start();
-            micronhponeUI.SetActive(true);
-            micronhponeCanvas.DOFade(1, 1f);
+            if (micronhponeUI != null)
+            {
+                micronhponeUI.SetActive(true);
+            }
+
+            // Only fade the canvas if micronhponeCanvas is assigned
+            if (micronhponeCanvas != null)
+            {
+                micronhponeCanvas.DOFade(1, 1f);
+            }
+
+
         }
 
 
         private void OnDisable()
         {
             dictationRecognizer.Stop();
-            micronhponeCanvas.DOFade(0, 1f).OnComplete(
-                () => micronhponeUI.SetActive(false));
+
+            if (micronhponeCanvas != null)
+            {
+                micronhponeCanvas.DOFade(0, 1f).OnComplete(
+                    () => {
+                        // Only deactivate UI if micronhponeUI is assigned
+                        if (micronhponeUI != null)
+                        {
+                            micronhponeUI.SetActive(false);
+                        }
+                    });
+            }
+
         }
 
         protected virtual void Start()

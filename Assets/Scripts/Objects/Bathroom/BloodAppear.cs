@@ -29,12 +29,15 @@ namespace ObjectSpace
             //Show the UI Indications;
             HintMessage.Instance.SetMessage(messageHint);
 
+            canInteractWith = false;
+
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(GlobalConstants.ESCAPE_ACTION))
             {
+                canInteractWith = true;
                 ((MonoBehaviour)voiceRecScript).enabled = false;
                 PlayerController.Instance.ResetMovement();
                 HintMessage.Instance.RemoveMessage();

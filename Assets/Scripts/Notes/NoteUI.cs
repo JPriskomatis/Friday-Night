@@ -35,6 +35,9 @@ namespace NoteSpace
         private Note currentNote;
         private bool voiceNote;
 
+        public GameEvent OpenJournalHint;
+        public GameEvent CloseJournalHint;
+
         //We listen for events from out NoteSystem class about new page added to the journal;
         private void OnEnable()
         {
@@ -59,10 +62,12 @@ namespace NoteSpace
                 noteCanva.SetActive(!noteCanva.activeSelf);
                 if (noteCanva.activeSelf)
                 {
+                    OpenJournalHint.Raise();
                     PlayerController.Instance.StopMovement();
                 }
                 else
                 {
+                    CloseJournalHint.Raise();
                     PlayerController.Instance.ResetMovement();
                 }
             }

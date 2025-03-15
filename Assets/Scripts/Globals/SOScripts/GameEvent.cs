@@ -3,7 +3,7 @@ using System.Diagnostics.Tracing;
 using NUnit.Framework;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GameEvent", menuName = "Scriptable Objects/GameEvent")]
+[CreateAssetMenu(fileName = "GameEvent", menuName = "GameEvents/Empty")]
 public class GameEvent : ScriptableObject
 {
     private List<GameEventListener> eventListeners = new List<GameEventListener>();

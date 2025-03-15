@@ -2,15 +2,15 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class GameEventResponse
+public class GameEventResponseGeneric<T>
 {
-    public GameEvent Event;
-    public UnityEvent Response;
+    public GameEventBase<T> Event;
+    public UnityEvent<T> Response;
 }
 
-public class GameEventListener : MonoBehaviour
+public class GameEventListenerGeneric<T> : MonoBehaviour
 {
-    public GameEventResponse[] EventResponses;
+    public GameEventResponseGeneric<T>[] EventResponses;
 
     private void OnEnable()
     {
@@ -28,15 +28,11 @@ public class GameEventListener : MonoBehaviour
         }
     }
 
-    public void OnEventRaised(GameEvent raisedEvent)
+    public void OnEventRaised(T value)
     {
         foreach (var response in EventResponses)
         {
-            if (response.Event == raisedEvent)
-            {
-                response.Response?.Invoke();
-                break;
-            }
+            response.Response?.Invoke(value);
         }
     }
 }

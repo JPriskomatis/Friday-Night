@@ -536,7 +536,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &12406590
 RectTransform:
   m_ObjectHideFlags: 0
@@ -52229,8 +52229,9 @@ GameObject:
   - component: {fileID: 1332509499}
   - component: {fileID: 1332509498}
   - component: {fileID: 1332509497}
+  - component: {fileID: 1332509501}
   m_Layer: 5
-  m_Name: VoiceDetectionUI
+  m_Name: HintMessage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52333,6 +52334,51 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 9
   m_TargetDisplay: 0
+--- !u!114 &1332509501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332509495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c326252565183149b4d3c8bae751d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EventResponses:
+  - Event: {fileID: 11400000, guid: 4dc745eaea347ae438427906ddf8cc6d, type: 2}
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1332509497}
+          m_TargetAssemblyTypeName: UISpace.HintMessage, UISpace
+          m_MethodName: SetMessage
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Press J to Escape
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Event: {fileID: 11400000, guid: 6c0c9f41cf975ba44b58595ba8efe88e, type: 2}
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1332509497}
+          m_TargetAssemblyTypeName: UISpace.HintMessage, UISpace
+          m_MethodName: RemoveMessage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Press J to Escape
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1332689950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85638,7 +85684,7 @@ CanvasGroup:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130154753}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
@@ -94716,7 +94762,7 @@ Transform:
   m_GameObject: {fileID: 5480920538975201794}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.75435084, z: -0, w: 0.6564715}
-  m_LocalPosition: {x: 267.33, y: 6.954, z: 256.113}
+  m_LocalPosition: {x: 277.6, y: 6.954, z: 261.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

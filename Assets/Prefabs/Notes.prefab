@@ -258,6 +258,10 @@ MonoBehaviour:
   noteCanva: {fileID: 8045565948627003378}
   instantNote: {fileID: 4219218639762032043}
   noteMat: {fileID: 1899727130091267817}
+  readNoteHint: 'Press J to Read Notes '
+  playerController: {fileID: 0}
+  OpenJournalHint: {fileID: 11400000, guid: 4dc745eaea347ae438427906ddf8cc6d, type: 2}
+  CloseJournalHint: {fileID: 11400000, guid: 6c0c9f41cf975ba44b58595ba8efe88e, type: 2}
 --- !u!1 &1622537123779407826
 GameObject:
   m_ObjectHideFlags: 0
